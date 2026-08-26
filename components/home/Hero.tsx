@@ -11,8 +11,6 @@ import acaademy from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
 import awsCloud from "@/assets/images/services/AWS Cloud.png";
 import cloudServices from "@/assets/images/services/Cloud_Services.png";
 import drone from "@/assets/images/services/NICEGENE DRONE SERVICES.jpg";
-import BackgroundVideo from "@/components/animations/BackgroundVideo";
-import AnimatedNetwork from "@/components/animations/AnimatedNetwork";
 import MagneticButton from "@/components/MagneticButton";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
@@ -90,19 +88,6 @@ export default function Hero() {
         ref={sectionRef}
         className="relative w-full min-h-screen overflow-hidden flex items-center"
       >
-        <BackgroundVideo
-          src="/videos/drone-video.mp4"
-          overlayOpacity={0.85}
-          gradientFrom="rgba(15, 76, 129, 0.92)"
-          gradientVia="rgba(15, 76, 129, 0.8)"
-          gradientTo="rgba(10, 61, 110, 0.88)"
-        />
-        <AnimatedNetwork
-          nodeCount={25}
-          lineColor="rgba(3, 236, 238, 0.1)"
-          dotColor="rgba(3, 236, 238, 0.25)"
-          maxDistance={0.3}
-        />
         <motion.div
           className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-secondary opacity-[0.06] blur-[120px] rounded-full pointer-events-none"
           style={{ y: parallaxY }}
@@ -215,108 +200,48 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* FLOATING IMAGE STACK - RIGHT SIDE */}
-        <div className="absolute right-6 lg:right-16 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, x: 60, rotate: 3 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ delay: 0.9, duration: 1.1, ease: EASE_OUT_EXPO }}
-            className="relative w-[400px] h-[320px]"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            {/* Back layer */}
-            <div
-              className="absolute inset-0 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
-              style={{ transform: "rotate(-4deg) translate(12px, 14px) scale(0.97)" }}
-              aria-hidden="true"
-            >
-              <Image
-                src={images[(index + images.length - 1) % images.length]}
-                alt=""
-                fill
-                className="object-cover opacity-60"
-                sizes="400px"
-              />
-            </div>
-
-            {/* Middle layer */}
-            <div
-              className="absolute inset-0 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
-              style={{ transform: "rotate(2deg) translate(-10px, -8px) scale(0.99)" }}
-              aria-hidden="true"
-            >
-              <Image
-                src={images[(index + 1) % images.length]}
-                alt=""
-                fill
-                className="object-cover opacity-75"
-                sizes="400px"
-              />
-            </div>
-
-            {/* Front layer — active image */}
+        {/* FULL-BLEED IMAGE SLIDESHOW */}
+        <div
+          className="absolute inset-0 z-0"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <AnimatePresence mode="wait">
             <motion.div
-              className="absolute inset-0 rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-white/5 backdrop-blur-xl"
-              style={{
-                clipPath: reduceMotion ? undefined : "inset(0 0 0 0)",
-              }}
-              initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
-              animate={{ clipPath: "inset(0 0 0% 0)" }}
-              transition={{ delay: 1.2, duration: 1.2, ease: EASE_OUT_EXPO }}
+              key={index}
+              initial={reduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0 }}
+              transition={{ duration: 0.7 }}
+              className="absolute inset-0"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={index}
-                  initial={reduceMotion ? false : { opacity: 0, scale: 1.06 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={reduceMotion ? undefined : { opacity: 0 }}
-                  transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
-                  className="relative w-full h-full"
-                >
-                  <Image
-                    src={images[index]}
-                    alt="Nicegene Services"
-                    fill
-                    className="object-cover"
-                    sizes="400px"
-                  />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Glass stat chip */}
-              <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.9, duration: 0.5, ease: EASE_OUT_EXPO }}
-                className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-3 rounded-xl bg-primary/60 backdrop-blur-md border border-white/15"
-              >
-                <div>
-                  <p className="text-white text-sm font-bold leading-none">
-                    10,000+ users supported
-                  </p>
-                  <p className="text-white/70 text-[11px] mt-1">
-                    LAEC platform · zero downtime
-                  </p>
-                </div>
-                <span className="w-2 h-2 rounded-full bg-success animate-pulse" aria-hidden="true" />
-              </motion.div>
+              <Image
+                src={images[index]}
+                alt=""
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
             </motion.div>
+          </AnimatePresence>
 
-            {/* Progress dots */}
-            <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20">
-              {images.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIndex(i)}
-                  aria-label={`Show image ${i + 1} of ${images.length}`}
-                  className={`rounded-full transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                    i === index ? "w-6 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/40 hover:bg-white/70"
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
+          {/* Gradient overlay — left-heavy for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-primary/20" />
+
+          {/* Progress dots */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Show image ${i + 1} of ${images.length}`}
+                className={`rounded-full transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  i === index ? "w-6 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Scroll-to-explore cue */}
