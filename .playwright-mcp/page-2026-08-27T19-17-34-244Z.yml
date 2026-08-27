@@ -1,0 +1,415 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - generic [ref=f7e3]:
+      - link "NICEGENE Technologies — Home" [ref=f7e5] [cursor=pointer]:
+        - /url: /
+        - img "Nicegene Technologies" [ref=f7e6]
+      - navigation "Primary" [ref=f7e7]:
+        - link "Home" [ref=f7e8] [cursor=pointer]:
+          - /url: /
+        - link "About Us" [ref=f7e11] [cursor=pointer]:
+          - /url: /about
+        - link "Services" [ref=f7e13] [cursor=pointer]:
+          - /url: /services
+        - link "Academy" [ref=f7e15] [cursor=pointer]:
+          - /url: /academy
+        - link "Portfolio" [ref=f7e17] [cursor=pointer]:
+          - /url: /projects
+        - link "Blog" [ref=f7e19] [cursor=pointer]:
+          - /url: /blog
+        - link "Careers" [ref=f7e21] [cursor=pointer]:
+          - /url: /careers
+        - link "Contact" [ref=f7e23] [cursor=pointer]:
+          - /url: /contact
+        - button "More" [ref=f7e26]
+      - link "Get in Touch" [ref=f7e30] [cursor=pointer]:
+        - /url: /contact
+  - generic [ref=f7e31]:
+    - main [ref=f7e33]:
+      - generic [ref=f7e34]:
+        - generic [ref=f7e35]:
+          - heading "Nigeria's Premier IT Consulting & Digital Solutions Firm" [level=1] [ref=f7e36]:
+            - generic [ref=f7e37]: Nigeria's
+            - generic [ref=f7e39]: Premier
+            - generic [ref=f7e41]: IT
+            - generic [ref=f7e43]: Consulting
+            - generic [ref=f7e45]: "&"
+            - generic [ref=f7e47]: Digital
+            - generic [ref=f7e49]: Solutions
+            - generic [ref=f7e51]: Firm
+          - paragraph [ref=f7e53]: We design, build, and manage secure cloud systems, digital infrastructure, and technology training that power schools, businesses, and public institutions across Africa.
+          - generic [ref=f7e54]:
+            - link "Get a Free Consultation" [ref=f7e56] [cursor=pointer]:
+              - /url: /contact
+            - link "Explore Our Services" [ref=f7e59] [cursor=pointer]:
+              - /url: /services
+          - generic [ref=f7e60]:
+            - generic [ref=f7e61]: CLOUD SYSTEM DEVELOPMENT
+            - generic [ref=f7e62]: IT CONSULTING & DIGITAL SOLUTIONS
+            - generic [ref=f7e63]: WEB & APP DEVELOPMENT
+            - generic [ref=f7e64]: SYSTEM NETWORKING & INFRASTRUCTURE
+            - generic [ref=f7e65]: POS & INVENTORY MANAGEMENT
+            - generic [ref=f7e66]: NICEGENE ACADEMY
+            - generic [ref=f7e67]: DATA PROTECTION & COMPLIANCE
+        - generic [ref=f7e71]:
+          - button "Show image 1 of 5" [ref=f7e72]
+          - button "Show image 2 of 5" [ref=f7e73]
+          - button "Show image 3 of 5" [ref=f7e74]
+          - button "Show image 4 of 5" [ref=f7e75]
+          - button "Show image 5 of 5" [ref=f7e76]
+        - generic [ref=f7e77]: Scroll to explore
+      - generic [ref=f7e81]:
+        - generic [ref=f7e83]:
+          - generic [ref=f7e84]: NICEGENE Digital Academy◆
+          - generic [ref=f7e85]: Get Certified and Job Ready◆
+          - generic [ref=f7e86]: NDPC-Certified DPCO◆
+          - generic [ref=f7e87]: Data Protection Compliance◆
+          - generic [ref=f7e88]: Professional Training Programs◆
+          - generic [ref=f7e89]: Data Protection Law & Practices◆
+          - generic [ref=f7e90]: Visit our Digital Academy◆
+          - generic [ref=f7e91]: Call +234 8060704412◆
+          - generic [ref=f7e92]: "Email: info@nicegeneco.com.ng◆"
+          - generic [ref=f7e93]: NICEGENE Digital Academy◆
+          - generic [ref=f7e94]: Get Certified and Job Ready◆
+          - generic [ref=f7e95]: NDPC-Certified DPCO◆
+          - generic [ref=f7e96]: Data Protection Compliance◆
+          - generic [ref=f7e97]: Professional Training Programs◆
+          - generic [ref=f7e98]: Data Protection Law & Practices◆
+          - generic [ref=f7e99]: Visit our Digital Academy◆
+          - generic [ref=f7e100]: Call +234 8060704412◆
+          - generic [ref=f7e101]: "Email: info@nicegeneco.com.ng◆"
+        - generic [ref=f7e103]:
+          - generic [ref=f7e104]: Cloud System Development◆
+          - generic [ref=f7e105]: IT Consulting & Digital Solutions◆
+          - generic [ref=f7e106]: Web & App Development◆
+          - generic [ref=f7e107]: System Networking & Infrastructure◆
+          - generic [ref=f7e108]: POS & Inventory Management◆
+          - generic [ref=f7e109]: NICEGENE Academy◆
+          - generic [ref=f7e110]: Data Protection & Compliance◆
+          - generic [ref=f7e111]: Cloud System Development◆
+          - generic [ref=f7e112]: IT Consulting & Digital Solutions◆
+          - generic [ref=f7e113]: Web & App Development◆
+          - generic [ref=f7e114]: System Networking & Infrastructure◆
+          - generic [ref=f7e115]: POS & Inventory Management◆
+          - generic [ref=f7e116]: NICEGENE Academy◆
+          - generic [ref=f7e117]: Data Protection & Compliance◆
+        - generic [ref=f7e119]:
+          - generic [ref=f7e120]: Frontend Web Development◆
+          - generic [ref=f7e121]: Cloud Computing◆
+          - generic [ref=f7e122]: Product Design◆
+          - generic [ref=f7e123]: Project Management◆
+          - generic [ref=f7e124]: Cybersecurity◆
+          - generic [ref=f7e125]: Data Analytics◆
+          - generic [ref=f7e126]: Digital Marketing◆
+          - generic [ref=f7e127]: Video Editing◆
+          - generic [ref=f7e128]: Web3 Technologies◆
+          - generic [ref=f7e129]: Graphics Design◆
+          - generic [ref=f7e130]: Frontend Web Development◆
+          - generic [ref=f7e131]: Cloud Computing◆
+          - generic [ref=f7e132]: Product Design◆
+          - generic [ref=f7e133]: Project Management◆
+          - generic [ref=f7e134]: Cybersecurity◆
+          - generic [ref=f7e135]: Data Analytics◆
+          - generic [ref=f7e136]: Digital Marketing◆
+          - generic [ref=f7e137]: Video Editing◆
+          - generic [ref=f7e138]: Web3 Technologies◆
+          - generic [ref=f7e139]: Graphics Design◆
+      - generic [ref=f7e142]:
+        - generic [ref=f7e146]:
+          - paragraph [ref=f7e147]: NDPC-Certified
+          - heading "Licensed Data Protection Compliance Organization (DPCO)" [level=2] [ref=f7e148]
+          - paragraph [ref=f7e149]: We're officially licensed by the Nigeria Data Protection Commission — helping schools, businesses, and institutions across Nigeria build lawful, secure, and audit-ready data protection practices.
+          - paragraph [ref=f7e150]: "License No: NDPC/DPCO/XXXX"
+        - link "Explore Our Data Protection Services" [ref=f7e151] [cursor=pointer]:
+          - /url: /services/data-protection
+      - generic [ref=f7e165]:
+        - generic [ref=f7e167]:
+          - generic: “
+          - generic [ref=f7e168]: Introduction
+          - heading "Replacing Manual, Paper-Based Processes With Secure Cloud Systems" [level=2] [ref=f7e170]
+        - generic [ref=f7e171]:
+          - paragraph [ref=f7e172]: NICEGENE Technologies is a premiere IT Consulting & Digital Solutions firm based in Lagos Nigeria, trusted by schools, businesses, and public institutions to replace manual, paper-based processes with secure, cloud-based systems. From cloud architecture, migration, and system networking to digitization, web and app development, and professional technology training delivered through NICEGENE Academy, we deliver end-to-end digital transformation built to scale with our clients.
+          - paragraph [ref=f7e173]: Our flagship achievement is a cloud-native, serverless examination and school management platform built for the Lagos Archdiocesan Education Commission (LAEC). It now supports more than 10 schools and over 10,000 students, teachers, and administrative staff, with zero service downtime — a standard we bring to every engagement, regardless of size.
+      - generic [ref=f7e175]:
+        - generic [ref=f7e176]:
+          - generic [ref=f7e177]: At a Glance
+          - heading "Our Impact in Numbers" [level=2] [ref=f7e180]
+        - generic [ref=f7e181]:
+          - generic [ref=f7e182]:
+            - paragraph [ref=f7e187]: 0+
+            - paragraph [ref=f7e188]: Schools onboarded onto NICEGENE-built platforms
+          - generic [ref=f7e189]:
+            - paragraph [ref=f7e194]: 0+
+            - paragraph [ref=f7e195]: Students, teachers, and administrative staff supported
+          - generic [ref=f7e196]:
+            - paragraph [ref=f7e201]: "0"
+            - paragraph [ref=f7e202]: Service downtime recorded on our flagship LAEC platform since deployment
+          - generic [ref=f7e203]:
+            - paragraph [ref=f7e208]: "0"
+            - paragraph [ref=f7e209]: Professionals reached through the maiden edition of our Tech Insight Series
+        - paragraph [ref=f7e210]: 158 professionals drew from 23 states and the FCT.
+      - generic [ref=f7e212]:
+        - generic [ref=f7e213]:
+          - generic [ref=f7e214]: What We Do
+          - heading "Our Core Services" [level=2] [ref=f7e217]
+          - paragraph [ref=f7e218]: A full-stack offering — strategy, build, training, and hardware — under a single accountable partner.
+        - generic [ref=f7e219]:
+          - tablist "Our core services" [ref=f7e220]:
+            - tab "Cloud System Development, Migration & Operations" [selected] [ref=f7e221]:
+              - generic [ref=f7e223]:
+                - generic [ref=f7e224]: "01"
+                - generic [ref=f7e225]: Cloud System Development, Migration & Operations
+            - tab "IT Consulting & Digital Solutions" [ref=f7e227]:
+              - generic [ref=f7e228]:
+                - generic [ref=f7e229]: "02"
+                - generic [ref=f7e230]: IT Consulting & Digital Solutions
+            - tab "Data Protection & Compliance" [ref=f7e232]:
+              - generic [ref=f7e233]:
+                - generic [ref=f7e234]: "03"
+                - generic [ref=f7e235]: Data Protection & Compliance
+            - tab "Web & App Development" [ref=f7e237]:
+              - generic [ref=f7e238]:
+                - generic [ref=f7e239]: "04"
+                - generic [ref=f7e240]: Web & App Development
+            - tab "System Networking & Infrastructure" [ref=f7e242]:
+              - generic [ref=f7e243]:
+                - generic [ref=f7e244]: "05"
+                - generic [ref=f7e245]: System Networking & Infrastructure
+            - tab "Digitization & Records Management" [ref=f7e247]:
+              - generic [ref=f7e248]:
+                - generic [ref=f7e249]: "06"
+                - generic [ref=f7e250]: Digitization & Records Management
+            - tab "POS & Inventory Management Systems" [ref=f7e252]:
+              - generic [ref=f7e253]:
+                - generic [ref=f7e254]: "07"
+                - generic [ref=f7e255]: POS & Inventory Management Systems
+            - tab "NICEGENE Academy" [ref=f7e257]:
+              - generic [ref=f7e258]:
+                - generic [ref=f7e259]: "08"
+                - generic [ref=f7e260]: NICEGENE Academy
+            - tab "Technology Gadget Sales" [ref=f7e262]:
+              - generic [ref=f7e263]:
+                - generic [ref=f7e264]: "09"
+                - generic [ref=f7e265]: Technology Gadget Sales
+          - tabpanel "Cloud System Development, Migration & Operations" [ref=f7e268]:
+            - img "Cloud System Development, Migration & Operations" [ref=f7e271]
+            - generic [ref=f7e273]:
+              - heading "Cloud System Development, Migration & Operations" [level=3] [ref=f7e274]
+              - paragraph [ref=f7e275]: Secure, scalable AWS architectures built around how your organization actually works.
+              - link "Explore Cloud System Development" [ref=f7e277] [cursor=pointer]:
+                - /url: /services/cloud
+        - link "Explore All Services" [ref=f7e281] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=f7e285]:
+        - generic [ref=f7e286]:
+          - generic [ref=f7e287]: Why Organizations Choose NICEGENE
+          - heading "A Partner Built for Reliable Transformation" [level=2] [ref=f7e289]
+          - paragraph [ref=f7e290]: We do not just build systems — we build lasting digital foundations.
+        - generic [ref=f7e293]:
+          - generic [ref=f7e294]:
+            - generic [ref=f7e295]: "1"
+            - generic [ref=f7e299]:
+              - heading "Proven delivery at scale" [level=3] [ref=f7e300]
+              - paragraph [ref=f7e301]: A live, multi-tenant platform serving over 10,000 users with zero downtime.
+          - generic [ref=f7e302]:
+            - generic [ref=f7e303]: "2"
+            - generic [ref=f7e307]:
+              - heading "Sector depth in education, retail, and institutional IT" [level=3] [ref=f7e308]
+              - paragraph [ref=f7e309]: Backed by hands-on cloud and networking expertise.
+          - generic [ref=f7e310]:
+            - generic [ref=f7e311]: "3"
+            - generic [ref=f7e315]:
+              - heading "A full-stack offering" [level=3] [ref=f7e316]
+              - paragraph [ref=f7e317]: Strategy, build, training, and hardware — under a single accountable partner.
+          - generic [ref=f7e318]:
+            - generic [ref=f7e319]: "4"
+            - generic [ref=f7e323]:
+              - heading "A growing footprint in data protection and privacy services" [level=3] [ref=f7e324]
+              - paragraph [ref=f7e325]: Aligned with the Nigeria Data Protection Act, 2023.
+          - generic [ref=f7e326]:
+            - generic [ref=f7e327]: "5"
+            - generic [ref=f7e331]:
+              - heading "A talent pipeline of Academy-trained professionals" [level=3] [ref=f7e332]
+              - paragraph [ref=f7e333]: Professionals who understand both the technology and the standards we build to.
+      - generic [ref=f7e335]:
+        - generic [ref=f7e336]:
+          - generic [ref=f7e337]: How We Work
+          - heading "Explore Our 3 Step Working Process" [level=2] [ref=f7e340]
+          - paragraph [ref=f7e341]: A clear, disciplined path from first conversation to launch.
+        - generic [ref=f7e342]:
+          - generic [ref=f7e344]:
+            - generic [ref=f7e345]: "01"
+            - heading "Discovery & Strategy" [level=3] [ref=f7e349]
+            - paragraph [ref=f7e350]: We research, understand your vision, goals, and target audience to build a strong foundation for your product.
+            - generic [ref=f7e351]: Step 1
+          - generic [ref=f7e356]:
+            - generic [ref=f7e357]: "02"
+            - heading "Design & Development" [level=3] [ref=f7e362]
+            - paragraph [ref=f7e363]: We translate ideas into modern UI/UX designs and scalable, high-performance digital solutions.
+            - generic [ref=f7e364]: Step 2
+          - generic [ref=f7e369]:
+            - generic [ref=f7e370]: "03"
+            - heading "Product Launch" [level=3] [ref=f7e375]
+            - paragraph [ref=f7e376]: We deploy, optimize, and support your product to ensure a smooth and successful launch.
+            - generic [ref=f7e377]: Step 3
+        - link "Start Projects" [ref=f7e379] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f7e384]:
+        - generic [ref=f7e385]:
+          - generic [ref=f7e386]: Testimonials
+          - heading "What Our Clients Say About Nicegene Technologies" [level=2] [ref=f7e388]
+          - paragraph [ref=f7e389]: Hear from businesses, institutions and individuals whose operations were transformed by Nicegene Technologies.
+          - link "Share Your Experience" [ref=f7e390] [cursor=pointer]:
+            - /url: /testimonials/submit
+        - generic [ref=f7e393]:
+          - generic [ref=f7e394]:
+            - generic [ref=f7e395]:
+              - generic [ref=f7e396]: “
+              - paragraph [ref=f7e413]: “NICEGENE built our national examination platform on a serverless architecture that has served over 10,000 students with zero downtime. Their engineering discipline and communication are simply exemplary.”
+              - generic [ref=f7e414]: Cloud
+              - generic [ref=f7e415]:
+                - generic [ref=f7e416]: MA
+                - generic [ref=f7e417]:
+                  - paragraph [ref=f7e418]: Fr. Michael Adewale
+                  - paragraph [ref=f7e419]: Cloud
+            - generic [ref=f7e420]:
+              - generic [ref=f7e421]: “
+              - paragraph [ref=f7e438]: “The DailyApp ERP has transformed how we manage records and fees. NICEGENE trained our staff patiently and supported us through every stage of the rollout.”
+              - generic [ref=f7e439]: Web Development
+              - generic [ref=f7e440]:
+                - generic [ref=f7e441]: OA
+                - generic [ref=f7e442]:
+                  - paragraph [ref=f7e443]: Mrs. Olufunke Adeyemi
+                  - paragraph [ref=f7e444]: Web Development
+            - generic [ref=f7e445]:
+              - generic [ref=f7e446]: “
+              - paragraph [ref=f7e463]: “Our POS and inventory system went from chaos to complete clarity. Stock losses stopped, and our sales reports are now real-time. Highly recommended for any retailer.”
+              - generic [ref=f7e464]: POS
+              - generic [ref=f7e465]:
+                - generic [ref=f7e466]: TB
+                - generic [ref=f7e467]:
+                  - paragraph [ref=f7e468]: Mr. Tunde Bakare
+                  - paragraph [ref=f7e469]: POS
+            - generic [ref=f7e470]:
+              - generic [ref=f7e471]: “
+              - paragraph [ref=f7e488]: “Digitising our patient records was a huge project, and NICEGENE handled it with sensitivity and precision. Our clinicians now find records in seconds.”
+              - generic [ref=f7e489]: Digitization
+              - generic [ref=f7e490]:
+                - generic [ref=f7e491]: CE
+                - generic [ref=f7e492]:
+                  - paragraph [ref=f7e493]: Dr. Chinelo Eze
+                  - paragraph [ref=f7e494]: Digitization
+          - button "See More Testimonials" [ref=f7e496]
+      - generic [ref=f7e500]:
+        - generic: NICEGENE
+        - generic: TECHNOLOGIES
+        - generic [ref=f7e501]:
+          - generic [ref=f7e502]: Let's Build Together
+          - heading "Have a Custom Project in Mind?" [level=2] [ref=f7e505]
+          - paragraph [ref=f7e506]: Our team is ready to help you navigate your digital transformation journey.
+          - generic [ref=f7e507]:
+            - link "Get a Free Consultation" [ref=f7e509] [cursor=pointer]:
+              - /url: /contact
+            - link "Chat on WhatsApp" [ref=f7e512] [cursor=pointer]:
+              - /url: https://wa.me/2348060704412
+    - contentinfo [ref=f7e515]:
+      - generic [ref=f7e517]:
+        - generic [ref=f7e518]:
+          - link "NICEGENE Technologies — Home" [ref=f7e519] [cursor=pointer]:
+            - /url: /
+            - img "NiceGene Logo" [ref=f7e520]
+            - generic [ref=f7e521]: NICEGENE
+          - paragraph [ref=f7e522]: NICEGENE Technologies — IT Consulting & Digital Solutions. We don't just build systems — we build lasting digital foundations.
+          - generic [ref=f7e523]:
+            - link "WhatsApp" [ref=f7e524] [cursor=pointer]:
+              - /url: https://wa.me/2348060704412
+            - link "Instagram" [ref=f7e527] [cursor=pointer]:
+              - /url: https://www.instagram.com/nicegene_technologies?igsh=MTUzMDB3d3Y1bG90OQ==
+            - link "LinkedIn" [ref=f7e530] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/nicegene-technologies/
+            - link "X (Twitter)" [ref=f7e533] [cursor=pointer]:
+              - /url: https://x.com/nicegene_tech
+            - link "Facebook" [ref=f7e536] [cursor=pointer]:
+              - /url: https://www.facebook.com/61587024291293
+        - generic [ref=f7e539]:
+          - heading "Quick Links" [level=4] [ref=f7e540]
+          - list [ref=f7e541]:
+            - listitem [ref=f7e542]:
+              - link "Home" [ref=f7e543] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f7e547]:
+              - link "About Us" [ref=f7e548] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f7e552]:
+              - link "Services" [ref=f7e553] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e557]:
+              - link "Academy" [ref=f7e558] [cursor=pointer]:
+                - /url: /academy
+            - listitem [ref=f7e562]:
+              - link "Portfolio" [ref=f7e563] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=f7e567]:
+              - link "Careers" [ref=f7e568] [cursor=pointer]:
+                - /url: /careers
+            - listitem [ref=f7e572]:
+              - link "Contact" [ref=f7e573] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=f7e577]:
+          - heading "Our Services" [level=4] [ref=f7e578]
+          - list [ref=f7e579]:
+            - listitem [ref=f7e580]:
+              - link "Cloud System Development, Migration & Operations" [ref=f7e581] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e585]:
+              - link "IT Consulting & Digital Solutions" [ref=f7e586] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e590]:
+              - link "Data Protection & Compliance" [ref=f7e591] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e595]:
+              - link "Web & App Development" [ref=f7e596] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e600]:
+              - link "System Networking & Infrastructure" [ref=f7e601] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e605]:
+              - link "Digitization & Records Management" [ref=f7e606] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e610]:
+              - link "POS & Inventory Management" [ref=f7e611] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e615]:
+              - link "NICEGENE Academy" [ref=f7e616] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=f7e620]:
+              - link "Technology Gadget Sales" [ref=f7e621] [cursor=pointer]:
+                - /url: /services
+        - generic [ref=f7e625]:
+          - heading "Legal" [level=4] [ref=f7e626]
+          - list [ref=f7e627]:
+            - listitem [ref=f7e628]:
+              - link "Terms & Conditions" [ref=f7e629] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=f7e633]:
+              - link "Privacy Policy" [ref=f7e634] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=f7e638]:
+              - link "Cookie Policy" [ref=f7e639] [cursor=pointer]:
+                - /url: /cookie-policy
+            - listitem [ref=f7e643]:
+              - link "Refund Policy" [ref=f7e644] [cursor=pointer]:
+                - /url: /refund-policy
+        - generic [ref=f7e648]:
+          - heading "Contact Us" [level=4] [ref=f7e649]
+          - list [ref=f7e650]:
+            - listitem [ref=f7e651]:
+              - generic [ref=f7e652]: Road 15, Lekki Gardens Estate Phase 3, Hitech Road, Lekki-Ajah, Lagos
+            - listitem [ref=f7e657]:
+              - link "+234 806 070 4412" [ref=f7e658] [cursor=pointer]:
+                - /url: tel:+2348060704412
+            - listitem [ref=f7e663]:
+              - link "info@nicegeneco.com.ng" [ref=f7e664] [cursor=pointer]:
+                - /url: mailto:info@nicegeneco.com.ng
+      - paragraph [ref=f7e671]: © 2026 NICEGENE Technology Solutions Limited. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=f7e677] [cursor=pointer]

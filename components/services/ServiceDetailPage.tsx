@@ -595,7 +595,7 @@ export default function ServiceDetailPage({ serviceId }: { serviceId: string }) 
                     transition={{ delay: i * 0.03 }}
                     className="bg-surface border border-gray-200 rounded-xl p-4 text-center hover:border-secondary/30 transition-all group"
                   >
-                    <div className="w-full aspect-square rounded-lg bg-gradient-to-br from-secondary/5 to-secondary/5 flex items-center justify-center mb-3 overflow-hidden">
+                    <div className="relative w-full aspect-square rounded-lg bg-gradient-to-br from-secondary/5 to-secondary/5 flex items-center justify-center mb-3 overflow-hidden">
                       <Image
                         src={product.image}
                         alt={product.name}

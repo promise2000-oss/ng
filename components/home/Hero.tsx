@@ -6,11 +6,10 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "motion/react";
 import { FaArrowRight, FaShieldAlt } from "react-icons/fa";
 
-import systemNetworking from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
-import acaademy from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
-import awsCloud from "@/assets/images/services/AWS Cloud.png";
+import bg1 from "@/assets/images/services/23324.jpg";
+import bg2 from "@/assets/images/services/futurism-perspective-digital-nomads-lifestyle.jpg";
+import bg3 from "@/assets/images/services/WhatsApp Image 2026-08-27 at 7.45.40 PM.jpeg";
 import cloudServices from "@/assets/images/services/Cloud_Services.png";
-import drone from "@/assets/images/services/NICEGENE DRONE SERVICES.jpg";
 import MagneticButton from "@/components/MagneticButton";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
@@ -50,11 +49,10 @@ const academyCoursesText = [
 ];
 
 const images = [
-  systemNetworking,
-  acaademy,
-  awsCloud,
   cloudServices,
-  drone,
+  bg1,
+  bg2,
+  bg3,
 ];
 
 const services = [
@@ -107,7 +105,7 @@ export default function Hero() {
           aria-hidden="true"
         />
         <motion.div
-          className="absolute -bottom-20 -left-20 w-[300px] h-[300px] bg-accent opacity-[0.04] blur-[100px] rounded-full pointer-events-none"
+          className="absolute -bottom-0 -left-20 w-[300px] h-[300px] bg-accent opacity-[0.04] blur-[100px] rounded-full pointer-events-none"
           style={{ y: useTransform(scrollY, [0, 500], [0, 30]) }}
           aria-hidden="true"
         />
@@ -195,13 +193,10 @@ export default function Hero() {
                 transition={{ delay: 1.55 + i * 0.05, duration: 0.4, ease: EASE_OUT_EXPO }}
                 className="
                   px-6 py-3 rounded-full
-                  text-sm text-white/90
-                  border border-white/15
-                  bg-white/5
-                  backdrop-blur-md
+                  text-sm text-white
+                  bg-primary
                   transition-colors duration-300
-                  hover:border-accent
-                  hover:text-accent
+                  hover:bg-accent
                 "
               >
                 {item.toUpperCase()}
