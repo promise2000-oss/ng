@@ -97,7 +97,7 @@ export default function Hero() {
       {/* HERO SECTION */}
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen overflow-hidden flex items-center"
+        className="relative w-full min-h-screen overflow-hidden flex items-[35%]"
       >
         <motion.div
           className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-secondary opacity-[0.06] blur-[120px] rounded-full pointer-events-none"
@@ -111,7 +111,7 @@ export default function Hero() {
         />
 
         {/* CENTERED CONTENT */}
-        <div className="relative z-10 w-full px-6 lg:px-16 py-24 text-center">
+        <div className="relative z-10 w-full px-6 lg:px-16 pt-8 pb-24 text-center">
           {/* Eyebrow */}
           <motion.div
             {...entrance(0.25, 0.5)}
