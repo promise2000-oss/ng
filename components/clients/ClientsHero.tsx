@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import clientsImg from "@/assets/images/events/team-working.jpg";
 
 export default function ClientsHero() {
   return (
