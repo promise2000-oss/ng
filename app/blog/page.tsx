@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import BlogHero from "@/components/blog/BlogHero";
 import BlogFilterBar from "@/components/blog/BlogFilterBar";
@@ -10,7 +10,61 @@ import BlogCTA from "@/components/blog/BlogCTA";
 import AnimatedGradient from "@/components/animations/AnimatedGradient";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import { getBlogs, type BlogPost } from "@/lib/blogs";
+import { useBlogs } from "@/lib/hooks/useBlogs";
+import { imageUrl } from "@/lib/api";
+import type { BlogPost as ApiBlogPost } from "@/lib/types";
+
+type BlogPost = {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  image: string;
+  author: string;
+  date: string;
+  readTime: string;
+  tags?: string[];
+};
+
+function truncate(text: string, maxLength = 150): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trimEnd() + "\u2026";
+}
+
+function estimateReadTime(text: string): string {
+  const words = text.split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function cleanTag(tag: string): string {
+  return tag.replace(/[[\]"]+/g, "").trim();
+}
+
+function mapApiBlog(blog: ApiBlogPost): BlogPost {
+  const tags = blog.tags?.map(cleanTag);
+  return {
+    id: blog._id,
+    title: blog.title,
+    excerpt: truncate(blog.content),
+    content: blog.content,
+    category: tags?.[0] || "Technology",
+    image: imageUrl(blog.image) || "",
+    author: blog.author,
+    date: formatDate(blog.date),
+    readTime: estimateReadTime(blog.content),
+    tags,
+  };
+}
 
 function matchesFilter(
   post: BlogPost,
@@ -34,18 +88,11 @@ const sectionVariants = {
 };
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: apiPosts, isLoading } = useBlogs();
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    getBlogs()
-      .then(setPosts)
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
-
+  const posts = (apiPosts ?? []).map(mapApiBlog);
   const featuredPost = posts.length > 0 ? posts[0] : null;
   const regularPosts = posts.slice(1);
 
@@ -87,7 +134,7 @@ export default function BlogPage() {
             onSearchChange={setSearchQuery}
           />
 
-          {loading ? (
+          {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
                 <div

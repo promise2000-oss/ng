@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransitionWrapper from "@/components/PageTransitionWrapper";
 import GlobalBackground from "@/components/animations/GlobalBackground";
+import Providers from "@/lib/providers";
 
 
 export const metadata: Metadata = {
@@ -40,19 +41,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-background text-text-primary pt-20`}
+        className={`${inter.className} ${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-background text-text-primary`}
         suppressHydrationWarning
       >
-        <MotionConfig reducedMotion="user">
-          <GlobalBackground />
-          <Navbar />
-          <div className="relative z-10">
-            <PageTransitionWrapper>
-              {children}
-            </PageTransitionWrapper>
-            <Footer />
-          </div>
-        </MotionConfig>
+        <Providers>
+          <MotionConfig reducedMotion="user">
+            <GlobalBackground />
+            <Navbar />
+            <div className="relative z-10 pt-20">
+              <PageTransitionWrapper>
+                {children}
+              </PageTransitionWrapper>
+              <Footer />
+            </div>
+          </MotionConfig>
+        </Providers>
       </body>
     </html>
   );

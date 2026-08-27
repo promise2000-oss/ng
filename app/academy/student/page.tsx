@@ -27,11 +27,9 @@ import {
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import PrintableCertificate from "@/components/verify/PrintableCertificate";
-import { STORE_KEYS, loadStore, saveStore } from "@/lib/store";
+import { useStudents } from "@/lib/hooks/useStudents";
+import { useCertificates } from "@/lib/hooks/useCertificates";
 import {
-  seedStudents,
-  demoStudentId,
-  seedCertificates,
   seedExams,
   formatDate,
   type Student,
@@ -191,13 +189,13 @@ function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
 }
 
 function PortalView({ session, onLogout }: { session: AuthSession; onLogout: () => void }) {
-  const [students] = useState<Student[]>(() => loadStore(STORE_KEYS.students, () => seedStudents));
+  const { data: rawStudents = [], isLoading } = useStudents();
+  const { data: rawCertificates = [] } = useCertificates({ email: session.email });
+  const students = rawStudents as unknown as Student[];
+  const certificates = rawCertificates as unknown as Certificate[];
   const student = useMemo(
-    () => students.find((s) => s.id === session.accountId) ?? students[0],
-    [students, session.accountId]
-  );
-  const [certificates] = useState<Certificate[]>(() =>
-    loadStore(STORE_KEYS.certificates, () => seedCertificates)
+    () => students.find((s) => s.email === session.email) ?? students[0],
+    [students, session.email]
   );
   const [tab, setTab] = useState<Tab>("dashboard");
   const [showCertificate, setShowCertificate] = useState(false);
@@ -208,6 +206,14 @@ function PortalView({ session, onLogout }: { session: AuthSession; onLogout: () 
     const t = setTimeout(() => setToast(null), 3000);
     return () => clearTimeout(t);
   }, [toast]);
+
+  if (isLoading) {
+    return (
+      <div className="px-6 py-24 text-center">
+        <p className="text-text-secondary text-sm">Loading...</p>
+      </div>
+    );
+  }
 
   if (!student) {
     return (
@@ -509,7 +515,7 @@ function ProfileTab({
           <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/10 flex items-center justify-center text-primary font-bold text-2xl mx-auto">
             {student.name
               .split(" ")
-              .map((n) => n[0])
+              .map((n: string) => n[0])
               .join("")
               .slice(0, 2)
               .toUpperCase()}
@@ -756,12 +762,6 @@ function NotificationsTab({ student, onToast }: { student: Student; onToast: (m:
   const markAllRead = () => {
     const updated = notifications.map((n) => ({ ...n, read: true }));
     setNotifications(updated);
-    const students = loadStore<Student[]>(STORE_KEYS.students, () => seedStudents);
-    const idx = students.findIndex((s) => s.id === student.id);
-    if (idx >= 0) {
-      students[idx].notifications = updated;
-      saveStore(STORE_KEYS.students, students);
-    }
     onToast("All notifications marked as read");
   };
 

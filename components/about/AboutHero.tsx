@@ -64,12 +64,13 @@ export default function AboutHero() {
             transition={{ delay: 0.3 }}
             className="text-white/80 mt-6 max-w-3xl mx-auto text-sm md:text-base leading-relaxed"
           >
-            NICEGENE Technologies is a Lagos-based IT consulting and digital
-            solutions firm built to close the gap between traditional, manual
-            operations and modern digital efficiency. We provide end-to-end
-            technology integration for schools, businesses, and public
-            institutions, delivered through a focused portfolio of cloud,
-            infrastructure, development, and training services.
+            NICEGENE Technologies is a premiere IT Consulting & Digital
+            Solutions firm based in Lagos Nigeria, built to close the gap
+            between traditional, manual operations and modern digital
+            efficiency. We provide end-to-end technology integration for
+            schools, businesses, and public institutions, delivered through
+            a focused portfolio of cloud, infrastructure, development, and
+            training services.
           </motion.p>
 
           <motion.div

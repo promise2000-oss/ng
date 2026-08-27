@@ -2,33 +2,36 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import TextReveal from "@/components/animations/TextReveal";
 import GridOverlay from "@/components/animations/GridOverlay";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import AnimatedGradient from "@/components/animations/AnimatedGradient";
-import { FaEnvelope } from "react-icons/fa";
-import projectsPerkImg from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
-import growthPerkImg from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
-import valuesPerkImg from "@/assets/images/events/team-working.jpg";
+import { FaEnvelope, FaRocket, FaGraduationCap, FaHeart, FaCheck } from "react-icons/fa";
+import cloudProjectsImg from "@/assets/images/services/cloud-projects.jpg";
+import careerGrowthImg from "@/assets/images/services/career-growth.jpg";
+import teamworkValuesImg from "@/assets/images/services/teamwork-values.jpg";
 
-const perks: { image: StaticImageData; title: string; desc: string }[] = [
+const imagePerks = [
   {
-    image: projectsPerkImg,
+    image: cloudProjectsImg,
     title: "Hands-On, High-Scale Projects",
     desc: "Real exposure to serverless cloud architecture and institutional digital transformation.",
+    icon: <FaRocket className="text-white" size={20} />,
   },
   {
-    image: growthPerkImg,
+    image: careerGrowthImg,
     title: "A Structured Growth Path",
     desc: "A route into our Academy's instructor and mentorship programmes for the right candidates.",
-  },
-  {
-    image: valuesPerkImg,
-    title: "Values You Can Build On",
-    desc: "A culture rooted in honesty, excellence, integrity, and respect.",
+    icon: <FaGraduationCap className="text-white" size={20} />,
   },
 ];
+
+const textPerk = {
+  title: "Values You Can Build On",
+  desc: "A culture rooted in honesty, excellence, integrity, and respect.",
+  icon: <FaHeart className="text-primary" size={24} />,
+  values: ["Honesty", "Excellence", "Integrity", "Respect"],
+};
 
 export default function CareersHero() {
   return (
@@ -97,33 +100,96 @@ export function CareersContent() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {perks.map((perk, i) => (
+          {imagePerks.map((perk, i) => (
             <motion.div
               key={perk.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -6 }}
-              className="bg-white border border-gray-200 rounded-2xl p-8 text-center shadow-sm"
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="relative group rounded-2xl overflow-hidden h-80 cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-primary mx-auto mb-5 overflow-hidden ring-1 ring-secondary/20">
-                <Image
-                  src={perk.image}
-                  alt={perk.title}
-                  width={56}
-                  height={56}
-                  className="object-cover w-full h-full"
-                />
+              <Image
+                src={perk.image}
+                alt={perk.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 + 0.3, type: "spring", stiffness: 200 }}
+                  className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3"
+                >
+                  {perk.icon}
+                </motion.div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {perk.title}
+                </h3>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  {perk.desc}
+                </p>
               </div>
-              <h3 className="text-base font-semibold text-text-primary mb-3">
-                {perk.title}
-              </h3>
-              <p className="text-sm text-text-primary/70 leading-relaxed">
-                {perk.desc}
-              </p>
             </motion.div>
           ))}
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            whileHover={{ y: -8 }}
+            className="relative bg-white border border-gray-200 rounded-2xl p-8 shadow-sm overflow-hidden group"
+          >
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
+            
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+              className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-5"
+            >
+              {textPerk.icon}
+            </motion.div>
+
+            <h3 className="text-lg font-semibold text-text-primary mb-3">
+              {textPerk.title}
+            </h3>
+            <p className="text-sm text-text-primary/70 leading-relaxed mb-6">
+              {textPerk.desc}
+            </p>
+
+            <div className="space-y-3">
+              {textPerk.values.map((value, i) => (
+                <motion.div
+                  key={value}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="flex items-center gap-3"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7 + i * 0.1, type: "spring" }}
+                    className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center"
+                  >
+                    <FaCheck className="text-secondary text-xs" />
+                  </motion.div>
+                  <span className="text-sm font-medium text-text-primary">{value}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
+          </motion.div>
         </div>
 
         <motion.div

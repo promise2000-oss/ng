@@ -63,14 +63,15 @@ export default function Introduction() {
           className="space-y-5"
         >
           <p className="text-text-primary/80 leading-relaxed">
-            NICEGENE Technologies is a Lagos-based IT consulting and digital
-            solutions firm trusted by schools, businesses, and public
-            institutions to replace manual, paper-based processes with
-            secure, cloud-based systems. From cloud architecture, migration,
-            and system networking to digitization, web and app development,
-            and professional technology training delivered through NICEGENE
-            Academy, we deliver end-to-end digital transformation built to
-            scale with our clients.
+            NICEGENE Technologies is a premiere IT Consulting & Digital
+            Solutions firm based in Lagos Nigeria, trusted by schools,
+            businesses, and public institutions to replace manual,
+            paper-based processes with secure, cloud-based systems. From
+            cloud architecture, migration, and system networking to
+            digitization, web and app development, and professional
+            technology training delivered through NICEGENE Academy, we
+            deliver end-to-end digital transformation built to scale with
+            our clients.
           </p>
           <p className="text-text-primary/80 leading-relaxed">
             Our flagship achievement is a cloud-native, serverless examination

@@ -1,6 +1,7 @@
 import { ComponentType } from "react";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaGlobe } from "react-icons/fa";
-import { fetchApi } from "./api";
+import api from "./api";
+import type { ContactPayload as ContactPayloadType, ContactSubmission } from "./types";
 
 export type ContactCard = {
   icon: ComponentType<{ size?: number; className?: string }>;
@@ -33,7 +34,7 @@ export const contactCards: ContactCard[] = [
   {
     icon: FaWhatsapp, title: "WhatsApp", details: ["+234 806 070 4412"],
     href: "https://wa.me/2348060704412", action: "Chat Now",
-    bg: "bg-green-700/10", iconBg: "bg-green-700/20", iconColor: "text-green-700", borderHover: "hover:border-green-500/40",
+    bg: "bg-green-700/10", iconBg: "bg-green-700/20", iconColor: "text-green-700", borderHover: "hover:border-green-700/40",
   },
   {
     icon: FaMapMarkerAlt, title: "Office", details: ["Road 15, Lekki Gardens Estate Phase 3, Hitech Road, Lekki-Ajah, Lagos"],
@@ -41,25 +42,13 @@ export const contactCards: ContactCard[] = [
   },
 ];
 
-export type ContactPayload = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  organisation: string;
-  phone: string;
-  service: string;
-  consent: boolean;
-};
+export type ContactPayload = ContactPayloadType;
 
 export type ContactResponse = {
   message: string;
-  contact: ContactPayload & { _id: string; createdAt: string };
+  contact: ContactSubmission;
 };
 
 export function submitContact(data: ContactPayload) {
-  return fetchApi<ContactResponse>("/contact", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return api.post<ContactResponse>("/contact", data).then((r) => r.data);
 }

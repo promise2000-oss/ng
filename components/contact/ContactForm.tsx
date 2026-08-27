@@ -4,7 +4,7 @@ import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { FaPaperPlane, FaCheckCircle, FaSpinner, FaWhatsapp } from "react-icons/fa";
-import { submitContact } from "@/lib/contact";
+import { useSubmitContact } from "@/lib/hooks/useContact";
 
 const formVariants = {
   hidden: {},
@@ -76,8 +76,8 @@ export default function ContactForm() {
     consent: false,
   });
   const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const submitContact = useSubmitContact();
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -98,10 +98,9 @@ export default function ContactForm() {
       form.reportValidity();
       return;
     }
-    setSending(true);
     setError(null);
     try {
-      await submitContact({
+      await submitContact.mutateAsync({
         ...formData,
         subject: formData.service,
         message: formData.message,
@@ -119,8 +118,6 @@ export default function ContactForm() {
       setTimeout(() => setSubmitted(false), 4000);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
-    } finally {
-      setSending(false);
     }
   };
 
@@ -293,12 +290,12 @@ export default function ContactForm() {
       >
         <motion.button
           type="submit"
-          disabled={sending || !formData.consent}
+          disabled={submitContact.isPending || !formData.consent}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 transition-all active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {sending ? (
+          {submitContact.isPending ? (
             <>
               <FaSpinner size={14} className="animate-spin" /> Sending...
             </>

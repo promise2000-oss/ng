@@ -106,10 +106,10 @@ export default function ServicesHero() {
           className="text-white/80 mt-6 max-w-3xl mx-auto text-sm md:text-base leading-relaxed"
         >
           Empowering businesses and institutions through{" "}
-          <span className="text-secondary font-semibold">Advanced Technology</span>,{" "}
-          <span className="text-secondary font-semibold">Professional Training</span>
+          <span className="text-white font-semibold">Advanced Technology</span>,{" "}
+          <span className="text-white font-semibold">Professional Training</span>
           , and the sale of{" "}
-          <span className="text-secondary font-semibold">high-end Technology Gadgets</span>.
+          <span className="text-white font-semibold">high-end Technology Gadgets</span>.
         </motion.p>
 
         <motion.div

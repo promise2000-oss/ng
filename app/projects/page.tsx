@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import ProjectsHero from "@/components/projects/ProjectsHero";
 import FeaturedProject from "@/components/projects/FeaturedProject";
@@ -10,13 +10,37 @@ import ProjectsCTA from "@/components/projects/ProjectsCTA";
 import AnimatedGradient from "@/components/animations/AnimatedGradient";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import {
-  staticProjects,
-  projectCategories,
-  getApiProjects,
-  type Project,
-  type ProjectCategory,
-} from "@/lib/projects";
+import { useProjects } from "@/lib/hooks/useProjects";
+import { imageUrl } from "@/lib/api";
+import { staticProjects, projectCategories, type ProjectCategory } from "@/lib/projects";
+import type { Project as ApiProject } from "@/lib/types";
+
+function mapApiProject(p: ApiProject): import("@/lib/projects").Project {
+  let techs: string[] = [];
+  const rawTags = p.tags;
+  if (Array.isArray(rawTags)) {
+    techs = rawTags;
+  } else if (typeof rawTags === "string") {
+    try {
+      const parsed = JSON.parse(rawTags);
+      techs = Array.isArray(parsed) ? parsed : [];
+    } catch {
+      techs = (rawTags as string).split(",").map((t) => t.trim());
+    }
+  }
+  return {
+    id: p._id,
+    title: p.title,
+    description: p.description,
+    image: imageUrl(p.image) || "",
+    category: p.category,
+    status: (p.status || "Completed") as import("@/lib/projects").ProjectStatus,
+    technologies: techs,
+    client: p.client,
+    year: p.year,
+    liveUrl: p.liveUrl,
+  };
+}
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -30,15 +54,10 @@ const sectionVariants = {
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [projects, setProjects] = useState<Project[]>(staticProjects);
+  const { data: apiProjects } = useProjects();
 
-  useEffect(() => {
-    getApiProjects()
-      .then((data) => {
-        if (data.length > 0) setProjects(data);
-      })
-      .catch(() => {});
-  }, []);
+  const apiMapped = (apiProjects ?? []).map(mapApiProject);
+  const projects = apiMapped.length > 0 ? apiMapped : staticProjects;
 
   const filtered = projects.filter((p) => {
     const matchCategory =

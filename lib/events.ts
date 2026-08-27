@@ -1,24 +1,15 @@
-import { fetchApi } from "./api";
+import api from "./api";
+import type { EventItem as EventItemType, EventType as EventTypeType } from "./types";
 
-export type EventType = "birthday" | "activity" | "company-event";
-
-export type EventItem = {
-  _id: string;
-  type: EventType;
-  title: string;
-  date: string;
-  description: string;
-  images?: string[];
-  createdAt: string;
-  updatedAt: string;
-};
+export type EventType = EventTypeType;
+export type EventItem = EventItemType;
 
 export function getEvents() {
-  return fetchApi<EventItem[]>("/events");
+  return api.get<EventItem[]>("/events").then((r) => r.data);
 }
 
 export function getEvent(id: string) {
-  return fetchApi<EventItem>(`/events/${id}`);
+  return api.get<EventItem>(`/events/${id}`).then((r) => r.data);
 }
 
 export function createEvent(data: {
@@ -28,10 +19,7 @@ export function createEvent(data: {
   description: string;
   images?: string[];
 }) {
-  return fetchApi<EventItem>("/events", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return api.post<EventItem>("/events", data).then((r) => r.data);
 }
 
 export function updateEvent(
@@ -43,14 +31,9 @@ export function updateEvent(
     description: string;
   }>
 ) {
-  return fetchApi<EventItem>(`/events/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(data),
-  });
+  return api.put<EventItem>(`/events/${id}`, data).then((r) => r.data);
 }
 
 export function deleteEvent(id: string) {
-  return fetchApi<{ message: string }>(`/events/${id}`, {
-    method: "DELETE",
-  });
+  return api.delete(`/events/${id}`).then((r) => r.data);
 }

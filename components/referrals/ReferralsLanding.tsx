@@ -17,8 +17,8 @@ import {
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import Reveal from "@/components/Reveal";
-import { STORE_KEYS, appendStoreItem } from "@/lib/store";
-import { referralFlow, type Referral, type ReferralStatus } from "@/lib/seed-data";
+import { useSubmitReferral } from "@/lib/hooks/useReferrals";
+import { REFERRAL_FLOW } from "@/lib/types";
 
 const servicesList = [
   "Cloud Migration & Networking",
@@ -149,7 +149,7 @@ function BenefitsSection() {
               How Referral Status Works
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {referralFlow.map((status, i) => (
+              {REFERRAL_FLOW.map((status, i) => (
                 <div key={status} className="text-center">
                   <div className="w-9 h-9 mx-auto rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center mb-2">
                     {i + 1}
@@ -186,8 +186,9 @@ function ReferralFormSection() {
   const [submitted, setSubmitted] = useState<{ trackingId: string; referrerName: string } | null>(
     null
   );
+  const submitReferral = useSubmitReferral();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (
       !form.referrerName.trim() ||
@@ -203,30 +204,20 @@ function ReferralFormSection() {
       return;
     }
 
-    const trackingId = `NDR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-    const referral: Referral = {
-      id: `ref-${crypto.randomUUID()}`,
-      trackingId,
-      referrerName: form.referrerName,
-      referrerContact: form.referrerContact,
-      relationship: form.relationship,
-      refereeName: form.refereeName,
-      refereeContact: form.refereeContact,
-      refereeCompany: form.refereeCompany,
-      service: form.service,
-      status: "Submitted",
-      dateSubmitted: new Date().toISOString(),
-      statusHistory: [
-        {
-          status: "Submitted",
-          date: new Date().toISOString(),
-          note: "Referral received and logged in the system (automated email acknowledgement sent to referrer)",
-        },
-      ],
-      commission: 0,
-    };
-    appendStoreItem(STORE_KEYS.referrals, () => [], referral);
-    setSubmitted({ trackingId, referrerName: form.referrerName });
+    try {
+      const result = await submitReferral.mutateAsync({
+        referrerName: form.referrerName,
+        referrerContact: form.referrerContact,
+        relationship: form.relationship || undefined,
+        refereeName: form.refereeName,
+        refereeContact: form.refereeContact,
+        refereeCompany: form.refereeCompany || undefined,
+        service: form.service,
+      });
+      setSubmitted({ trackingId: result.referral.trackingId, referrerName: form.referrerName });
+    } catch {
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   const inputCls =

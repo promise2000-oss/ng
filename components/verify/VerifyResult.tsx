@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import { motion } from "motion/react";
@@ -14,20 +13,23 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 import CertificateSeal from "@/components/verify/CertificateSeal";
-import { STORE_KEYS, loadStore } from "@/lib/store";
-import { seedCertificates, formatDate, type Certificate } from "@/lib/seed-data";
+import { useVerifyCertificate } from "@/lib/hooks/useCertificates";
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 export default function VerifyResult({
   certId,
 }: {
   certId: string;
 }) {
-  const [certificates] = useState<Certificate[]>(() =>
-    loadStore(STORE_KEYS.certificates, () => seedCertificates)
-  );
-  const certificate = certificates.find(
-    (c) => c.id.toLowerCase() === decodeURIComponent(certId).toLowerCase()
-  );
+  const decodedId = decodeURIComponent(certId);
+  const { data: certificate, isLoading } = useVerifyCertificate(decodedId);
 
   const isRevoked = certificate?.status === "revoked";
   const isValid = !!certificate && !isRevoked;
@@ -53,28 +55,43 @@ export default function VerifyResult({
           className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-xl shadow-primary/5"
         >
           {/* Status banner */}
-          <div
-            className={`px-8 py-10 text-center ${
-              isValid
-                ? isRevoked
-                  ? "bg-error"
-                  : "bg-success"
-                : "bg-error"
-            }`}
-          >
-            {isValid && !isRevoked ? (
-              <FaCheckCircle size={56} className="text-white mx-auto mb-4" />
-            ) : (
-              <FaTimesCircle size={56} className="text-white mx-auto mb-4" />
-            )}
-            <h1 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">
-              {isValid && !isRevoked ? "Valid" : "Invalid"}
-            </h1>
-            <p className="text-white/80 text-sm mt-2 font-mono">{decodeURIComponent(certId)}</p>
-          </div>
+          {isLoading ? (
+            <div className="px-8 py-10 text-center bg-gray-100 animate-pulse">
+              <div className="w-14 h-14 bg-gray-200 rounded-full mx-auto mb-4" />
+              <div className="h-6 bg-gray-200 rounded w-32 mx-auto" />
+            </div>
+          ) : (
+            <div
+              className={`px-8 py-10 text-center ${
+                isValid
+                  ? isRevoked
+                    ? "bg-error"
+                    : "bg-success"
+                  : "bg-error"
+              }`}
+            >
+              {isValid && !isRevoked ? (
+                <FaCheckCircle size={56} className="text-white mx-auto mb-4" />
+              ) : (
+                <FaTimesCircle size={56} className="text-white mx-auto mb-4" />
+              )}
+              <h1 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">
+                {isValid && !isRevoked ? "Valid" : "Invalid"}
+              </h1>
+              <p className="text-white/80 text-sm mt-2 font-mono">{decodedId}</p>
+            </div>
+          )}
 
           <div className="p-8">
-            {isValid && !isRevoked && certificate ? (
+            {isLoading ? (
+              <div className="space-y-4 animate-pulse">
+                <div className="h-20 bg-gray-100 rounded-2xl" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="h-20 bg-gray-100 rounded-2xl" />
+                  <div className="h-20 bg-gray-100 rounded-2xl" />
+                </div>
+              </div>
+            ) : isValid && !isRevoked && certificate ? (
               <div className="space-y-5">
                 <div className="flex items-center gap-4 bg-surface border border-gray-100 rounded-2xl p-5">
                   <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">

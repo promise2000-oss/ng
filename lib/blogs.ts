@@ -1,4 +1,6 @@
-import { fetchApi, imageUrl } from "./api";
+import api from "./api";
+import type { BlogPost as BlogPostType } from "./types";
+import { imageUrl } from "./api";
 
 export type BlogPost = {
   id: string;
@@ -13,17 +15,7 @@ export type BlogPost = {
   tags?: string[];
 };
 
-type ApiBlog = {
-  _id: string;
-  title: string;
-  content: string;
-  image: string;
-  author: string;
-  tags?: string[];
-  date: string;
-  createdAt: string;
-  updatedAt: string;
-};
+type ApiBlog = BlogPostType;
 
 function truncate(text: string, maxLength = 150): string {
   if (text.length <= maxLength) return text;
@@ -65,13 +57,13 @@ function mapApiBlog(blog: ApiBlog): BlogPost {
 }
 
 export async function getBlogs(): Promise<BlogPost[]> {
-  const data = await fetchApi<ApiBlog[]>("/blogs");
+  const data = await api.get<ApiBlog[]>("/blogs").then((r) => r.data);
   return data.map(mapApiBlog);
 }
 
 export async function getBlog(id: string): Promise<BlogPost | null> {
   try {
-    const data = await fetchApi<ApiBlog>(`/blogs/${id}`);
+    const data = await api.get<ApiBlog>(`/blogs/${id}`).then((r) => r.data);
     return mapApiBlog(data);
   } catch {
     return null;

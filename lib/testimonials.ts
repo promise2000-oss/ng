@@ -1,25 +1,12 @@
-import { fetchApi } from "./api";
+import api from "./api";
+import type { TestimonialPayload as TestimonialPayloadType } from "./types";
 
-export type TestimonialPayload = {
-  name: string;
-  email: string;
-  organization: string;
-  position?: string;
-  rating: number;
-  service: string;
-  text: string;
-  photo?: string;
-  consent: boolean;
-};
+export type TestimonialPayload = TestimonialPayloadType;
 
 export type TestimonialResponse = {
   message: string;
-  testimonial: TestimonialPayload & { _id: string; createdAt: string };
 };
 
 export function submitTestimonial(data: TestimonialPayload) {
-  return fetchApi<TestimonialResponse>("/testimonials", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return api.post<TestimonialResponse>("/testimonials", data).then((r) => r.data);
 }

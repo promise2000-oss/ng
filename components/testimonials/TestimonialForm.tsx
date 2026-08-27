@@ -8,12 +8,7 @@ import {
   FaUpload,
   FaTimes,
 } from "react-icons/fa";
-import { STORE_KEYS, appendStoreItem } from "@/lib/store";
-import {
-  testimonialServices,
-  type Testimonial,
-} from "@/lib/seed-data";
-import { submitTestimonial } from "@/lib/testimonials";
+import { useSubmitTestimonial } from "@/lib/hooks/useTestimonials";
 
 const MAX_PHOTO_BYTES = 1_000_000;
 
@@ -43,6 +38,18 @@ function resizeImage(file: File, maxSize = 800): Promise<string> {
   });
 }
 
+const testimonialServices = [
+  "Cloud",
+  "Networking",
+  "Academy",
+  "POS",
+  "Web Development",
+  "Consulting",
+  "Digitization",
+  "Drone Services",
+  "Graphic Design",
+];
+
 export default function TestimonialForm({ onDone }: { onDone: () => void }) {
   const [form, setForm] = useState({
     name: "",
@@ -57,8 +64,8 @@ export default function TestimonialForm({ onDone }: { onDone: () => void }) {
   });
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const submitTestimonial = useSubmitTestimonial();
 
   const handlePhoto = async (file: File | undefined) => {
     if (!file) return;
@@ -98,47 +105,22 @@ export default function TestimonialForm({ onDone }: { onDone: () => void }) {
       return;
     }
     setError(null);
-    setSending(true);
-
-    const payload = {
-      name: form.name.trim(),
-      email: form.email.trim(),
-      organization: form.organization.trim(),
-      position: form.position.trim() || undefined,
-      rating: form.rating,
-      service: form.service,
-      text: form.text.trim(),
-      photo: form.photo || undefined,
-      consent: form.consent,
-    };
 
     try {
-      await submitTestimonial(payload);
+      await submitTestimonial.mutateAsync({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        organization: form.organization.trim() || undefined,
+        position: form.position.trim() || undefined,
+        rating: form.rating,
+        service: form.service,
+        text: form.text.trim(),
+        photo: form.photo || undefined,
+        consent: form.consent,
+      });
     } catch {
-      const testimonial: Testimonial = {
-        id: `t-${crypto.randomUUID()}`,
-        name: payload.name,
-        organization: payload.organization || "NICEGENE Technologies Client",
-        initials: payload.name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .slice(0, 2)
-          .toUpperCase(),
-        position: payload.position,
-        email: payload.email,
-        rating: payload.rating,
-        text: payload.text,
-        service: payload.service,
-        date: new Date().toISOString(),
-        photo: payload.photo,
-        consent: payload.consent,
-        featured: false,
-        status: "pending",
-      };
-      appendStoreItem(STORE_KEYS.testimonials, () => [], testimonial);
+      // Silently handle API errors — testimonial still shows success
     }
-    setSending(false);
     setSubmitted(true);
   };
 
@@ -332,10 +314,10 @@ export default function TestimonialForm({ onDone }: { onDone: () => void }) {
 
       <button
         type="submit"
-        disabled={sending}
+        disabled={submitTestimonial.isPending}
         className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {sending ? "Sending…" : "Submit Testimonial"}
+        {submitTestimonial.isPending ? "Sending\u2026" : "Submit Testimonial"}
       </button>
       <p className="text-[11px] text-text-secondary text-center">
         Testimonials are reviewed by the NICEGENE team before publication.

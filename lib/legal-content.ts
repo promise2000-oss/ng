@@ -369,7 +369,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does NICEGENE Technologies do?",
     answer:
-      "We are a Lagos-based IT consulting and digital solutions firm. We design and build cloud systems, websites and applications, networking infrastructure, and POS/inventory systems, and we deliver technology training through NICEGENE Academy, alongside gadget sales, drone services, and creative media.",
+      "We are a premiere IT Consulting & Digital Solutions firm based in Lagos Nigeria. We design and build cloud systems, websites and applications, networking infrastructure, and POS/inventory systems, and we deliver technology training through NICEGENE Academy, alongside gadget sales, drone services, and creative media.",
   },
   {
     question: "Who are your clients?",

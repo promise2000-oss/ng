@@ -1,13 +1,13 @@
 import { StaticImageData } from "next/image";
-import { fetchApi, imageUrl } from "./api";
+import api, { imageUrl } from "./api";
 
 import cloudImg from "@/assets/images/services/cloud.png";
 import academyImg from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
 import droneImg from "@/assets/images/services/drone.jpg";
-import webImg from "@/assets/images/events/team-working.jpg";
 import techImg from "@/assets/images/logos/NICEGENE TECH.png";
 import posImg from "@/assets/images/services/NICEGENE POS & INVENTORY.jpg";
 import networkImg from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
+import webImg from "@/assets/images/services/web-development.jpg";
 import brandImg from "@/assets/images/clients/brand.jpg";
 import aircomImg from "@/assets/images/clients/Aircom Limited.png";
 import esutImg from "@/assets/images/events/ESUT1.jpg";
@@ -234,8 +234,8 @@ export interface ApiProject {
 }
 
 export async function getApiProjects(): Promise<Project[]> {
-  const data = await fetchApi<ApiProject[]>("/projects");
-  return data.map((p) => {
+  const data = await api.get<ApiProject[]>("/projects").then((r) => r.data);
+  return data.map((p: ApiProject) => {
     let techs: string[] = [];
     const rawTags = p.tags;
     if (Array.isArray(rawTags)) {

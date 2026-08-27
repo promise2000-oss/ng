@@ -1,27 +1,38 @@
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://nice-web-admin-backend-1.onrender.com/api";
+import axios from "axios";
 
-const IMAGE_BASE = BASE_URL.replace(/\/api$/, "");
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://nicegene-backend.onrender.com/api",
+  headers: { "Content-Type": "application/json" },
+});
 
-export async function fetchApi<T>(
-  endpoint: string,
-  options?: RequestInit
-): Promise<T> {
-  const res = await fetch(`${BASE_URL}${endpoint}`, {
-    headers: { "Content-Type": "application/json", ...options?.headers },
-    ...options,
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: res.statusText }));
-    throw new Error(err.message || "Something went wrong");
+api.interceptors.request.use((config) => {
+  if (typeof window !== "undefined") {
+    const token = window.localStorage.getItem("nicegene_auth_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
+  return config;
+});
 
-  return res.json();
-}
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    const message =
+      err.response?.data?.message || err.message || "Something went wrong";
+    return Promise.reject(new Error(message));
+  }
+);
+
+export default api;
+
+const IMAGE_BASE = (
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://nicegene-backend.onrender.com/api"
+).replace(/\/api$/, "");
 
 export function imageUrl(path: string | null | undefined): string | null {
   if (!path) return null;
+  if (path.startsWith("http")) return path;
   return `${IMAGE_BASE}${path}`;
 }

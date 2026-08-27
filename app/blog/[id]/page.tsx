@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,26 +16,73 @@ import {
 } from "react-icons/fa";
 
 import { getBlog, getRelatedBlogs, type BlogPost } from "@/lib/blogs";
+import { useBlog, useBlogs } from "@/lib/hooks/useBlogs";
+import { imageUrl } from "@/lib/api";
+
+type MappedPost = {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  image: string;
+  author: string;
+  date: string;
+  readTime: string;
+  tags?: string[];
+};
+
+function truncate(text: string, maxLength = 150): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trimEnd() + "\u2026";
+}
+
+function estimateReadTime(text: string): string {
+  const words = text.split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function cleanTag(tag: string): string {
+  return tag.replace(/[[\]"]+/g, "").trim();
+}
+
+function mapApiBlog(blog: { _id: string; title: string; content: string; image: string; author: string; tags?: string[]; date: string }): MappedPost {
+  const tags = blog.tags?.map(cleanTag);
+  return {
+    id: blog._id,
+    title: blog.title,
+    excerpt: truncate(blog.content),
+    content: blog.content,
+    category: tags?.[0] || "Technology",
+    image: imageUrl(blog.image) || "",
+    author: blog.author,
+    date: formatDate(blog.date),
+    readTime: estimateReadTime(blog.content),
+    tags,
+  };
+}
 
 export default function BlogPostPage() {
   const params = useParams();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const id = (params.id as string) || "";
+  const { data: rawPost, isLoading } = useBlog(id);
+  const { data: allRawPosts } = useBlogs();
 
-  useEffect(() => {
-    if (!params.id) return;
-    const id = params.id as string;
-    getBlog(id).then((p) => {
-      setPost(p);
-      if (p) {
-        getRelatedBlogs(p.id, p.category).then(setRelatedPosts);
-      }
-      setLoading(false);
-    });
-  }, [params.id]);
+  const post = rawPost ? mapApiBlog(rawPost) : null;
+  const relatedPosts = (allRawPosts ?? [])
+    .map(mapApiBlog)
+    .filter((p) => p.category === post?.category && p.id !== post?.id);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <main className="w-full bg-background text-text-primary min-h-screen flex items-center justify-center">
         <div className="animate-pulse text-center">

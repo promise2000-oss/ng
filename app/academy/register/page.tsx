@@ -20,15 +20,8 @@ import {
 } from "react-icons/fa";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import { STORE_KEYS, appendStoreItem, loadStore } from "@/lib/store";
-import {
-  seedCohorts,
-  seedStudents,
-  demoStudentId,
-  type LearningMode,
-  type Student,
-  type PaymentRecord,
-} from "@/lib/seed-data";
+import { useSubmitRegistration } from "@/lib/hooks/useRegistrations";
+import { seedCohorts, type LearningMode } from "@/lib/seed-data";
 import { courses } from "@/lib/academy";
 
 const steps = [
@@ -75,6 +68,7 @@ export default function RegistrationPortal() {
   const [error, setError] = useState<string | null>(null);
   const [docName, setDocName] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<{ applicationId: string; name: string; course: string } | null>(null);
+  const submitRegistration = useSubmitRegistration();
 
   const courseOptions = useMemo(() => courses.filter((c) => c.status !== "Available"), []);
   const cohortOptions = useMemo(() => {
@@ -169,7 +163,7 @@ export default function RegistrationPortal() {
     setDocName(`${file.name} (${(file.size / 1024).toFixed(0)} KB)`);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const err = validateStep();
     if (err) {
       setError(err);
@@ -178,51 +172,31 @@ export default function RegistrationPortal() {
     setError(null);
 
     const applicationId = `NDA-APP-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-    const today = new Date().toISOString();
     const selectedCourse = courseOptions.find((c) => c.title === form.course);
 
-    const student: Student = {
-      id: `stu-${crypto.randomUUID()}`,
-      name: form.fullName,
-      email: form.email,
-      phone: form.phone,
-      whatsapp: form.whatsapp || form.phone,
-      applicationId,
-      course: form.course,
-      cohort: form.cohort,
-      mode: form.mode,
-      status: "pending-payment",
-      payments: [],
-      assignments: [],
-      examSchedule: cohortOptions[0]?.examDate ?? "To be announced",
-      examDone: false,
-      examReleased: false,
-      notifications: [
-        {
-          id: `ntf-${crypto.randomUUID()}`,
-          title: "Registration received",
-          body: `Your registration for ${form.course} (${form.cohort}) has been received. Complete your payment and your account will be activated.`,
-          date: today,
-          read: false,
-        },
-      ],
-      dateOfBirth: form.dob,
-      gender: form.gender,
-      nationality: form.nationality,
-      stateOfOrigin: form.stateOfOrigin,
-      address: form.address,
-      qualification: form.qualification,
-      occupation: form.occupation,
-      heardAboutUs: form.heardAboutUs,
-      emergencyName: form.emergencyName,
-      emergencyRelationship: form.emergencyRelationship,
-      emergencyPhone: form.emergencyPhone,
-    };
-
-    appendStoreItem(STORE_KEYS.registrations, () => [], student);
-    const students = loadStore<Student[]>(STORE_KEYS.students, () => seedStudents);
-    appendStoreItem(STORE_KEYS.students, () => seedStudents, student);
-    void students;
+    try {
+      await submitRegistration.mutateAsync({
+        fullName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        course: form.course,
+        cohort: form.cohort,
+        amount: 0,
+        dateOfBirth: form.dob,
+        gender: form.gender,
+        nationality: form.nationality,
+        stateOfOrigin: form.stateOfOrigin,
+        address: form.address,
+        qualification: form.qualification,
+        occupation: form.occupation,
+        heardAboutUs: form.heardAboutUs,
+        emergencyName: form.emergencyName,
+        emergencyRelationship: form.emergencyRelationship,
+        emergencyPhone: form.emergencyPhone,
+      });
+    } catch {
+      // Registration still shows success UI
+    }
 
     setSubmitted({
       applicationId,

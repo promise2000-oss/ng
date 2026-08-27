@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { getStaff, type Staff } from "@/lib/staff";
+import { useStaff } from "@/lib/hooks/useStaff";
 import { imageUrl } from "@/lib/api";
-import StaggerContainer, { StaggerChild } from "@/components/animations/StaggerContainer";
-import Reveal from "@/components/Reveal";
+import type { Staff } from "@/lib/types";
+import StaggerContainer from "@/components/animations/StaggerContainer";
 
 function initials(name: string) {
   return name.charAt(0).toUpperCase();
@@ -21,7 +20,7 @@ const cardVariants = {
   },
 };
 
-function TeamCard({ member, index }: { member: Staff; index: number }) {
+function TeamCard({ member }: { member: Staff }) {
   const imgUrl = imageUrl(member.image);
   return (
     <motion.div
@@ -57,8 +56,8 @@ function TeamCard({ member, index }: { member: Staff; index: number }) {
 function TeamGrid({ members }: { members: Staff[] }) {
   return (
     <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {members.map((member, i) => (
-        <TeamCard key={member._id} member={member} index={i} />
+      {members.map((member) => (
+        <TeamCard key={member._id} member={member} />
       ))}
     </StaggerContainer>
   );
@@ -91,16 +90,7 @@ const fallbackStaff: Staff[] = [
 ];
 
 export default function MeetOurTeam() {
-  const [staff, setStaff] = useState<Staff[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    getStaff()
-      .then(setStaff)
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+  const { data: staff = [], isLoading } = useStaff();
 
   const displayStaff = staff.length > 0 ? staff : fallbackStaff;
   const activeStaff = displayStaff.filter((m) => m.isActive);
@@ -114,9 +104,9 @@ export default function MeetOurTeam() {
           Meet Our Team
         </h2>
 
-        {loading && <LoadingSkeleton />}
+        {isLoading && <LoadingSkeleton />}
 
-        {!loading && (
+        {!isLoading && (
           <div className="space-y-16">
             {executives.length > 0 && (
               <div>

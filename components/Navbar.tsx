@@ -101,10 +101,10 @@ export default function Navbar() {
         initial={false}
         animate={{ y: hidden && !menuOpen ? "-100%" : "0%" }}
         transition={navTransition}
-        className={`fixed top-0 inset-x-0 z-50 h-20 transition-colors duration-300 ${
+        className={`fixed top-0 inset-x-0 z-50 h-20 transition-all duration-300 ${
           scrolled
             ? "bg-primary/90 shadow-lg shadow-primary/20 backdrop-blur-xl border-b border-white/10"
-            : "bg-primary border-b border-white/10"
+            : "bg-primary/70 backdrop-blur-xl shadow-md shadow-primary/10 border-b border-white/10"
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">

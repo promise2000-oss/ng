@@ -14,7 +14,19 @@ import drone from "@/assets/images/services/NICEGENE DRONE SERVICES.jpg";
 import MagneticButton from "@/components/MagneticButton";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
-const services = [
+const academyAndDPOText = [
+  "NICEGENE Digital Academy",
+  "Get Certified and Job Ready",
+  "NDPC-Certified DPCO",
+  "Data Protection Compliance",
+  "Professional Training Programs",
+  "Data Protection Law & Practices",
+  "Visit our Digital Academy",
+  "Call +234 8060704412",
+  "Email: info@nicegeneco.com.ng",
+];
+
+const servicesText = [
   "Cloud System Development",
   "IT Consulting & Digital Solutions",
   "Web & App Development",
@@ -22,6 +34,19 @@ const services = [
   "POS & Inventory Management",
   "NICEGENE Academy",
   "Data Protection & Compliance",
+];
+
+const academyCoursesText = [
+  "Frontend Web Development",
+  "Cloud Computing",
+  "Product Design",
+  "Project Management",
+  "Cybersecurity",
+  "Data Analytics",
+  "Digital Marketing",
+  "Video Editing",
+  "Web3 Technologies",
+  "Graphics Design",
 ];
 
 const images = [
@@ -32,26 +57,14 @@ const images = [
   drone,
 ];
 
-const marqueeText = [
-  ...services,
-  "Digitization & Records Management",
-  "Technology Gadget Sales",
-  "NDPC-Certified DPCO",
-  "Get Certified and Job Ready",
-  "Visit our Digital Academy",
-  "Call +234 8060704412",
-  "Email: info@nicegeneco.com.ng",
-];
-
-const techInsightText = [
-  "NICEGENE Tech Insight Series",
-  "Quarterly Professional Training",
-  "Data Protection Law & Practices",
-  "158 Participants — Maiden Edition",
-  "23 States + FCT Represented",
-  "Certified Participation",
-  "Join the Next Cohort",
-  "Call +234 8060704412",
+const services = [
+  "Cloud System Development",
+  "IT Consulting & Digital Solutions",
+  "Web & App Development",
+  "System Networking & Infrastructure",
+  "POS & Inventory Management",
+  "NICEGENE Academy",
+  "Data Protection & Compliance",
 ];
 
 const HEADLINE = "Nigeria's Premier IT Consulting & Digital Solutions Firm";
@@ -99,21 +112,18 @@ export default function Hero() {
           aria-hidden="true"
         />
 
-        {/* LEFT CONTENT */}
-        <div className="relative z-10 w-full max-w-2xl px-6 lg:px-16 py-24">
+        {/* CENTERED CONTENT */}
+        <div className="relative z-10 w-full px-6 lg:px-16 py-24 text-center">
           {/* Eyebrow */}
           <motion.div
             {...entrance(0.25, 0.5)}
-            className="flex items-center gap-2 mb-4"
+            className="flex items-center justify-center gap-2 mb-4"
           >
             <motion.span
               className={''}
               animate={reduceMotion ? {} : { scale: [1, 1.6, 1] }}
               transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
             />
-            {/*<span className="text-white/80 text-xs uppercase tracking-[0.25em] font-semibold">*/}
-            {/*  Lagos · Nigeria*/}
-            {/*</span>*/}
           </motion.div>
 
           {/* Headline — masked word reveal */}
@@ -143,7 +153,7 @@ export default function Hero() {
 
           <motion.p
             {...entrance(1.15, 0.6)}
-            className="text-white/80 text-base lg:text-lg mt-3"
+            className="text-white/80 text-base lg:text-lg mt-3 max-w-2xl mx-auto"
           >
             We design, build, and manage secure cloud systems, digital
             infrastructure, and technology training that power schools,
@@ -153,7 +163,7 @@ export default function Hero() {
           {/* CTA BUTTONS */}
           <motion.div
             {...entrance(1.35, 0.6)}
-            className="flex flex-wrap items-center gap-4 mt-7"
+            className="flex flex-wrap items-center justify-center gap-4 mt-7"
           >
             <MagneticButton strength={10}>
               <Link
@@ -176,7 +186,7 @@ export default function Hero() {
           </motion.div>
 
           {/* PILLS */}
-          <div className="flex flex-wrap gap-3 mt-6">
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
             {services.map((item, i) => (
               <motion.span
                 key={item}
@@ -184,7 +194,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 1.55 + i * 0.05, duration: 0.4, ease: EASE_OUT_EXPO }}
                 className="
-                  px-4 py-2 rounded-full
+                  px-6 py-3 rounded-full
                   text-sm text-white/90
                   border border-white/15
                   bg-white/5
@@ -206,12 +216,11 @@ export default function Hero() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <motion.div
               key={index}
               initial={reduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={reduceMotion ? undefined : { opacity: 0 }}
               transition={{ duration: 0.7 }}
               className="absolute inset-0"
             >
@@ -273,9 +282,10 @@ export default function Hero() {
 
       {/* MARQUEE SECTION */}
       <div className="w-full bg-white overflow-hidden border-y border-gray-200">
+        {/* Marquee 1: Academy + Data Protection */}
         <div className="py-3.5 overflow-hidden group">
           <div className="flex w-max animate-marquee gap-10 group-hover:[animation-play-state:paused]">
-            {[...marqueeText, ...marqueeText].map((item, i) => (
+            {[...academyAndDPOText, ...academyAndDPOText].map((item, i) => (
               <span
                 key={`m1-${i}`}
                 className="text-text-primary font-semibold text-sm sm:text-base whitespace-nowrap tracking-wide"
@@ -289,9 +299,10 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Marquee 2: Services */}
         <div className="py-3.5 overflow-hidden border-t border-gray-200 group">
           <div className="flex w-max animate-marquee-reverse gap-10 group-hover:[animation-play-state:paused]">
-            {[...marqueeText, ...marqueeText].map((item, i) => (
+            {[...servicesText, ...servicesText].map((item, i) => (
               <span
                 key={`m2-${i}`}
                 className="text-text-primary/60 text-sm sm:text-base whitespace-nowrap"
@@ -305,9 +316,10 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Marquee 3: Academy Courses */}
         <div className="py-3.5 overflow-hidden border-t border-gray-200 bg-primary/[0.03] group">
           <div className="flex w-max animate-marquee gap-10 group-hover:[animation-play-state:paused]">
-            {[...techInsightText, ...techInsightText].map((item, i) => (
+            {[...academyCoursesText, ...academyCoursesText].map((item, i) => (
               <span
                 key={`m3-${i}`}
                 className="text-primary font-medium text-sm sm:text-base whitespace-nowrap"

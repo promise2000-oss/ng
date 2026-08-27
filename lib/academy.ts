@@ -1,5 +1,5 @@
 import type { StaticImageData } from "next/image";
-import { fetchApi } from "./api";
+import api from "./api";
 import frontendImg from "@/assets/images/academy/courses/frontend.jpg";
 import cloudImg from "@/assets/images/academy/courses/cloud.jpg";
 import productDesignImg from "@/assets/images/academy/courses/product-design.jpg";
@@ -68,7 +68,7 @@ export interface PricingOverride {
 }
 
 export async function getCoursePricing(): Promise<PricingOverride[]> {
-  return fetchApi<PricingOverride[]>("/courses");
+  return api.get<PricingOverride[]>("/courses").then((r) => r.data);
 }
 
 export function mergePricing(

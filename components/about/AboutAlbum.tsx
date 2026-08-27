@@ -5,11 +5,9 @@ import type { StaticImageData } from "next/image";
 
 import ESUT1 from "@/assets/images/events/ESUT1.jpg";
 import ESUT2 from "@/assets/images/events/ESUT2.jpg";
-import ESUT3 from "@/assets/images/events/ESUT3.jpg";
 import Eugene from "@/assets/images/team/Eugene.png";
 import buchi2 from "@/assets/images/events/buchi2.jpg";
 import buchi from "@/assets/images/events/buchi.jpg";
-import teamWorking from "@/assets/images/events/team-working.jpg";
 
 type AlbumItem = {
   src: StaticImageData;
@@ -19,11 +17,11 @@ type AlbumItem = {
 const images: AlbumItem[] = [
   { src: ESUT1, title: "ESUT Campus Visit" },
   { src: ESUT2, title: "ESUT Lab Session" },
-  { src: ESUT3, title: "ESUT Tech Engagement" },
-  { src: Eugene, title: "CEO - Eugene" },
+  // { src: ESUT3, title: "ESUT Tech Engagement" },
+  // { src: Eugene, title: "CEO - Eugene" },
   { src: buchi, title: "Team Member - Buchi" },
   { src: buchi2, title: "Field Work - Buchi" },
-  { src: teamWorking, title: "Team Collaboration Session" },
+  // { src: teamWorking, title: "Team Collaboration Session" },
 ];
 
 export default function AboutAlbum() {

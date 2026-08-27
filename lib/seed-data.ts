@@ -12,8 +12,8 @@ import profilePartnerLogo from "@/assets/images/clients/profile partners logo.pn
 import launchPhoto from "@/assets/images/events/NICEGENE GRAND LAUNCH.jpg";
 import academyPhoto from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
 import monthPhoto from "@/assets/images/events/nicegene_month.jpg";
-import teamWorking from "@/assets/images/events/team-working.jpg";
 import dronePhoto from "@/assets/images/services/drone.jpg";
+import teamWorking from "@/assets/images/services/teamwork-values.jpg";
 
 export type ImageSource = StaticImageData | string | null;
 

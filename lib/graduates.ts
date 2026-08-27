@@ -1,20 +1,12 @@
-import { fetchApi } from "./api";
+import api from "./api";
+import type { Graduate as GraduateType } from "./types";
 
-export type Graduate = {
-  _id: string;
-  name: string;
-  course: string;
-  graduationYear: number;
-  grade?: string;
-  image: string;
-  testimonial?: string;
-  linkedInUrl?: string;
-};
+export type Graduate = GraduateType;
 
 export function getGraduates() {
-  return fetchApi<Graduate[]>("/graduates");
+  return api.get<Graduate[]>("/graduates").then((r) => r.data);
 }
 
 export function getGraduate(id: string) {
-  return fetchApi<Graduate>(`/graduates/${id}`);
+  return api.get<Graduate>(`/graduates/${id}`).then((r) => r.data);
 }

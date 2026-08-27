@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import {
@@ -21,15 +21,10 @@ import {
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import { STORE_KEYS, loadStore, saveStore } from "@/lib/store";
-import {
-  questionBank,
-  seedExams,
-  seedStudents,
-  demoStudentId,
-  seedCertificates,
-  type ExamQuestion,
-} from "@/lib/seed-data";
+import { useExams, useSubmitExam } from "@/lib/hooks/useExams";
+import { useStudents } from "@/lib/hooks/useStudents";
 import { defaultSiteConfig } from "@/lib/seed-data";
+import type { ExamQuestion } from "@/lib/types";
 import {
   verifyLogin,
   createSession,
@@ -72,6 +67,8 @@ export default function ExamPortal() {
     "login" | "lobby" | "running" | "submitted" | "results"
   >("login");
   const [result, setResult] = useState<Result | null>(null);
+  const { data: exams } = useExams();
+  const exam = exams?.[0];
 
   useEffect(() => {
     const s = getSession();
@@ -97,9 +94,9 @@ export default function ExamPortal() {
   };
 
   const handleStart = () => {
-    const exam = seedExams[0];
+    if (!exam) return;
     const initial: SessionState = {
-      examId: exam.id,
+      examId: exam._id,
       startedAt: Date.now(),
       remainingMs: exam.durationMinutes * 60 * 1000,
       current: 0,
@@ -287,9 +284,12 @@ function ExamLobby({
   result: Result | null;
   onViewResults: (r: Result) => void;
 }) {
-  const exam = seedExams[0];
-  const [students] = useState(() => loadStore(STORE_KEYS.students, () => seedStudents));
-  const student = students.find((s) => s.id === session.accountId) ?? students[0];
+  const { data: exams } = useExams();
+  const exam = exams?.[0];
+  const { data: students } = useStudents();
+  const student = students?.find((s) => s._id === session.accountId) ?? students?.[0];
+
+  if (!exam) return null;
 
   return (
     <section className="relative bg-surface min-h-screen overflow-hidden">
@@ -335,7 +335,7 @@ function ExamLobby({
               <span className="text-[12px] text-text-secondary text-left">
                 of {result.total} marks
                 <br />
-                Pass mark: {seedExams[0].passMark}%
+                Pass mark: {exam?.passMark}%
               </span>
             </div>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
@@ -384,7 +384,7 @@ function ExamLobby({
               <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 flex items-start gap-2">
                 <FaExclamationTriangle size={14} className="text-amber-600 mt-0.5 shrink-0" />
                 <p className="text-[12px] text-amber-700">
-                  Demo mode: your scheduled exam window is {student?.examSchedule}. For this
+                  Demo mode: your scheduled exam window is {(student as any)?.examSchedule}. For this
                   demonstration, the window is open now. The timer starts when you click Begin
                   Exam and cannot be paused.
                 </p>
@@ -414,17 +414,15 @@ function ExamRunner({
   onLogout: () => void;
   onSubmitted: (r: Result) => void;
 }) {
-  const exam = seedExams[0];
-  const questions = useMemo(
-    () => exam.questionIds.map((id) => questionBank.find((q) => q.id === id)!).filter(Boolean),
-    [exam]
-  );
+  const { data: exams } = useExams();
+  const exam = exams?.[0];
+  const questions = exam?.questions ?? [];
   const [state, setState] = useState<SessionState>(() => {
     const existing = loadStore<SessionState | null>(STORE_KEYS.examActive, () => null);
     return existing ?? {
-      examId: exam.id,
+      examId: exam?._id ?? "",
       startedAt: Date.now(),
-      remainingMs: exam.durationMinutes * 60 * 1000,
+      remainingMs: (exam?.durationMinutes ?? 0) * 60 * 1000,
       current: 0,
       flagged: [],
       answers: {},
@@ -435,6 +433,9 @@ function ExamRunner({
   const submittedRef = useRef(false);
   const config = defaultSiteConfig;
   const fullscreenEnforced = config.examFullscreenEnforced;
+  const { mutate: submitExamMutate } = useSubmitExam();
+
+  if (!exam) return null;
 
   const persist = useCallback((s: SessionState) => {
     saveStore(STORE_KEYS.examActive, s);
@@ -442,67 +443,34 @@ function ExamRunner({
 
   const finishExam = useCallback(
     (finalAnswers: ExamAnswers) => {
-      if (submittedRef.current) return;
+      if (submittedRef.current || !exam) return;
       submittedRef.current = true;
-
-      const graded: Result["graded"] = [];
-      let score = 0;
-      let total = 0;
-      const pendingShort: string[] = [];
-
-      for (const q of questions) {
-        total += q.marks;
-        const given = finalAnswers[q.id];
-        if (q.type === "single" || q.type === "truefalse") {
-          const correct = given === q.answer;
-          if (correct) score += q.marks;
-          graded.push({ questionId: q.id, correct, obtained: correct ? q.marks : 0 });
-        } else if (q.type === "multiple") {
-          const expected = (q.answer as string[]).slice().sort().join("|");
-          const chosen = Array.isArray(given) ? given.slice().sort().join("|") : "";
-          const correct = chosen === expected;
-          if (correct) score += q.marks;
-          graded.push({ questionId: q.id, correct, obtained: correct ? q.marks : 0 });
-        } else {
-          pendingShort.push(q.id);
-        }
-      }
-
-      const pct = Math.round((score / total) * 100);
-      const passed = pct >= exam.passMark;
-      const result: Result = { score: pct, total, passed, graded, pendingShort };
-
-      // Update the student record (demo grade release)
-      const students = loadStore<typeof seedStudents>(STORE_KEYS.students, () => seedStudents);
-      const idx = students.findIndex((s) => s.id === demoStudentId);
-      if (idx >= 0) {
-        students[idx].examDone = true;
-        students[idx].examScore = pct;
-        students[idx].examReleased = true;
-        if (!passed) {
-          students[idx].certificateId = undefined;
-          const certs = loadStore(STORE_KEYS.certificates, () => seedCertificates);
-          const ci = certs.findIndex((c) => c.id === "NDA-2026-CLD-0051");
-          if (ci >= 0) certs.splice(ci, 1);
-          saveStore(STORE_KEYS.certificates, certs);
-        }
-        students[idx].notifications = [
-          {
-            id: `ntf-${crypto.randomUUID()}`,
-            title: "Exam result released",
-            body: `Your ${exam.title} result has been released: ${pct}% (${passed ? "PASS" : "FAIL"}).`,
-            date: new Date().toISOString(),
-            read: false,
-          },
-          ...students[idx].notifications,
-        ];
-        saveStore(STORE_KEYS.students, students);
-      }
-
       saveStore(STORE_KEYS.examActive, null);
-      onSubmitted(result);
+
+      submitExamMutate(
+        { id: exam._id, answers: finalAnswers },
+        {
+          onSuccess: (apiResult) => {
+            const pendingShort = exam.questions
+              .filter((q) => q.type === "short")
+              .map((q) => q.id);
+            const result: Result = {
+              score: apiResult.score,
+              total: apiResult.total,
+              passed: apiResult.passed,
+              graded: apiResult.graded,
+              pendingShort,
+            };
+            onSubmitted(result);
+          },
+          onError: () => {
+            submittedRef.current = false;
+            setAlert("Failed to submit exam. Please try again.");
+          },
+        }
+      );
     },
-    [exam, questions, onSubmitted]
+    [exam, submitExamMutate, onSubmitted]
   );
 
   // Countdown
@@ -869,12 +837,12 @@ function ExamResults({
   onLogout: () => void;
   onExit: () => void;
 }) {
-  const exam = seedExams[0];
-  const questions = useMemo(
-    () => exam.questionIds.map((id) => questionBank.find((q) => q.id === id)!).filter(Boolean),
-    [exam]
-  );
+  const { data: exams } = useExams();
+  const exam = exams?.[0];
+  const questions = exam?.questions ?? [];
   const [openId, setOpenId] = useState<string | null>(null);
+
+  if (!exam) return null;
 
   return (
     <section className="relative bg-surface min-h-screen overflow-hidden">

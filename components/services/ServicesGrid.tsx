@@ -1,25 +1,26 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import cloudImg from "@/assets/images/services/Cloud_Services.png";
-import consultingImg from "@/assets/images/services/work.png";
-import webImg from "@/assets/images/services/Nicegene services.png";
+import cloudImg from "@/assets/images/services/cloud-servers.jpg";
+import consultingImg from "@/assets/images/services/consulting-strategy.jpg";
+import dataProtectionImg from "@/assets/images/services/data-protection.jpg";
+import webImg from "@/assets/images/services/web-development.jpg";
 import networkingImg from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
 import digitizationImg from "@/assets/images/services/NICEGENE cloud migration and digitization.jpg";
 import posImg from "@/assets/images/services/NICEGENE POS & INVENTORY.jpg";
 import academyImg from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
 import gadgetsImg from "@/assets/images/services/NICEGENE GADGETS 2.jpg";
 import droneImg from "@/assets/images/services/drone.jpg";
-import graphicsImg from "@/assets/images/services/work white.png";
+import graphicsImg from "@/assets/images/services/graphic-design.jpg";
 
 const services = [
   { id: "cloud", image: cloudImg, title: "Cloud System Development, Migration & Operations", desc: "Secure, scalable AWS cloud architectures tailored to how your organisation actually operates — including cloud-native and serverless application development." },
   { id: "consulting", image: consultingImg, title: "IT Consulting & Digital Solutions", desc: "Strategic advisory that turns manual, paper-heavy operations into efficient digital workflows." },
-  { id: "data-protection", image: consultingImg, title: "Data Protection & Compliance Services", desc: "Licensed DPCO services — compliance audits, DPIAs, outsourced DPO, NDPC registration, and staff training under the Nigeria Data Protection Act, 2023." },
+  { id: "data-protection", image: dataProtectionImg, title: "Data Protection & Compliance Services", desc: "Licensed DPCO services — compliance audits, DPIAs, outsourced DPO, NDPC registration, and staff training under the Nigeria Data Protection Act, 2023." },
   { id: "web", image: webImg, title: "Web & App Development", desc: "Custom, responsive, and secure websites and applications built on modern frameworks, designed for performance, security, and maintainability." },
   { id: "networking", image: networkingImg, title: "System Networking & Infrastructure", desc: "End-to-end LAN design, server setup, and administration to give your organisation a stable, secure technical backbone." },
   { id: "digitization", image: digitizationImg, title: "Digitization & Records Management", desc: "Converting paper-based records into structured, secure, and searchable digital systems." },
@@ -34,9 +35,9 @@ const additionalCapabilities = [
 ];
 
 export default function ServicesGrid() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const reduceMotion = useReducedMotion();
 
   return (
     <section ref={sectionRef} className="px-6 md:px-20 pb-20 relative overflow-hidden">
@@ -50,7 +51,7 @@ export default function ServicesGrid() {
           className="text-center mb-16"
         >
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
             className="text-primary text-xs mt-5 uppercase tracking-[0.2em] mb-3"
@@ -58,7 +59,7 @@ export default function ServicesGrid() {
             Our Expertise
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-3xl md:text-4xl font-semibold"
@@ -66,13 +67,13 @@ export default function ServicesGrid() {
             What <span className="text-primary">We Offer</span>
           </motion.h2>
           <motion.div
-            initial={{ scaleX: 0 }}
+            initial={reduceMotion ? false : { scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="w-16 h-0.5 bg-secondary mx-auto mt-4"
           />
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.25, duration: 0.5 }}
             className="text-text-primary mt-4 max-w-2xl mx-auto text-sm"
@@ -83,89 +84,85 @@ export default function ServicesGrid() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Main Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {services.map((service, i) => (
             <Link key={service.id} href={`/services/${service.id}`}>
               <motion.div
-                initial={{ opacity: 0, y: [30, 20, -40, -30, 40][i % 5] || 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  delay: i * 0.07,
-                  duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className="group bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center text-center hover:border-secondary/40 hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300 will-change-transform"
-                whileHover={{ scale: 1.02, y: -4 }}
-                whileTap={{ scale: 0.98 }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-secondary/10 transition-all duration-500"
               >
-                <motion.div
-                  className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-primary mb-5 relative overflow-hidden"
-                  animate={hoveredIndex === i ? { scale: 1.15 } : { scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
+                {/* Image Section - 50% */}
+                <div className="relative h-48 overflow-hidden">
                   <motion.div
-                    className="absolute inset-0 rounded-full bg-secondary/20"
-                    animate={
-                      hoveredIndex === i
-                        ? { scale: [1, 1.3, 1], opacity: [0.2, 0, 0.2] }
-                        : { scale: 1, opacity: 0.2 }
-                    }
-                    transition={{ duration: 1.5, repeat: hoveredIndex === i ? Infinity : 0 }}
-                  />
-                  <motion.div
+                    initial={reduceMotion ? false : { scale: 1.1 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: i * 0.08 }}
                     className="absolute inset-0"
-                    animate={
-                      hoveredIndex === i
-                        ? { rotateY: [0, 180, 360], scale: 1.1 }
-                        : { rotateY: 0, scale: 1 }
-                    }
-                    transition={
-                      hoveredIndex === i
-                        ? { duration: 1.2, ease: "easeInOut" }
-                        : { duration: 0.3 }
-                    }
                   >
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
-                      sizes="64px"
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
                   </motion.div>
-                </motion.div>
-
-                <h3 className="text-base font-semibold mb-3 leading-snug min-h-[2.5rem] text-text-primary">
-                  {service.title}
-                </h3>
-
-                <p className="text-text-primary text-xs leading-relaxed mb-6 flex-1">
-                  {service.desc}
-                </p>
-
-                <motion.div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-primary text-xs font-medium group-hover:bg-secondary group-hover:text-primary transition-all duration-300"
-                  animate={hoveredIndex === i ? { gap: "10px" } : { gap: "6px" }}
-                >
-                  <span>View Details</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <motion.span
-                    animate={hoveredIndex === i ? { x: [0, 4, 0] } : { x: 0 }}
-                    transition={{ duration: 0.6, repeat: hoveredIndex === i ? Infinity : 0, ease: "easeInOut" }}
+                    initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.3, duration: 0.4 }}
+                    className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center text-primary font-bold text-sm shadow-lg"
                   >
-                    <FaArrowRight size={10} />
+                    {String(i + 1).padStart(2, "0")}
                   </motion.span>
-                </motion.div>
+                </div>
+
+                {/* Text Section - 50% */}
+                <div className="p-6">
+                  <motion.h3
+                    initial={reduceMotion ? false : { opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.2, duration: 0.5 }}
+                    className="text-base font-semibold text-text-primary mb-3 group-hover:text-primary transition-colors duration-300 leading-snug"
+                  >
+                    {service.title}
+                  </motion.h3>
+                  <motion.p
+                    initial={reduceMotion ? false : { opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.3, duration: 0.5 }}
+                    className="text-sm text-text-primary/70 leading-relaxed mb-4"
+                  >
+                    {service.desc}
+                  </motion.p>
+                  <motion.div
+                    initial={reduceMotion ? false : { opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.4, duration: 0.5 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-primary text-xs font-medium group-hover:bg-secondary group-hover:text-primary transition-all duration-300"
+                  >
+                    <span>View Details</span>
+                    <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  </motion.div>
+                </div>
               </motion.div>
             </Link>
           ))}
         </div>
 
-        {/* ADDITIONAL CAPABILITIES */}
+        {/* Additional Capabilities */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-16"
@@ -175,37 +172,49 @@ export default function ServicesGrid() {
               Additional <span className="text-primary">Capabilities</span>
             </h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-4xl mx-auto">
             {additionalCapabilities.map((service, i) => (
               <Link key={service.id} href={`/services/${service.id}`}>
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={reduceMotion ? false : { opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="group bg-gradient-to-br from-secondary/5 to-accent/5 border border-dashed border-secondary/30 rounded-2xl p-6 flex items-start gap-4 hover:border-secondary/60 hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300"
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="group bg-gradient-to-br from-secondary/5 to-accent/5 border border-dashed border-secondary/30 rounded-2xl overflow-hidden hover:border-secondary/60 hover:shadow-lg hover:shadow-secondary/5 transition-all duration-500"
                 >
-                  <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      width={48}
-                      height={48}
-                      className="object-cover w-full h-full"
-                    />
+                  {/* Image Section */}
+                  <div className="relative h-40 overflow-hidden">
+                    <motion.div
+                      initial={reduceMotion ? false : { scale: 1.1 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: i * 0.1 }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                   </div>
-                  <div>
-                    <h4 className="text-base font-semibold text-text-primary mb-1">
+
+                  {/* Text Section */}
+                  <div className="p-6">
+                    <h4 className="text-base font-semibold text-text-primary mb-2 group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h4>
-                    <p className="text-xs text-text-primary/70 leading-relaxed">
+                    <p className="text-sm text-text-primary/70 leading-relaxed mb-4">
                       {service.desc}
                     </p>
+                    <div className="inline-flex items-center gap-2 text-primary text-xs font-medium">
+                      <span>Learn more</span>
+                      <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
-                  <FaArrowRight
-                    size={12}
-                    className="ml-auto mt-2 text-primary/40 group-hover:translate-x-1 transition-transform"
-                  />
                 </motion.div>
               </Link>
             ))}

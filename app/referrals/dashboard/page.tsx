@@ -15,13 +15,9 @@ import {
 } from "react-icons/fa";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import { STORE_KEYS, loadStore } from "@/lib/store";
-import {
-  referralFlow,
-  seedReferrals,
-  type Referral,
-  type ReferralStatus,
-} from "@/lib/seed-data";
+import { useReferrals } from "@/lib/hooks/useReferrals";
+import { REFERRAL_FLOW } from "@/lib/types";
+import type { Referral, ReferralStatus } from "@/lib/types";
 import {
   verifyLogin,
   createSession,
@@ -186,16 +182,14 @@ function DashboardView({
   session: AuthSession;
   onLogout: () => void;
 }) {
-  const [referrals] = useState<Referral[]>(() =>
-    loadStore(STORE_KEYS.referrals, () => seedReferrals).filter(
-      (r) => r.referrerContact.toLowerCase() === session.email.toLowerCase()
-    )
-  );
+  const { data: allReferrals = [] } = useReferrals();
 
   const myReferrals = useMemo(() => {
-    const mine = referrals.length > 0 ? referrals : seedReferrals;
-    return mine;
-  }, [referrals]);
+    const filtered = allReferrals.filter(
+      (r) => r.referrerContact.toLowerCase() === session.email.toLowerCase()
+    );
+    return filtered.length > 0 ? filtered : allReferrals;
+  }, [allReferrals, session.email]);
 
   const commissionEarned = myReferrals
     .filter((r) => r.status === "Commission Due" || r.status === "Converted")
@@ -261,16 +255,16 @@ function DashboardView({
         <div className="space-y-5">
           <h2 className="text-lg font-bold text-text-primary">My Referrals</h2>
           {myReferrals.map((referral) => {
-            const currentIndex = referralFlow.indexOf(referral.status);
+            const currentIndex = REFERRAL_FLOW.indexOf(referral.status);
             return (
               <div
-                key={referral.id}
+                key={referral._id}
                 className="bg-white border border-gray-200 rounded-2xl p-6"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
                   <div>
                     <div className="flex items-center gap-3">
-                      <h3 className="font-semibold text-text-primary">{referral.refereeCompany}</h3>
+                      <h3 className="font-semibold text-text-primary">{referral.refereeCompany || referral.refereeName}</h3>
                       <span
                         className={`text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full border ${statusStyle[referral.status]}`}
                       >
@@ -300,7 +294,7 @@ function DashboardView({
 
                 {/* Status flow */}
                 <div className="flex items-center gap-1 md:gap-2">
-                  {referralFlow.map((status, i) => {
+                  {REFERRAL_FLOW.map((status, i) => {
                     const reached = i <= currentIndex;
                     const isCurrent = i === currentIndex;
                     return (
@@ -323,31 +317,33 @@ function DashboardView({
                 </div>
 
                 {/* Status history */}
-                <details className="mt-5 group">
-                  <summary className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-accent cursor-pointer hover:text-primary transition-colors list-none">
-                    <FaClock size={11} /> Status history &amp; notifications
-                  </summary>
-                  <div className="mt-3 space-y-2">
-                    {referral.statusHistory.map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-3 bg-surface border border-gray-100 rounded-xl px-4 py-3"
-                      >
-                        <FaCheckCircle size={14} className="text-success mt-0.5 shrink-0" />
-                        <div>
-                          <p className="text-[13px] font-semibold text-text-primary">
-                            {h.status}
-                            <span className="text-text-secondary font-normal">
-                              {" "}
-                              · {new Date(h.date).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" })}
-                            </span>
-                          </p>
-                          <p className="text-[12px] text-text-secondary mt-0.5">{h.note}</p>
+                {referral.statusHistory && referral.statusHistory.length > 0 && (
+                  <details className="mt-5 group">
+                    <summary className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-accent cursor-pointer hover:text-primary transition-colors list-none">
+                      <FaClock size={11} /> Status history &amp; notifications
+                    </summary>
+                    <div className="mt-3 space-y-2">
+                      {referral.statusHistory.map((h, i) => (
+                        <div
+                          key={i}
+                          className="flex items-start gap-3 bg-surface border border-gray-100 rounded-xl px-4 py-3"
+                        >
+                          <FaCheckCircle size={14} className="text-success mt-0.5 shrink-0" />
+                          <div>
+                            <p className="text-[13px] font-semibold text-text-primary">
+                              {h.status}
+                              <span className="text-text-secondary font-normal">
+                                {" "}
+                                · {new Date(h.date).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" })}
+                              </span>
+                            </p>
+                            <p className="text-[12px] text-text-secondary mt-0.5">{h.note}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </details>
+                      ))}
+                    </div>
+                  </details>
+                )}
               </div>
             );
           })}

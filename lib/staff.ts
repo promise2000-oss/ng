@@ -1,20 +1,12 @@
-import { fetchApi } from "./api";
+import api from "./api";
+import type { Staff as StaffType } from "./types";
 
-export type Staff = {
-  _id: string;
-  name: string;
-  email: string;
-  role: string;
-  department: string;
-  category: "executive" | "staff";
-  image?: string;
-  isActive: boolean;
-};
+export type Staff = StaffType;
 
 export function getStaff() {
-  return fetchApi<Staff[]>("/staff");
+  return api.get<Staff[]>("/staff").then((r) => r.data);
 }
 
 export function getStaffMember(id: string) {
-  return fetchApi<Staff>(`/staff/${id}`);
+  return api.get<Staff>(`/staff/${id}`).then((r) => r.data);
 }
