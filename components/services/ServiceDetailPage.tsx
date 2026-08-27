@@ -14,7 +14,7 @@ import webPoster from "@/assets/images/services/Nicegene services.png";
 import networkingPoster from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
 import digitizationPoster from "@/assets/images/services/NICEGENE cloud migration and digitization.jpg";
 import dronePoster from "@/assets/images/services/NICEGENE DRONE SERVICES.jpg";
-import photoPoster from "@/assets/images/events/team-working.jpg";
+import photoPoster from "@/assets/images/services/teamwork-values.jpg";
 import posPoster from "@/assets/images/services/NICEGENE POS & INVENTORY.jpg";
 import omenImg from "@/assets/images/gadgets/omen.png";
 import victus2Img from "@/assets/images/gadgets/victus2.jpg";
