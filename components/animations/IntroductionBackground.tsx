@@ -16,36 +16,78 @@ export default function IntroductionBackground() {
     offset: ["start end", "end start"],
   });
   const gridY = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  const orbParallax = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Layer 1 — Atmospheric Radial Glows */}
-      <div
-        className="absolute inset-0 intro-glow-1"
-        style={{
-          background:
-            "radial-gradient(ellipse 900px 700px at 30% 20%, rgba(46, 95, 184, 0.14), transparent 70%)",
-          backgroundSize: "200% 200%",
-        }}
-      />
-      <div
-        className="absolute inset-0 intro-glow-2"
-        style={{
-          background:
-            "radial-gradient(ellipse 700px 500px at 75% 15%, rgba(92, 200, 242, 0.10), transparent 70%)",
-          backgroundSize: "200% 200%",
-        }}
-      />
-      <div
-        className="absolute inset-0 intro-glow-3"
-        style={{
-          background:
-            "radial-gradient(ellipse 600px 450px at 20% 80%, rgba(27, 58, 107, 0.08), transparent 70%)",
-          backgroundSize: "200% 200%",
-        }}
-      />
+      {/* Layer 1 — Animated Floating Orbs (replaces static glows) */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: orbParallax }}
+      >
+        {/* Primary blue orb — top left */}
+        <div
+          className={`absolute rounded-full intro-orb-1 ${reduceMotion ? "" : ""}`}
+          style={{
+            width: 700,
+            height: 700,
+            top: "-10%",
+            left: "-5%",
+            background: "radial-gradient(circle, rgba(46, 95, 184, 0.30) 0%, rgba(46, 95, 184, 0.12) 40%, transparent 70%)",
+            filter: "blur(50px)",
+          }}
+        />
+        {/* Cyan accent orb — top right */}
+        <div
+          className={`absolute rounded-full intro-orb-2 ${reduceMotion ? "" : ""}`}
+          style={{
+            width: 550,
+            height: 550,
+            top: "-5%",
+            right: "5%",
+            background: "radial-gradient(circle, rgba(92, 200, 242, 0.25) 0%, rgba(92, 200, 242, 0.08) 45%, transparent 70%)",
+            filter: "blur(45px)",
+          }}
+        />
+        {/* Deep navy orb — bottom left */}
+        <div
+          className={`absolute rounded-full intro-orb-3 ${reduceMotion ? "" : ""}`}
+          style={{
+            width: 600,
+            height: 600,
+            bottom: "-15%",
+            left: "10%",
+            background: "radial-gradient(circle, rgba(27, 58, 107, 0.22) 0%, rgba(27, 58, 107, 0.08) 40%, transparent 70%)",
+            filter: "blur(45px)",
+          }}
+        />
+        {/* Soft accent-light orb — center right */}
+        <div
+          className={`absolute rounded-full intro-orb-1 ${reduceMotion ? "" : ""}`}
+          style={{
+            width: 400,
+            height: 400,
+            top: "40%",
+            right: "15%",
+            background: "radial-gradient(circle, rgba(156, 195, 232, 0.22) 0%, rgba(156, 195, 232, 0.06) 45%, transparent 70%)",
+            filter: "blur(40px)",
+            animationDelay: "4s",
+          }}
+        />
+      </motion.div>
 
-      {/* Layer 2 — Technical Grid */}
+      {/* Layer 2 — Sweeping Light Streak */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className={`intro-light-streak ${reduceMotion ? "hidden" : ""}`}
+          style={{
+            top: "-50%",
+            left: "-25%",
+          }}
+        />
+      </div>
+
+      {/* Layer 3 — Technical Grid with parallax */}
       <motion.div
         className="absolute inset-0 hidden md:block"
         style={{
@@ -80,7 +122,7 @@ export default function IntroductionBackground() {
         </svg>
       </motion.div>
 
-      {/* Layer 3 — Ghosted "N" Monogram */}
+      {/* Layer 4 — Ghosted "N" Monogram */}
       <motion.div
         className="absolute pointer-events-none hidden md:block"
         style={{
@@ -217,7 +259,7 @@ export default function IntroductionBackground() {
         </svg>
       </motion.div>
 
-      {/* Layer 3 Mobile — Smaller "N" Monogram */}
+      {/* Layer 4 Mobile — Smaller "N" Monogram */}
       <motion.div
         className="absolute pointer-events-none block md:hidden"
         style={{
@@ -259,16 +301,16 @@ export default function IntroductionBackground() {
         </svg>
       </motion.div>
 
-      {/* Layer 4 — Heading Spotlight */}
+      {/* Layer 5 — Enhanced Heading Spotlight (larger, brighter) */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 55% at 30% 40%, rgba(46, 95, 184, 0.10), transparent 65%)",
+            "radial-gradient(ellipse 65% 60% at 30% 40%, rgba(46, 95, 184, 0.22), transparent 60%)",
         }}
       />
 
-      {/* Layer 5 — SVG Noise Texture */}
+      {/* Layer 6 — SVG Noise Texture */}
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <filter id="intro-noise">
           <feTurbulence
@@ -283,7 +325,7 @@ export default function IntroductionBackground() {
           width="100%"
           height="100%"
           filter="url(#intro-noise)"
-          opacity="0.035"
+          opacity="0.03"
           style={{ mixBlendMode: "multiply" }}
         />
       </svg>

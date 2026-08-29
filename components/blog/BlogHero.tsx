@@ -27,7 +27,7 @@ export default function BlogHero() {
       />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-          className="text-secondary text-sm uppercase tracking-[0.2em]">NICEGENE Insights</motion.p>
+          className="text-[#87CEEB] text-sm uppercase tracking-[0.2em]">NICEGENE Insights</motion.p>
         <TextReveal as="h1" delay={0.1}
           className="text-4xl md:text-6xl font-semibold leading-tight mt-4 text-white">
           Our Blog

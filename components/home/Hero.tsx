@@ -9,30 +9,32 @@ import { FaArrowRight, FaShieldAlt } from "react-icons/fa";
 import bg1 from "@/assets/images/services/23324.jpg";
 import bg2 from "@/assets/images/services/futurism-perspective-digital-nomads-lifestyle.jpg";
 import bg3 from "@/assets/images/services/WhatsApp Image 2026-08-27 at 7.45.40 PM.jpeg";
-import cloudServices from "@/assets/images/services/Cloud_Services.png";
+import dataCenter from "@/assets/images/services/modern-data-center.jpg";
+import serverRack from "@/assets/images/services/server-rack-equipment.jpg";
 import MagneticButton from "@/components/MagneticButton";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
 const academyAndDPOText = [
-  "NICEGENE Digital Academy",
-  "Get Certified and Job Ready",
-  "NDPC-Certified DPCO",
-  "Data Protection Compliance",
-  "Professional Training Programs",
-  "Data Protection Law & Practices",
-  "Visit our Digital Academy",
-  "Call +234 8060704412",
-  "Email: info@nicegeneco.com.ng",
+  "Compliance Audits",
+  "Data Protection Impact Assessments (DPIAs)",
+  "Outsourced DPO Services",
+  "NDPC Registration & Filing Support",
+  "Policy & Documentation Development",
+  "Staff & Vendor Training",
+  "Breach Response & Notification Support",
+  "Ongoing Compliance Monitoring",
 ];
 
 const servicesText = [
-  "Cloud System Development",
-  "IT Consulting & Digital Solutions",
-  "Web & App Development",
-  "System Networking & Infrastructure",
-  "POS & Inventory Management",
-  "NICEGENE Academy",
-  "Data Protection & Compliance",
+  "Google Workspace Setup",
+  "Microsoft 365 Setup",
+  "Zoho Mail Setup",
+  "DNS & MX Configuration",
+  "SPF / DKIM / DMARC Security",
+  "Domain & Mailbox Configuration",
+  "Platform Setup & Migration",
+  "Security & Access Management",
+  "Corporate Email — Set Up, Secured & Migrated by NICEGENE",
 ];
 
 const academyCoursesText = [
@@ -49,7 +51,8 @@ const academyCoursesText = [
 ];
 
 const images = [
-  cloudServices,
+  dataCenter,
+  serverRack,
   bg1,
   bg2,
   bg3,
@@ -57,15 +60,15 @@ const images = [
 
 const services = [
   "Cloud System Development",
-  "IT Consulting & Digital Solutions",
   "Web & App Development",
-  "System Networking & Infrastructure",
-  "POS & Inventory Management",
-  "NICEGENE Academy",
   "Data Protection & Compliance",
+  "IT Consulting & Digital Solutions",
+  "System Networking & Infrastructure",
+  "NICEGENE Academy",
+  "Point-of-Sales (POS) & Inventory Management",
 ];
 
-const HEADLINE = "Nigeria's Premier IT Consulting & Digital Solutions Firm";
+const HEADLINE = "Premier IT Consulting & Digital Solutions Firm";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);

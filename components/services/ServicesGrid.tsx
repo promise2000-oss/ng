@@ -16,6 +16,7 @@ import academyImg from "@/assets/images/services/NICEGENE DIGITAL ACADEMY.jpg";
 import gadgetsImg from "@/assets/images/services/NICEGENE GADGETS 2.jpg";
 import droneImg from "@/assets/images/services/drone.jpg";
 import graphicsImg from "@/assets/images/services/graphic-design.jpg";
+import corporateEmailImg from "@/assets/images/services/corporate-email.jpg";
 
 const services = [
   { id: "cloud", image: cloudImg, title: "Cloud System Development, Migration & Operations", desc: "Secure, scalable AWS cloud architectures tailored to how your organisation actually operates — including cloud-native and serverless application development." },
@@ -27,6 +28,7 @@ const services = [
   { id: "pos", image: posImg, title: "Point of Sale & Inventory Management Systems", desc: "Complete retail automation, including POS hardware installation, real-time stock tracking, and cloud-based sales reporting." },
   { id: "academy", image: academyImg, title: "NICEGENE Academy — Professional Trainings", desc: "Practical, instructor-led digital skills training delivered through live virtual classes and hands-on projects." },
   { id: "gadgets", image: gadgetsImg, title: "Technology Gadget Sales", desc: "Premium laptops and IT hardware from trusted global brands, backed by our own technical support." },
+  { id: "corporate-email", image: corporateEmailImg, title: "Corporate Email Setup", desc: "Professional business email on your own domain — Google Workspace, Microsoft 365, or custom hosting, fully configured and secured." },
 ];
 
 const additionalCapabilities = [

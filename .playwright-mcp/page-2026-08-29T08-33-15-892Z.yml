@@ -1,0 +1,105 @@
+- generic [ref=f2e4]:
+  - navigation [ref=f2e5]:
+    - link "Unsplash Home" [ref=f2e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=f2e9]
+    - generic [ref=f2e11]:
+      - link "Log in / Sign up" [ref=f2e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fphotos%2Fglowing-circuit-board-with-green-light-and-metallic-spheres-AZLGCb2WLp8
+      - button "Language" [ref=f2e15] [cursor=pointer]
+      - button "Menu" [ref=f2e18] [cursor=pointer]
+  - generic [ref=f2e21]:
+    - generic [ref=f2e22]:
+      - navigation [ref=f2e23]:
+        - search "Find visuals sitewide" [ref=f2e25]:
+          - button "Search Unsplash" [ref=f2e26] [cursor=pointer]
+          - combobox [ref=f2e29]:
+            - searchbox "Search Unsplash" [ref=f2e30]
+            - listbox
+          - button "Visual search" [ref=f2e32] [cursor=pointer]
+      - generic [ref=f2e35]:
+        - generic [ref=f2e36]:
+          - banner [ref=f2e38]:
+            - generic [ref=f2e40]:
+              - link [ref=f2e41] [cursor=pointer]:
+                - /url: /@brechtcorbeel
+              - generic [ref=f2e44]:
+                - link "Brecht Corbeel" [ref=f2e45] [cursor=pointer]:
+                  - /url: /@brechtcorbeel
+                - link "Available for hire" [ref=f2e47] [cursor=pointer]:
+                  - /url: /@brechtcorbeel
+            - generic [ref=f2e50]:
+              - button "Bookmark" [ref=f2e51] [cursor=pointer]
+              - button "Add to Collection" [ref=f2e54] [cursor=pointer]
+              - link "Edit image" [ref=f2e57] [cursor=pointer]:
+                - /url: /plus?referrer=%2Fphotos%2Fglowing-circuit-board-with-green-light-and-metallic-spheres-AZLGCb2WLp8
+              - generic [ref=f2e61]:
+                - link "Download free" [ref=f2e62] [cursor=pointer]:
+                  - /url: https://unsplash.com/photos/AZLGCb2WLp8/download?force=true
+                - button "Choose download size" [ref=f2e64] [cursor=pointer]
+          - button "Zoom in on this image" [disabled] [ref=f2e70]:
+            - img "Glowing circuit board with green light and metallic spheres" [ref=f2e71]
+          - generic [ref=f2e72]:
+            - generic [ref=f2e73]:
+              - generic [ref=f2e74]:
+                - generic [ref=f2e75]:
+                  - generic [ref=f2e76]: ––– –– ––
+                  - text: ––– –––– ––––
+                - generic [ref=f2e77]:
+                  - generic [ref=f2e78]: ––– –– ––
+                  - text: ––– –––– ––––
+              - generic [ref=f2e79]:
+                - button "Share this image" [ref=f2e80] [cursor=pointer]:
+                  - generic [ref=f2e83]: Share
+                - button "Stats about this image" [ref=f2e84] [cursor=pointer]:
+                  - generic [ref=f2e87]: Info
+                - button "More Actions" [ref=f2e88] [cursor=pointer]
+            - generic [ref=f2e92]:
+              - heading "Glowing circuit board with green light and metallic spheres" [level=1] [ref=f2e94]
+              - paragraph [ref=f2e98]: Download this free HD photo of technology, artificial intelligence, green, and data by Brecht Corbeel (@brechtcorbeel)
+              - generic [ref=f2e100]:
+                - generic [ref=f2e105]:
+                  - text: Published on
+                  - time [ref=f2e106]: June 24, 2026 (UTC)
+                - generic [ref=f2e110]:
+                  - text: Free to use under the
+                  - link "Unsplash License" [ref=f2e111] [cursor=pointer]:
+                    - /url: /license
+            - generic [ref=f2e113]:
+              - link "technology" [ref=f2e114] [cursor=pointer]:
+                - /url: /s/photos/technology
+              - link "artificial intelligence" [ref=f2e115] [cursor=pointer]:
+                - /url: /s/photos/artificial-intelligence
+              - link "green" [ref=f2e116] [cursor=pointer]:
+                - /url: /s/photos/green
+              - link "data" [ref=f2e117] [cursor=pointer]:
+                - /url: /s/photos/data
+              - link "digital" [ref=f2e118] [cursor=pointer]:
+                - /url: /s/photos/digital
+              - link "innovation" [ref=f2e119] [cursor=pointer]:
+                - /url: /s/photos/innovation
+              - link "cybersecurity" [ref=f2e120] [cursor=pointer]:
+                - /url: /s/photos/cybersecurity
+              - link "electronic" [ref=f2e121] [cursor=pointer]:
+                - /url: /s/photos/electronic
+              - link "data science" [ref=f2e122] [cursor=pointer]:
+                - /url: /s/photos/data-science
+              - link "cloud computing" [ref=f2e123] [cursor=pointer]:
+                - /url: /s/photos/cloud-computing
+              - link "digital transformation" [ref=f2e124] [cursor=pointer]:
+                - /url: /s/photos/digital-transformation
+              - link "circuit board" [ref=f2e125] [cursor=pointer]:
+                - /url: /s/photos/circuit-board
+              - link "teal" [ref=f2e126] [cursor=pointer]:
+                - /url: /s/photos/teal
+              - link "big data" [ref=f2e127] [cursor=pointer]:
+                - /url: /s/photos/big-data
+              - link "deep learning" [ref=f2e128] [cursor=pointer]:
+                - /url: /s/photos/deep-learning
+              - link "processor" [ref=f2e129] [cursor=pointer]:
+                - /url: /s/photos/processor
+              - link "computer chip" [ref=f2e130] [cursor=pointer]:
+                - /url: /s/photos/computer-chip
+        - paragraph [ref=f2e136]: Browse premium related images on iStock | Save 20% with code UNSPLASH20
+    - generic:
+      - region "Notifications"

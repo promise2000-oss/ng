@@ -1,0 +1,164 @@
+- generic [ref=f6e4]:
+  - navigation [ref=f6e5]:
+    - link "Unsplash Home" [ref=f6e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=f6e9]
+    - generic [ref=f6e11]:
+      - link "Log in / Sign up" [ref=f6e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fs%2Fphotos%2Ftechnology-network-blue
+      - button "Language" [ref=f6e15] [cursor=pointer]
+      - button "Menu" [ref=f6e18] [cursor=pointer]
+  - generic [ref=f6e21]:
+    - generic [ref=f6e22]:
+      - navigation [ref=f6e23]:
+        - search "Find visuals sitewide" [ref=f6e25]:
+          - button "Search Unsplash" [ref=f6e26] [cursor=pointer]
+          - combobox [ref=f6e29]:
+            - searchbox "Search Unsplash" [ref=f6e30]: technology network blue
+            - listbox
+          - button "Clear" [ref=f6e31] [cursor=pointer]
+          - button "Visual search" [ref=f6e36] [cursor=pointer]
+      - generic [ref=f6e39]:
+        - generic [ref=f6e45]:
+          - list [ref=f6e46]:
+            - listitem [ref=f6e47]:
+              - link "Photos 2.7k":
+                - /url: /s/photos/technology-network-blue
+                - text: Photos
+                - generic: 2.7k
+            - listitem [ref=f6e48]:
+              - link "Illustrations 2.2k" [ref=f6e49] [cursor=pointer]:
+                - /url: /s/illustrations/technology-network-blue
+                - text: Illustrations
+                - generic [ref=f6e52]: 2.2k
+            - listitem [ref=f6e53]:
+              - button "More" [ref=f6e54] [cursor=pointer]
+          - button [ref=f6e56] [cursor=pointer]
+        - generic [ref=f6e60]:
+          - heading "Technology network blue" [level=1] [ref=f6e62]
+          - generic [ref=f6e66]:
+            - link "abstract background" [ref=f6e68] [cursor=pointer]:
+              - /url: /s/photos/abstract-background
+            - link "datum" [ref=f6e70] [cursor=pointer]:
+              - /url: /s/photos/datum
+            - link "abstract" [ref=f6e72] [cursor=pointer]:
+              - /url: /s/photos/abstract
+            - link "futuristic" [ref=f6e74] [cursor=pointer]:
+              - /url: /s/photos/futuristic
+            - link "digital art" [ref=f6e76] [cursor=pointer]:
+              - /url: /s/photos/digital-art
+            - link "network" [ref=f6e78] [cursor=pointer]:
+              - /url: /s/photos/network
+            - link "technology" [ref=f6e80] [cursor=pointer]:
+              - /url: /s/photos/technology
+            - link "blue" [ref=f6e82] [cursor=pointer]:
+              - /url: /s/photos/blue
+            - link "digital network" [ref=f6e84] [cursor=pointer]:
+              - /url: /s/photos/digital-network
+            - link "communication" [ref=f6e86] [cursor=pointer]:
+              - /url: /s/photos/communication
+            - link "digital" [ref=f6e88] [cursor=pointer]:
+              - /url: /s/photos/digital
+            - link "science" [ref=f6e90] [cursor=pointer]:
+              - /url: /s/photos/science
+        - generic [ref=f6e92]:
+          - generic [ref=f6e96]:
+            - generic [ref=f6e97]:
+              - figure [ref=f6e98]:
+                - link [ref=f6e101]:
+                  - /url: /photos/a-computer-circuit-board-with-a-blue-background-Ny_zx9HRGjo
+                  - img "a computer circuit board with a blue background" [ref=f6e102]
+              - generic [ref=f6e103]:
+                - heading "Sponsored images" [level=4] [ref=f6e104]
+                - generic [ref=f6e113]: ––– – –– –– – –– –––– ––– ––––
+              - figure [ref=f6e114]:
+                - link [ref=f6e117]:
+                  - /url: /photos/a-group-of-cubes-that-are-on-a-black-surface-T9rKvI3N0NM
+                  - img "a group of cubes that are on a black surface" [ref=f6e118]
+              - figure [ref=f6e119]:
+                - link [ref=f6e122]:
+                  - /url: /photos/a-bunch-of-blue-wires-connected-to-each-other-PSpf_XgOM5w
+                  - img "a bunch of blue wires connected to each other" [ref=f6e123]
+              - figure [ref=f6e124]:
+                - link [ref=f6e127]:
+                  - /url: /photos/a-close-up-of-a-computer-circuit-board-ElnEo0MO0jY
+                  - img "a close up of a computer circuit board" [ref=f6e128]
+              - figure [ref=f6e129]:
+                - link [ref=f6e132]:
+                  - /url: /photos/a-black-and-blue-abstract-background-with-squares-and-rectangles-lqAGhS1MnoM
+                  - img "a black and blue abstract background with squares and rectangles" [ref=f6e133]
+              - figure [ref=f6e134]:
+                - link [ref=f6e137]:
+                  - /url: /photos/blue-glowing-lines-create-a-digital-futuristic-pattern-WRmoJBqzXNA
+                  - img "Blue glowing lines create a digital, futuristic pattern" [ref=f6e138]
+            - generic [ref=f6e139]:
+              - figure [ref=f6e140]:
+                - link [ref=f6e143]:
+                  - /url: /photos/a-blue-background-with-lines-and-dots-xuTJZ7uD7PI
+                  - img "a blue background with lines and dots" [ref=f6e144]
+              - figure [ref=f6e145]:
+                - link [ref=f6e148]:
+                  - /url: /photos/a-blue-abstract-background-with-lines-and-dots-pREq0ns_p_E
+                  - img "a blue abstract background with lines and dots" [ref=f6e149]
+              - figure [ref=f6e150]:
+                - link [ref=f6e153]:
+                  - /url: /photos/a-close-up-of-a-computer-circuit-board-tBvF46kmwBw
+                  - img "A close up of a computer circuit board" [ref=f6e154]
+              - figure [ref=f6e155]:
+                - link [ref=f6e158]:
+                  - /url: /photos/teal-bookeh-lights-KABfjuSOx74
+                  - img "teal bookeh lights" [ref=f6e159]
+              - figure [ref=f6e160]:
+                - link [ref=f6e163]:
+                  - /url: /photos/dots-and-lines-connection-on-white-abstract-technology-background3d-illustration-P3Qccih8VGE
+                  - img "dots and lines connection on white abstract technology background.3d illustration" [ref=f6e164]
+              - figure [ref=f6e165]:
+                - link [ref=f6e168]:
+                  - /url: /photos/white-mesh-fabric-under-blue-light-11KDtiUWRq4
+                  - img "A fine white mesh fabric draped over a dark surface under blue light" [ref=f6e169]
+              - figure [ref=f6e170]:
+                - link [ref=f6e173]:
+                  - /url: /photos/abstract-blue-glowing-dots-forming-wave-patterns-r5lbaK3fDaM
+                  - img "Abstract blue glowing dots forming wave patterns" [ref=f6e174]
+              - figure [ref=f6e175]:
+                - link [ref=f6e178]:
+                  - /url: /photos/defocus-dots-and-lines-connection-on-abstract-technology-background3d-illustration-WXl3cPupXOw
+                  - img "defocus dots and lines connection on abstract technology background.3d illustration" [ref=f6e179]
+              - figure [ref=f6e180]:
+                - link [ref=f6e183]:
+                  - /url: /photos/blue-and-purple-light-digital-wallpaper-iTG1FfVIfPM
+                  - img "blue and purple light digital wallpaper" [ref=f6e184]
+            - generic [ref=f6e185]:
+              - contentinfo [ref=f6e190]:
+                - generic [ref=f6e191]: –– ––– ––– –– ––– – ––– ––– –––– – – –– ––– – – ––– –– –– –––– ––
+                - generic [ref=f6e197] [cursor=pointer]
+              - figure [ref=f6e198]:
+                - link [ref=f6e201]:
+                  - /url: /photos/neural-networks-and-artificial-intelligence-conceptual-abstract-background-lV5XjyVm2_4
+                  - img "Neural networks and artificial intelligence conceptual abstract background" [ref=f6e202]
+              - figure [ref=f6e203]:
+                - link [ref=f6e206]:
+                  - /url: /photos/a-close-up-of-a-server-JcUQoTOeW3s
+                  - img "a close-up of a server" [ref=f6e207]
+              - figure [ref=f6e208]:
+                - link [ref=f6e211]:
+                  - /url: /photos/a-black-and-white-photo-of-cubes-on-a-black-background-IlUq1ruyv0Q
+                  - img "a black and white photo of cubes on a black background" [ref=f6e212]
+              - figure [ref=f6e213]:
+                - link [ref=f6e216]:
+                  - /url: /photos/a-wall-that-has-a-bunch-of-lights-on-it-KiH2-tdGQRY
+                  - img "a wall that has a bunch of lights on it" [ref=f6e217]
+              - figure [ref=f6e218]:
+                - link [ref=f6e221]:
+                  - /url: /photos/artificial-intelligence-is-represented-by-the-lightbulb-and-brain-Q71kkJHARdg
+                  - img "Artificial intelligence is represented by the lightbulb and brain" [ref=f6e222]
+          - heading "Browse premium images on iStock | Claim your discount now" [level=2] [ref=f6e226]:
+            - text: Browse premium images on iStock
+            - generic [ref=f6e227]: "| Claim your discount now"
+          - button "Load more" [ref=f6e241] [cursor=pointer]
+          - generic [ref=f6e242]:
+            - link [ref=f6e243] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=f6e246]: Make something awesome
+    - generic:
+      - region "Notifications"

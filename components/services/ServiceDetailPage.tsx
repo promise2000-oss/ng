@@ -16,6 +16,7 @@ import digitizationPoster from "@/assets/images/services/NICEGENE cloud migratio
 import dronePoster from "@/assets/images/services/NICEGENE DRONE SERVICES.jpg";
 import photoPoster from "@/assets/images/services/teamwork-values.jpg";
 import posPoster from "@/assets/images/services/NICEGENE POS & INVENTORY.jpg";
+import corporateEmailPoster from "@/assets/images/services/corporate-email.jpg";
 import omenImg from "@/assets/images/gadgets/omen.png";
 import victus2Img from "@/assets/images/gadgets/victus2.jpg";
 import zbookImg from "@/assets/images/gadgets/z-book.jpg";
@@ -67,6 +68,7 @@ import {
   FaFileAlt,
   FaDatabase,
   FaSearch,
+  FaEnvelope,
 } from "react-icons/fa";
 
 const icons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -75,7 +77,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; className?: str
   FaMobileAlt, FaPalette, FaCode, FaHelicopter, FaCameraRetro, FaCashRegister,
   FaCogs, FaShoppingCart, FaChartBar, FaMicrochip, FaDesktop, FaGamepad, FaPenFancy,
   FaRocket, FaVideo, FaImage, FaStoreAlt, FaClipboardList, FaCheckCircle, FaStar,
-  FaLightbulb, FaNetworkWired, FaFileAlt, FaDatabase, FaSearch,
+  FaLightbulb, FaNetworkWired, FaFileAlt, FaDatabase, FaSearch, FaEnvelope,
 };
 
 const academyCourses = [
@@ -90,7 +92,6 @@ const academyCourses = [
   { title: "Web3 Technologies", desc: "Blockchain fundamentals, Smart Contracts, and the Semantic Web.", fee: "₦80,000", time: "8 Weeks", status: "On Going" },
   { title: "Graphics Design", desc: "Master visual branding, typography, and professional Canva/Photoshop.", fee: "₦50,000", time: "6 Weeks", status: "On Going" },
   { title: "Product Management", desc: "From ideation to launch—product lifecycle, strategy, and roadmapping.", fee: "₦120,000", time: "8 Weeks", status: "On Going" },
-  { title: "Forex Trading", desc: "Analysis, Risk Management, and Price Action trading for global markets.", fee: "₦100,000", time: "8 Weeks", status: "On Going" },
   { title: "Architectural Design", desc: "AutoCAD, Revit, and rendering with Lumion, Twinmotion, or Vray.", fee: "₦150,000", time: "8 Weeks", status: "On Going" },
   { title: "Structural Engineering", desc: "Steel/concrete modeling using Orion, ProtaStructure, or STAAD.Pro.", fee: "₦150,000", time: "8 Weeks", status: "On Going" },
   { title: "MEP Designs", desc: "Mechanical, Electrical & Plumbing analysis and load calculations.", fee: "₦150,000", time: "8 Weeks", status: "On Going" },
@@ -393,6 +394,14 @@ const serviceConfig: Record<string, { image?: typeof omenImg; title: string; tag
       "NICEGENE Technologies is a duly licensed Data Protection Compliance Organization (DPCO), certified by the Nigeria Data Protection Commission (NDPC) under Section 33 of the Nigeria Data Protection Act, 2023 — helping organizations build lawful, secure, and audit-ready data protection practices.",
     gradient: "bg-gradient-to-b from-secondary/5 to-transparent",
     icon: FaShieldAlt,
+  },
+  "corporate-email": {
+    image: corporateEmailPoster,
+    title: "Corporate Email Setup",
+    tagline:
+      "Professional business email on your own domain — Google Workspace, Microsoft 365, or custom hosting, fully configured and secured by NICEGENE.",
+    gradient: "bg-gradient-to-b from-accent/5 to-transparent",
+    icon: FaEnvelope,
   },
 };
 
@@ -913,19 +922,91 @@ export default function ServiceDetailPage({ serviceId }: { serviceId: string }) 
             </Section>
           </>
         )}
+
+        {/* ===== CORPORATE EMAIL SETUP ===== */}
+        {serviceId === "corporate-email" && (
+          <>
+            <Section title="What We Set Up">
+              <FeatureGrid
+                items={[
+                  { icon: "FaGlobe", title: "Domain & Mailbox Configuration", desc: "We register or connect your existing domain, create staff mailboxes, and configure DNS, MX, SPF, DKIM, and DMARC records so your email is fully deliverable and protected against spoofing." },
+                  { icon: "FaServer", title: "Platform Setup & Migration", desc: "Full setup on Google Workspace, Microsoft 365, or Zoho Mail — including migration of existing mailboxes, contacts, and calendars with zero data loss." },
+                  { icon: "FaShieldAlt", title: "Security & Access Management", desc: "Multi-factor authentication, shared mailboxes, distribution groups, and admin console configuration, so your organization stays secure and easy to manage as it grows." },
+                ]}
+              />
+            </Section>
+
+            <Section title="Platforms We Support">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {["Google Workspace", "Microsoft 365", "Zoho Mail", "cPanel Email"].map((item, i) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="flex items-center justify-center gap-2 bg-secondary/5 border border-secondary/10 rounded-lg px-4 py-3"
+                  >
+                    <FaCheckCircle className="text-primary shrink-0" size={14} />
+                    <span className="text-sm text-text-primary/80">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="Our Setup Process">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { step: "01", title: "Discovery", desc: "We review your domain status, staff count, and existing email setup to recommend the right platform for your organization." },
+                  { step: "02", title: "Configuration", desc: "We set up your domain records, mailboxes, and security policies (SPF, DKIM, DMARC, MFA) on your chosen platform." },
+                  { step: "03", title: "Migration", desc: "Existing emails, contacts, and calendars are migrated safely, with no downtime or data loss for your team." },
+                  { step: "04", title: "Handover & Training", desc: "We hand over admin access and walk your staff through their new mailboxes, so your team is productive from day one." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.step}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-surface border border-gray-200 rounded-xl p-5"
+                  >
+                    <span className="text-xs font-mono text-accent font-semibold">{item.step}</span>
+                    <h4 className="text-base font-semibold text-text-primary mt-2 mb-1">{item.title}</h4>
+                    <p className="text-sm text-text-primary/70 leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="Technical Configuration">
+              <div className="flex flex-wrap gap-3">
+                {["DNS & MX Configuration", "SPF / DKIM / DMARC", "Multi-Factor Authentication", "Shared Mailboxes", "Distribution Groups", "Admin Console Setup"].map((item) => (
+                  <span
+                    key={item}
+                    className="px-4 py-2 text-sm rounded-full bg-secondary/10 text-primary border border-secondary/20"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </Section>
+          </>
+        )}
       </div>
 
       <CTASection
-        title={serviceId === "academy" ? "Ready to Start Your Journey?" : serviceId === "data-protection" ? "Ready to Assess Your Compliance?" : "Have a Project in Mind?"}
+        title={serviceId === "academy" ? "Ready to Start Your Journey?" : serviceId === "data-protection" ? "Ready to Assess Your Compliance?" : serviceId === "corporate-email" ? "Need Your Business on a Professional Email?" : "Have a Project in Mind?"}
         desc={
           serviceId === "academy"
             ? "Join over 500+ successful alumni and take the next step in your career today."
             : serviceId === "data-protection"
             ? "Book a Data Protection Consultation and let us help your organization meet its NDPC obligations."
+            : serviceId === "corporate-email"
+            ? "Let's get your organization set up on secure, reliable corporate email — talk to our team today."
             : "Let's discuss how NICEGENE can help you achieve your goals."
         }
-        href={serviceId === "academy" ? "/cohort" : serviceId === "data-protection" ? "/contact" : "/contact"}
-        label={serviceId === "academy" ? "Apply Now" : serviceId === "data-protection" ? "Book a Consultation" : "Get Started"}
+        href={serviceId === "academy" ? "/cohort" : "/contact"}
+        label={serviceId === "academy" ? "Apply Now" : serviceId === "data-protection" ? "Book a Consultation" : serviceId === "corporate-email" ? "Get Started" : "Get Started"}
       />
       <SpecsModal
         product={selectedProduct ? { name: selectedProduct.name, specs: selectedProduct.specs } : null}

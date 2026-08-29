@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import ServiceDetailPage from "@/components/services/ServiceDetailPage";
 
-const validIds = ["cloud", "consulting", "academy", "gadgets", "graphics", "web", "networking", "digitization", "drone", "photo", "pos", "data-protection"];
+const validIds = ["cloud", "consulting", "academy", "gadgets", "graphics", "web", "networking", "digitization", "drone", "photo", "pos", "data-protection", "corporate-email"];
 
 export function generateStaticParams() {
   return validIds.map((id) => ({ id }));

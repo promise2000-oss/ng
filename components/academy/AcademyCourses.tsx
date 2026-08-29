@@ -45,7 +45,7 @@ function getCourseCategory(course: Course): FilterCategory {
 
   if (
     title.includes("project") || title.includes("product") || title.includes("digital market") ||
-    title.includes("data") || title.includes("forex") || title.includes("digital product") ||
+    title.includes("data") || title.includes("digital product") ||
     title.includes("productivity") ||
     track.includes("management") || track.includes("product") || track.includes("market") ||
     track.includes("data") || track.includes("trading") || track.includes("productivity")

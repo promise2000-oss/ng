@@ -1,0 +1,164 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - link "Unsplash Home" [ref=e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=e9]
+    - generic [ref=e11]:
+      - link "Log in / Sign up" [ref=e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fs%2Fphotos%2Fcloud-computing-technology
+      - button "Language" [ref=e15] [cursor=pointer]
+      - button "Menu" [ref=e18] [cursor=pointer]
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - navigation [ref=e23]:
+        - search "Find visuals sitewide" [ref=e25]:
+          - button "Search Unsplash" [ref=e26] [cursor=pointer]
+          - combobox [ref=e29]:
+            - searchbox "Search Unsplash" [ref=e30]: cloud computing technology
+            - listbox
+          - button "Clear" [ref=e31] [cursor=pointer]
+          - button "Visual search" [ref=e36] [cursor=pointer]
+      - generic [ref=e39]:
+        - generic [ref=e45]:
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - link "Photos 3.4k":
+                - /url: /s/photos/cloud-computing-technology
+                - text: Photos
+                - generic: 3.4k
+            - listitem [ref=e48]:
+              - link "Illustrations 1.1k" [ref=e49] [cursor=pointer]:
+                - /url: /s/illustrations/cloud-computing-technology
+                - text: Illustrations
+                - generic [ref=e52]: 1.1k
+            - listitem [ref=e53]:
+              - button "More" [ref=e54] [cursor=pointer]
+          - button [ref=e56] [cursor=pointer]
+        - generic [ref=e60]:
+          - heading "Cloud computing technology" [level=1] [ref=e62]
+          - generic [ref=e66]:
+            - link "internet" [ref=e68] [cursor=pointer]:
+              - /url: /s/photos/internet
+            - link "cloud computing" [ref=e70] [cursor=pointer]:
+              - /url: /s/photos/cloud-computing
+            - link "technology" [ref=e72] [cursor=pointer]:
+              - /url: /s/photos/technology
+            - link "cloud" [ref=e74] [cursor=pointer]:
+              - /url: /s/photos/cloud
+            - link "computer" [ref=e76] [cursor=pointer]:
+              - /url: /s/photos/computer
+            - link "online" [ref=e78] [cursor=pointer]:
+              - /url: /s/photos/online
+            - link "hardware" [ref=e80] [cursor=pointer]:
+              - /url: /s/photos/hardware
+            - link "cpu" [ref=e82] [cursor=pointer]:
+              - /url: /s/photos/cpu
+            - link "data management" [ref=e84] [cursor=pointer]:
+              - /url: /s/photos/data-management
+            - link "cloud storage" [ref=e86] [cursor=pointer]:
+              - /url: /s/photos/cloud-storage
+            - link "digital transformation" [ref=e88] [cursor=pointer]:
+              - /url: /s/photos/digital-transformation
+            - link "information technology" [ref=e90] [cursor=pointer]:
+              - /url: /s/photos/information-technology
+        - generic [ref=e92]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - figure [ref=e98]:
+                - link [ref=e101]:
+                  - /url: /photos/cloud-computing-concept-background-on-circuit-board-glowing-light-sweep-data-code-on-cloud-c_dSqY9yxs0
+                  - img "Cloud Computing concept background, on circuit board , glowing light sweep, data code on cloud" [ref=e102]
+              - generic [ref=e103]:
+                - heading "Sponsored images" [level=4] [ref=e104]
+                - generic [ref=e113]: ––– – –– –– – –– –––– ––– ––––
+              - figure [ref=e114]:
+                - link [ref=e117]:
+                  - /url: /photos/a-computer-tower-with-a-purple-light-wlQUkvDhvQw
+                  - img "a computer tower with a purple light" [ref=e118]
+              - figure [ref=e119]:
+                - link [ref=e122]:
+                  - /url: /photos/diagram-TKAg3WignSw
+                  - img "diagram" [ref=e123]
+              - figure [ref=e124]:
+                - link [ref=e127]:
+                  - /url: /photos/icon-VofYoHuMWyc
+                  - img "icon" [ref=e128]
+              - figure [ref=e129]:
+                - link [ref=e132]:
+                  - /url: /photos/a-white-cloud-sitting-on-top-of-a-blue-circuit-board-92k84OkjQrw
+                  - img "a white cloud sitting on top of a blue circuit board" [ref=e133]
+              - figure [ref=e134]:
+                - link [ref=e137]:
+                  - /url: /photos/3d-render-many-red-ladders-reach-the-white-cloud-on-the-blue-sky-success-metaphor-surreal-dream-opportunity-or-choice-concept-UO6M1YTM-BA
+                  - img "3d render, many red ladders reach the white cloud on the blue sky. Success metaphor, surreal dream, opportunity or choice concept" [ref=e138]
+              - figure [ref=e139]:
+                - link [ref=e142]:
+                  - /url: /photos/clickhouse-database-advertisement-for-ai-I8DT2kuEDyY
+                  - img "Clickhouse database advertisement for ai" [ref=e143]
+            - generic [ref=e144]:
+              - figure [ref=e145]:
+                - link [ref=e148]:
+                  - /url: /photos/3d-render-of-cloud-computing-concept-Am6pBe2FpJw
+                  - img "3D render of cloud computing concept" [ref=e149]
+              - figure [ref=e150]:
+                - link [ref=e153]:
+                  - /url: /photos/cloud-computing-icons-with-data-charts-FocSgUZ10JM
+                  - img "A white cloud icon on a glass square with floating data charts and cylinders" [ref=e154]
+              - figure [ref=e155]:
+                - link [ref=e158]:
+                  - /url: /photos/a-computer-generated-image-of-a-computer-WELyMatW3mw
+                  - img "a computer generated image of a computer" [ref=e159]
+              - figure [ref=e160]:
+                - link [ref=e163]:
+                  - /url: /photos/diagram-k5AxNUn4c5o
+                  - img "diagram" [ref=e164]
+              - figure [ref=e165]:
+                - link [ref=e168]:
+                  - /url: /photos/cloud-computing-technology-concept-background-white-cloud-connect-with-network-cable-3d-rendering-ZGvS7H9nYbk
+                  - img "Cloud computing technology concept background, white cloud connect with network cable, 3d rendering" [ref=e169]
+              - figure [ref=e170]:
+                - link [ref=e173]:
+                  - /url: /photos/a-blue-and-white-logo-ahgsuFHlIFo
+                  - img "a blue and white logo" [ref=e174]
+              - figure [ref=e175]:
+                - link [ref=e178]:
+                  - /url: /photos/cloud-icon-with-data-and-padlock-8zB4P0eafrs
+                  - img "A blue glass cloud icon with data layers above a silver padlock" [ref=e179]
+              - figure [ref=e180]:
+                - link [ref=e183]:
+                  - /url: /photos/glowing-circuit-board-with-green-light-and-metallic-spheres-AZLGCb2WLp8
+                  - img "Glowing circuit board with green light and metallic spheres" [ref=e184]
+              - figure [ref=e185]:
+                - link [ref=e188]:
+                  - /url: /photos/bus-stop-advertisement-for-ai-cloud-TCiCQD1YwZw
+                  - img "Bus stop advertisement for ai cloud" [ref=e189]
+            - generic [ref=e190]:
+              - contentinfo [ref=e195]:
+                - generic [ref=e196]: –– ––– ––– –– ––– – ––– ––– –––– – – –– ––– – – ––– –– –– –––– ––
+                - generic [ref=e202] [cursor=pointer]
+              - figure [ref=e203]:
+                - link [ref=e206]:
+                  - /url: /photos/cloud-computing-and-network-security-concept-3d-renderingconceptual-image-ehzxhX5OsHg
+                  - img "Cloud computing and network security concept, 3d rendering,conceptual image" [ref=e207]
+              - figure [ref=e208]:
+                - link [ref=e211]:
+                  - /url: /photos/a-close-up-of-a-device-KPZNNKQbTMw
+                  - img "a close-up of a device" [ref=e212]
+              - figure [ref=e213]:
+                - link [ref=e216]:
+                  - /url: /photos/hands-typing-on-a-laptop-computer-screen-Es33oEXaRrE
+                  - img "Hands typing on a laptop computer screen" [ref=e217]
+              - figure [ref=e218]:
+                - link [ref=e221]:
+                  - /url: /photos/yellow-and-green-cables-are-neatly-connected-yhJVLxcquEY
+                  - img "Yellow and green cables are neatly connected" [ref=e222]
+          - heading "Browse premium images on iStock | Claim your discount now" [level=2] [ref=e226]:
+            - text: Browse premium images on iStock
+            - generic [ref=e227]: "| Claim your discount now"
+          - button "Load more" [ref=e241] [cursor=pointer]
+          - generic [ref=e242]:
+            - link [ref=e243] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=e246]: Make something awesome
+    - generic:
+      - region "Notifications"

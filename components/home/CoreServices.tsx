@@ -14,7 +14,8 @@ import digitizationImg from "@/assets/images/core-services/digitization.jpg";
 import posImg from "@/assets/images/core-services/pos.jpg";
 import academyImg from "@/assets/images/core-services/academy.jpg";
 import gadgetsImg from "@/assets/images/core-services/gadgets.jpg";
-import dataProtectionImg from "@/assets/images/core-services/consulting.jpg";
+import dataProtectionImg from "@/assets/images/core-services/data-protection.jpg";
+import corporateEmailImg from "@/assets/images/core-services/corporate-email.jpg";
 
 const services = [
   {
@@ -79,6 +80,13 @@ const services = [
     description:
       "Premium laptops and IT hardware from trusted global brands, backed by our own technical support.",
     image: gadgetsImg,
+  },
+  {
+    slug: "corporate-email",
+    title: "Corporate Email Setup",
+    description:
+      "Professional business email on your own domain — Google Workspace, Microsoft 365, or custom hosting, fully configured and secured.",
+    image: corporateEmailImg,
   },
 ];
 

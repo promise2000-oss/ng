@@ -48,7 +48,7 @@ export default function CareersHero() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-secondary text-sm uppercase tracking-[0.2em]"
+          className="text-[#87CEEB] text-sm uppercase tracking-[0.2em]"
         >
           Careers
         </motion.p>

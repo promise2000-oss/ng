@@ -11,8 +11,8 @@ export default function EventsCTA() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
         <div className="relative z-10">
-          <h2 className="text-3xl md:text-4xl font-semibold">Suggest an <span className="text-primary">Event</span></h2>
-          <p className="text-text-primary mt-4 max-w-2xl mx-auto text-sm">
+          <h2 className="text-3xl md:text-4xl  text-[#87CEEB] font-semibold">Suggest an Event</h2>
+          <p className="text-white mt-4 max-w-2xl mx-auto text-sm">
             Have an idea for a team activity, birthday celebration, or company event? Reach out to the admin team to have it added.
           </p>
           <Link href="/contact"

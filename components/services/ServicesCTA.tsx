@@ -51,11 +51,11 @@ export default function ServicesCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl md:text-4xl font-semibold"
+            className="text-3xl text-[#87CEEB] md:text-4xl font-semibold"
           >
             Have a Custom Project{" "}
             <motion.span
-              className="text-accent inline-block"
+              className="text-[#87CEEB] inline-block"
               animate={{
                 textShadow: isBtnHovered
                   ? [

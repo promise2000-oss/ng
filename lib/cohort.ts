@@ -10,7 +10,6 @@ export const courses = [
   "Introduction to Web3 Technologies",
   "Professional Graphics Design",
   "Product Management",
-  "Introduction to Forex Trading",
   "Architectural Design & 3D Visualization",
   "Structural Engineering Design & Analysis",
   "MEP (Mechanical, Electrical & Plumbing) Design",

@@ -1,0 +1,120 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - link "Unsplash Home" [ref=e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=e9]
+    - generic [ref=e11]:
+      - link "Log in / Sign up" [ref=e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fs%2Fphotos%2Fdata-center-server-room
+      - button "Language" [ref=e15] [cursor=pointer]
+      - button "Menu" [ref=e18] [cursor=pointer]
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - navigation [ref=e23]:
+        - search "Find visuals sitewide" [ref=e25]:
+          - button "Search Unsplash" [ref=e26] [cursor=pointer]
+          - combobox [ref=e29]:
+            - searchbox "Search Unsplash" [ref=e30]: data center server room
+            - listbox
+          - button "Clear" [ref=e31] [cursor=pointer]
+          - button "Visual search" [ref=e36] [cursor=pointer]
+      - generic [ref=e39]:
+        - generic [ref=e45]:
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - link "Photos 335":
+                - /url: /s/photos/data-center-server-room
+                - text: Photos
+                - generic: "335"
+            - listitem [ref=e48]:
+              - link "Illustrations 28" [ref=e49] [cursor=pointer]:
+                - /url: /s/illustrations/data-center-server-room
+                - text: Illustrations
+                - generic [ref=e52]: "28"
+            - listitem [ref=e53]:
+              - button "More" [ref=e54] [cursor=pointer]
+          - button [ref=e56] [cursor=pointer]
+        - generic [ref=e60]:
+          - heading "Data center server room" [level=1] [ref=e62]
+          - generic [ref=e66]:
+            - link "data center" [ref=e68] [cursor=pointer]:
+              - /url: /s/photos/data-center
+            - link "server room" [ref=e70] [cursor=pointer]:
+              - /url: /s/photos/server-room
+            - link "information technology" [ref=e72] [cursor=pointer]:
+              - /url: /s/photos/information-technology
+            - link "server rack" [ref=e74] [cursor=pointer]:
+              - /url: /s/photos/server-rack
+            - link "technology" [ref=e76] [cursor=pointer]:
+              - /url: /s/photos/technology
+            - link "data storage" [ref=e78] [cursor=pointer]:
+              - /url: /s/photos/data-storage
+            - link "digital" [ref=e80] [cursor=pointer]:
+              - /url: /s/photos/digital
+            - link "it infrastructure" [ref=e82] [cursor=pointer]:
+              - /url: /s/photos/it-infrastructure
+            - link "data processing" [ref=e84] [cursor=pointer]:
+              - /url: /s/photos/data-processing
+            - link "cloud computing" [ref=e86] [cursor=pointer]:
+              - /url: /s/photos/cloud-computing
+        - generic [ref=e88]:
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - figure [ref=e94]:
+                - link [ref=e97]:
+                  - /url: /photos/yellow-and-green-cables-are-neatly-connected-yhJVLxcquEY
+                  - img "Yellow and green cables are neatly connected" [ref=e98]
+              - generic [ref=e99]:
+                - heading "Sponsored images" [level=4] [ref=e100]
+                - generic [ref=e109]: ––– – –– –– – –– –––– ––– ––––
+              - figure [ref=e110]:
+                - link [ref=e113]:
+                  - /url: /photos/black-and-white-electronic-device-nA1MoDfGY14
+                  - img "black and white electronic device" [ref=e114]
+              - figure [ref=e115]:
+                - link [ref=e118]:
+                  - /url: /photos/a-server-room-with-rows-of-servers-in-it-YYZnrK8NrSw
+                  - img "A server room with rows of servers in it" [ref=e119]
+              - figure [ref=e120]:
+                - link [ref=e123]:
+                  - /url: /photos/servers-line-a-data-center-hallway-Uiy3_TW6m3M
+                  - img "Servers line a data center hallway" [ref=e124]
+            - generic [ref=e125]:
+              - figure [ref=e126]:
+                - link [ref=e129]:
+                  - /url: /photos/technician-working-on-server-equipment-with-tools-ufT32_VFS-I
+                  - img "Technician working on server equipment with tools" [ref=e130]
+              - figure [ref=e131]:
+                - link [ref=e134]:
+                  - /url: /photos/close-up-of-server-cooling-fans-in-a-vibrant-data-center-iZe21DzHnUg
+                  - img "Close-up of server cooling fans in a vibrant data center" [ref=e135]
+              - figure [ref=e136]:
+                - link [ref=e139]:
+                  - /url: /photos/modern-data-center-with-rows-of-white-server-cabinets-fImCPTZ026U
+                  - img "Modern data center with rows of white server cabinets" [ref=e140]
+              - figure [ref=e141]:
+                - link [ref=e144]:
+                  - /url: /photos/silhouette-of-virtual-human-on-brain-delta-wave-form-3d-illustration-represent-meditation-and--deep-sleep-therapy-aHXH23QRn7w
+                  - img "silhouette of virtual human on brain delta wave form 3d illustration , represent meditation and deep sleep therapy" [ref=e145]
+            - generic [ref=e146]:
+              - contentinfo [ref=e151]:
+                - generic [ref=e152]: –– ––– ––– –– ––– – ––– ––– –––– – – –– ––– – – ––– –– –– –––– ––
+                - generic [ref=e158] [cursor=pointer]
+              - figure [ref=e159]:
+                - link [ref=e162]:
+                  - /url: /photos/server-rack-filled-with-network-and-electronic-equipment-UpkcO_xS5k0
+                  - img "Server rack filled with network and electronic equipment" [ref=e163]
+              - figure [ref=e164]:
+                - link [ref=e167]:
+                  - /url: /photos/man-typing-on-keyboard-in-front-of-multiple-computer-monitors-Nm_hDwuVtcw
+                  - img "Man typing on keyboard in front of multiple computer monitors" [ref=e168]
+          - heading "Browse premium images on iStock | Claim your discount now" [level=2] [ref=e172]:
+            - text: Browse premium images on iStock
+            - generic [ref=e173]: "| Claim your discount now"
+          - button "Load more" [ref=e191] [cursor=pointer]
+          - generic [ref=e192]:
+            - link [ref=e193] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=e196]: Make something awesome
+    - generic:
+      - region "Notifications"

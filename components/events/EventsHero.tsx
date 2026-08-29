@@ -35,7 +35,7 @@ export default function EventsHero({
         style={{ y: parallaxY }}
       />
       <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-14 h-14 rounded-full bg-white/10 border border-white/10 flex items-center justify-center mb-6 overflow-hidden ring-2 ring-white/20"
@@ -47,7 +47,7 @@ export default function EventsHero({
             height={56}
             className="object-cover w-full h-full"
           />
-        </motion.div>
+        </motion.div> */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

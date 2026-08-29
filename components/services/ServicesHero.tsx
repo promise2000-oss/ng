@@ -91,7 +91,7 @@ export default function ServicesHero() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               className={`inline-block mr-[0.3em] ${
-                word === "Digital" || word === "Future" ? "text-secondary" : "text-white"
+                word === "Digital" || word === "Future" ? "text-[#87CEEB]" : "text-white"
               }`}
             >
               {word}

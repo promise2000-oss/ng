@@ -4,14 +4,13 @@ import frontendImg from "@/assets/images/academy/courses/frontend.jpg";
 import cloudImg from "@/assets/images/academy/courses/cloud.jpg";
 import productDesignImg from "@/assets/images/academy/courses/product-design.jpg";
 import projectManagementImg from "@/assets/images/academy/courses/project-management.jpg";
-import cybersecurityImg from "@/assets/images/academy/courses/cybersecurity.jpg";
+import cybersecurityImg from "@/assets/images/services/0x0.webp";
 import dataAnalyticsImg from "@/assets/images/academy/courses/data-analytics.jpg";
 import digitalMarketingImg from "@/assets/images/academy/courses/digital-marketing.jpg";
 import videoEditingImg from "@/assets/images/academy/courses/video-editing.jpg";
 import web3Img from "@/assets/images/academy/courses/web3.jpg";
 import graphicsDesignImg from "@/assets/images/academy/courses/graphics-design.jpg";
 import productManagementImg from "@/assets/images/academy/courses/product-management.jpg";
-import forexImg from "@/assets/images/academy/courses/forex.jpg";
 import architecturalImg from "@/assets/images/academy/courses/architectural.jpg";
 import structuralImg from "@/assets/images/academy/courses/structural.jpg";
 import mepImg from "@/assets/images/academy/courses/mep.jpg";
@@ -45,7 +44,6 @@ export const courses: Course[] = [
   { image: web3Img, title: "Introduction to Web3 Technologies", desc: "Blockchain & Smart Contract fundamentals", track: "Web3 Track", fee: "₦80,000", time: "8 Weeks", status: "On Going", courseDesc: "Introduction to Blockchain fundamentals, Smart Contracts, and the future of the Semantic Web." },
   { image: graphicsDesignImg, title: "Graphics Design", desc: "Branding, Typography & Photoshop.", track: "Graphics Track", fee: "₦50,000", time: "6 Weeks", status: "On Going", courseDesc: "Master visual branding, typography, and professional Canva/Photoshop skills." },
   { image: productManagementImg, title: "Product Management", desc: "Ideation, Roadmap & Launch.", track: "Product Track", fee: "₦120,000", time: "8 Weeks", status: "On Going", courseDesc: "From ideation to launch—learn product lifecycle, strategy, and roadmapping." },
-  { image: forexImg, title: "Introduction to Forex Trading", desc: "Technical & Fundamental Analysis.", track: "Trading Track", fee: "₦100,000", time: "8 Weeks", status: "On Going", courseDesc: "Analysis, Risk Management, and Price Action trading for global markets." },
   { image: architecturalImg, title: "Architectural Design", desc: "2D Drafting & 3D Visualization.", track: "Architecture Track", fee: "₦150,000", time: "8 Weeks", status: "On Going", courseDesc: "Designing using AutoCAD, Revit, and rendering with Lumion, Twinmotion, or Vray." },
   { image: structuralImg, title: "Structural Engineering Design", desc: "Design & Member Detailing.", track: "Engineering Track", fee: "₦150,000", time: "8 Weeks", status: "On Going", courseDesc: "Modeling and analysis of steel/concrete using Orion, ProtaStructure, or STAAD.Pro." },
   { image: mepImg, title: "MEP Designs", desc: "Mechanical, Electrical & Plumbing Analysis.", track: "MEP Track", fee: "₦150,000", time: "8 Weeks", status: "On Going", courseDesc: "Building system design including load calculations and piping layout." },
