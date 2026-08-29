@@ -80,7 +80,7 @@ export default function AboutHero() {
           >
             <Link
               href="/projects"
-              className="mt-8 inline-flex items-center gap-2 px-6 py-3 border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              className="mt-8 inline-flex items-center gap-2 px-6 py-3 border border-accent text-[#87CEEB] rounded-full hover:bg-accent hover:text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
               Explore Our Work <FiArrowRight />
             </Link>

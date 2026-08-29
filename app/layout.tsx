@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import PageTransitionWrapper from "@/components/PageTransitionWrapper";
 import GlobalBackground from "@/components/animations/GlobalBackground";
 import Providers from "@/lib/providers";
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   description:
     "Nigeria's Premier IT Consulting & Digital Solutions Firm — we design, build, and manage secure cloud systems, digital infrastructure, and technology training that power schools, businesses, and public institutions across Africa.",
   icons: {
-    icon: [{ url: "/NICEGENE%20TECHNOLOGIES%20LOGO.png", sizes: "64x64", type: "image/png" }],
-    apple: "/NICEGENE%20TECHNOLOGIES%20LOGO.png",
+    icon: [{ url: "/apple-touch-icon.png", sizes: "512x512", type: "image/png" }],
+    apple: "/apple-touch-icon.png",
   },
 };
 

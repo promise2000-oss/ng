@@ -406,6 +406,26 @@ img {
   animation: story-progress-fill 8s linear forwards;
 }
 
+/* ── Hero section premium animations ── */
+
+/* CTA button glow pulse */
+@keyframes hero-cta-glow {
+  0%, 100% {
+    box-shadow:
+      0 4px 20px rgba(46, 95, 184, 0.25),
+      0 0 40px rgba(46, 95, 184, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 4px 28px rgba(46, 95, 184, 0.4),
+      0 0 60px rgba(46, 95, 184, 0.2);
+  }
+}
+
+.hero-cta {
+  animation: hero-cta-glow 3s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro-glow-1,
   .intro-glow-2,
@@ -421,7 +441,8 @@ img {
   .story-light-streak,
   .story-shimmer-text,
   .story-quote-mark,
-  .story-progress-bar {
+  .story-progress-bar,
+  .hero-cta {
     animation: none;
   }
 }

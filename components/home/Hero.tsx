@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useTransform, useReducedMotion, useMotionValueEvent } from "motion/react";
 import { FaArrowRight, FaShieldAlt } from "react-icons/fa";
 
 import bg1 from "@/assets/images/services/23324.jpg";
@@ -58,6 +58,9 @@ const images = [
   bg3,
 ];
 
+const SLIDE_INTERVAL = 5000;
+const CROSSFADE_MS = 1400;
+
 const services = [
   "Cloud System Development",
   "Web & App Development",
@@ -76,18 +79,66 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 500], [0, -50]);
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const indexRef = useRef(0);
+  const crossfadingRef = useRef(false);
+  const pausedRef = useRef(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const overlayImgRef = useRef<HTMLImageElement>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval>>(null);
+  const fadeTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const preloadRef = useRef<HTMLImageElement | null>(null);
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 200));
 
+  // Preload next image whenever index changes
   useEffect(() => {
-    if (paused) return;
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [paused]);
+    const nextIdx = (index + 1) % images.length;
+    const nextSrc = images[nextIdx];
+    const img = new window.Image();
+    img.src = nextSrc.src;
+    preloadRef.current = img;
+  }, [index]);
+
+  // Crossfade: set overlay opacity via ref, swap index after transition
+  const crossfade = (to: number) => {
+    if (crossfadingRef.current) return;
+    crossfadingRef.current = true;
+
+    // Set overlay image source and fade in
+    if (overlayImgRef.current) {
+      overlayImgRef.current.src = images[to].src;
+    }
+    if (overlayRef.current) {
+      overlayRef.current.style.opacity = "1";
+    }
+
+    fadeTimerRef.current = setTimeout(() => {
+      // Swap base to new image, hide overlay
+      setIndex(to);
+      indexRef.current = to;
+      if (overlayRef.current) {
+        overlayRef.current.style.opacity = "0";
+      }
+      crossfadingRef.current = false;
+    }, CROSSFADE_MS);
+  };
+
+  // Stable interval — reads from refs, never re-creates
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      if (!crossfadingRef.current && !pausedRef.current) {
+        const next = (indexRef.current + 1) % images.length;
+        crossfade(next);
+      }
+    }, SLIDE_INTERVAL);
+
+    return () => {
+      clearInterval(timerRef.current ?? undefined);
+      clearTimeout(fadeTimerRef.current ?? undefined);
+    };
+  }, []);
 
   const entrance = (delay: number, duration = 0.6) => ({
     initial: reduceMotion ? false : { opacity: 0, y: 24 },
@@ -208,47 +259,44 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* FULL-BLEED IMAGE SLIDESHOW */}
+        {/* FULL-BLEED IMAGE SLIDESHOW — ref-driven crossfade */}
         <div
           className="absolute inset-0 z-0"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          onMouseEnter={() => { pausedRef.current = true; }}
+          onMouseLeave={() => { pausedRef.current = false; }}
         >
-          <AnimatePresence>
-            <motion.div
-              key={index}
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={images[index]}
-                alt=""
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-              />
-            </motion.div>
-          </AnimatePresence>
+          {/* Base layer — current image */}
+          <Image
+            src={images[index]}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+
+          {/* Overlay layer — fades in via ref, no React re-render */}
+          <div
+            ref={overlayRef}
+            className="absolute inset-0"
+            style={{
+              opacity: 0,
+              transition: `opacity ${CROSSFADE_MS}ms ease-in-out`,
+              willChange: "opacity",
+            }}
+          >
+            <Image
+              ref={overlayImgRef}
+              src={images[0]}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
 
           {/* Gradient overlay — left-heavy for text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-primary/20" />
-
-          {/* Progress dots */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                aria-label={`Show image ${i + 1} of ${images.length}`}
-                className={`rounded-full transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                  i === index ? "w-6 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/40 hover:bg-white/70"
-                }`}
-              />
-            ))}
-          </div>
         </div>
 
         {/* Scroll-to-explore cue */}
