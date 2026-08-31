@@ -121,31 +121,26 @@ function HeadingPart2({ reduceMotion }: { reduceMotion: boolean }) {
 }
 
 function AnimatedParagraph({ children, delay = 0 }: { children: string; delay?: number }) {
-  const words = children.split(" ");
   const highlightWords = ["IT Consulting", "Digital Solutions", "cloud-based systems", "NICEGENE Academy", "digital transformation", "cloud-native", "serverless", "zero service downtime"];
 
+  const highlightedText = children.split(" ").map(word => {
+    const isHighlight = highlightWords.some(hw => word.includes(hw.split(" ")[0]));
+    return isHighlight ? `<span class="text-primary font-semibold">${word}</span>` : word;
+  }).join(" ");
+
   return (
-    <p className="text-text-primary/80 leading-relaxed">
-      {words.map((word, i) => {
-        const isHighlight = highlightWords.some(hw => word.includes(hw.split(" ")[0]));
-        return (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{
-              delay: delay + i * 0.025,
-              duration: 0.45,
-              ease: [0.2, 0.65, 0.3, 0.9],
-            }}
-            className={`inline-block mr-[0.25em] ${isHighlight ? "text-primary font-semibold" : ""}`}
-          >
-            {word}
-          </motion.span>
-        );
-      })}
-    </p>
+    <motion.p
+      initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{
+        delay,
+        duration: 0.6,
+        ease: [0.2, 0.65, 0.3, 0.9],
+      }}
+      className="text-text-primary/80 leading-relaxed text-justify"
+      dangerouslySetInnerHTML={{ __html: highlightedText }}
+    />
   );
 }
 

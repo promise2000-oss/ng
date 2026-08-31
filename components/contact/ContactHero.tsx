@@ -31,7 +31,7 @@ export default function ContactHero() {
           className="text-[#87CEEB] text-sm uppercase tracking-[0.2em]">Get in Touch</motion.p>
         <TextReveal as="h1" delay={0.1}
           className="text-4xl md:text-6xl font-semibold leading-tight mt-4 text-white">
-          We&apos;d Love to Hear About Your Project
+          We would Love to Hear About Your Project
         </TextReveal>
         <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
           className="text-white/80 mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">

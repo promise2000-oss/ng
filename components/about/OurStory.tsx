@@ -212,35 +212,27 @@ function WordRevealText({
   delay: number;
   reduceMotion: boolean;
 }) {
-  const words = text.split(" ");
+  const highlightedText = text.split(" ").map(word => {
+    const isHighlight = highlight.some((h) =>
+      word.toLowerCase().replace(/[^a-z]/g, "").includes(h.toLowerCase().split(" ")[0].replace(/[^a-z]/g, ""))
+    );
+    return isHighlight
+      ? `<span class="text-primary font-semibold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gradient-to-r after:from-primary/40 after:via-primary after:to-primary/40">${word}</span>`
+      : word;
+  }).join(" ");
 
   return (
-    <p className="text-text-primary/80 leading-[1.8] text-[15px] md:text-base">
-      {words.map((word, i) => {
-        const isHighlight = highlight.some((h) =>
-          word.toLowerCase().replace(/[^a-z]/g, "").includes(h.toLowerCase().split(" ")[0].replace(/[^a-z]/g, ""))
-        );
-        return (
-          <motion.span
-            key={i}
-            initial={reduceMotion ? undefined : { opacity: 0, y: 8, filter: "blur(3px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{
-              delay: reduceMotion ? 0 : delay + i * 0.018,
-              duration: 0.35,
-              ease: [0.2, 0.65, 0.3, 0.9],
-            }}
-            className={`inline-block mr-[0.25em] ${
-              isHighlight
-                ? "text-primary font-semibold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gradient-to-r after:from-primary/40 after:via-primary after:after:to-primary/40"
-                : ""
-            }`}
-          >
-            {word}
-          </motion.span>
-        );
-      })}
-    </p>
+    <motion.p
+      initial={reduceMotion ? undefined : { opacity: 0, y: 20, filter: "blur(4px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{
+        delay,
+        duration: 0.6,
+        ease: [0.2, 0.65, 0.3, 0.9],
+      }}
+      className="text-text-primary/80 leading-[1.8] text-[15px] md:text-base text-justify"
+      dangerouslySetInnerHTML={{ __html: highlightedText }}
+    />
   );
 }
 

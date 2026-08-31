@@ -24,9 +24,8 @@ export default function VisionMission() {
               </motion.div>
               <h3 className="text-xl font-semibold text-primary">Our Vision</h3>
             </div>
-            <p className="text-text-primary leading-relaxed">
-              To be the leading catalyst for digital transformation in Africa, empowering
-              businesses with world-class Cloud services and technological solutions.
+            <p className="text-text-primary leading-relaxed text-justify">
+              To be the Technology partner of choice for startups, institutions, and enterprises building African's next chapter of digital growth.
             </p>
           </motion.div>
         </Reveal>
@@ -46,10 +45,9 @@ export default function VisionMission() {
               </motion.div>
               <h3 className="text-xl font-semibold text-primary">Our Mission</h3>
             </div>
-            <p className="text-text-primary leading-relaxed">
-              To deliver high-precision digital services and industry-standard training
-              that prepares professionals for the global market.
-            </p>
+            <p className="text-text-primary leading-relaxed text-justify">
+              To deliver digital engineering and IT consulting of uncompromising Technical Quality, rooted in commercial realities, and delivered with reliability modern Business demand.
+             </p>
           </motion.div>
         </Reveal>
       </div>

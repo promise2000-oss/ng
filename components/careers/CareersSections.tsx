@@ -7,7 +7,7 @@ import GridOverlay from "@/components/animations/GridOverlay";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import AnimatedGradient from "@/components/animations/AnimatedGradient";
 import { FaEnvelope, FaRocket, FaGraduationCap, FaHeart, FaCheck } from "react-icons/fa";
-import cloudProjectsImg from "@/assets/images/services/cloud-projects.jpg";
+import cloudProjectsImg from "@/assets/images/services/cloud-servers.jpg";
 import careerGrowthImg from "@/assets/images/services/career-growth.jpg";
 import teamworkValuesImg from "@/assets/images/services/teamwork-values.jpg";
 
