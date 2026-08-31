@@ -7,7 +7,7 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import cloudImg from "@/assets/images/services/cloud-servers.jpg";
 import consultingImg from "@/assets/images/services/consulting-strategy.jpg";
-import dataProtectionImg from "@/assets/images/services/data-protection.jpg";
+import dataProtectionImg from "@/assets/images/services/0x0.webp";
 import webImg from "@/assets/images/services/web-development.jpg";
 import networkingImg from "@/assets/images/services/NICEGENE system networking and server setup.jpg";
 import digitizationImg from "@/assets/images/services/NICEGENE cloud migration and digitization.jpg";

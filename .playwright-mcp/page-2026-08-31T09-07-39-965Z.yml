@@ -1,0 +1,164 @@
+- generic [ref=f2e4]:
+  - navigation [ref=f2e5]:
+    - link "Unsplash Home" [ref=f2e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=f2e9]
+    - generic [ref=f2e11]:
+      - link "Log in / Sign up" [ref=f2e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fs%2Fphotos%2Fpaper-to-digital-document-scanning
+      - button "Language" [ref=f2e15] [cursor=pointer]
+      - button "Menu" [ref=f2e18] [cursor=pointer]
+  - generic [ref=f2e21]:
+    - generic [ref=f2e22]:
+      - navigation [ref=f2e23]:
+        - search "Find visuals sitewide" [ref=f2e25]:
+          - button "Search Unsplash" [ref=f2e26] [cursor=pointer]
+          - combobox [ref=f2e29]:
+            - searchbox "Search Unsplash" [ref=f2e30]: paper to digital document scanning
+            - listbox
+          - button "Clear" [ref=f2e31] [cursor=pointer]
+          - button "Visual search" [ref=f2e36] [cursor=pointer]
+      - generic [ref=f2e39]:
+        - generic [ref=f2e45]:
+          - list [ref=f2e46]:
+            - listitem [ref=f2e47]:
+              - link "Photos 6.3k":
+                - /url: /s/photos/paper-to-digital-document-scanning
+                - text: Photos
+                - generic: 6.3k
+            - listitem [ref=f2e48]:
+              - link "Illustrations 799" [ref=f2e49] [cursor=pointer]:
+                - /url: /s/illustrations/paper-to-digital-document-scanning
+                - text: Illustrations
+                - generic [ref=f2e52]: "799"
+            - listitem [ref=f2e53]:
+              - button "More" [ref=f2e54] [cursor=pointer]
+          - button [ref=f2e56] [cursor=pointer]
+        - generic [ref=f2e60]:
+          - heading "Paper to digital document scanning" [level=1] [ref=f2e62]
+          - generic [ref=f2e66]:
+            - link "document" [ref=f2e68] [cursor=pointer]:
+              - /url: /s/photos/document
+            - link "office" [ref=f2e70] [cursor=pointer]:
+              - /url: /s/photos/office
+            - link "office supply" [ref=f2e72] [cursor=pointer]:
+              - /url: /s/photos/office-supply
+            - link "document management" [ref=f2e74] [cursor=pointer]:
+              - /url: /s/photos/document-management
+            - link "paper" [ref=f2e76] [cursor=pointer]:
+              - /url: /s/photos/paper
+            - link "organization" [ref=f2e78] [cursor=pointer]:
+              - /url: /s/photos/organization
+            - link "business" [ref=f2e80] [cursor=pointer]:
+              - /url: /s/photos/business
+            - link "paperwork" [ref=f2e82] [cursor=pointer]:
+              - /url: /s/photos/paperwork
+            - link "business operation" [ref=f2e84] [cursor=pointer]:
+              - /url: /s/photos/business-operation
+            - link "research" [ref=f2e86] [cursor=pointer]:
+              - /url: /s/photos/research
+            - link "workspace" [ref=f2e88] [cursor=pointer]:
+              - /url: /s/photos/workspace
+            - link "magnifying glass" [ref=f2e90] [cursor=pointer]:
+              - /url: /s/photos/magnifying-glass
+        - generic [ref=f2e92]:
+          - generic [ref=f2e96]:
+            - generic [ref=f2e97]:
+              - figure [ref=f2e98]:
+                - link [ref=f2e101]:
+                  - /url: /photos/a-person-holding-a-binder-in-front-of-a-printer-iThC95Jsn8g
+                  - img "a person holding a binder in front of a printer" [ref=f2e102]
+              - generic [ref=f2e103]:
+                - heading "Sponsored images" [level=4] [ref=f2e104]
+                - generic [ref=f2e113]: ––– – –– –– – –– –––– ––– ––––
+              - figure [ref=f2e114]:
+                - link [ref=f2e117]:
+                  - /url: /photos/a-man-in-a-white-shirt-and-tie-holding-a-folder-mKYf6jV-rYo
+                  - img "a man in a white shirt and tie holding a folder" [ref=f2e118]
+              - figure [ref=f2e119]:
+                - link [ref=f2e122]:
+                  - /url: /photos/business-person-businesswoman-printer-woman-rUvxz2MCtCE
+                  - img "Business Person, Businesswoman, Printer, Woman" [ref=f2e123]
+              - figure [ref=f2e124]:
+                - link [ref=f2e127]:
+                  - /url: /photos/person-holding-magazine-VeZ_Fe_YDxE
+                  - img "person holding magazine" [ref=f2e128]
+              - figure [ref=f2e129]:
+                - link [ref=f2e132]:
+                  - /url: /photos/hand-holding-an-orange-bar-near-a-textured-surface-dEQf472Gjb0
+                  - img "Hand holding an orange bar near a textured surface" [ref=f2e133]
+              - figure [ref=f2e134]:
+                - link [ref=f2e137]:
+                  - /url: /photos/a-desk-with-a-laptop-and-a-phone-on-it-2XgGHk4i4V8
+                  - img "a desk with a laptop and a phone on it" [ref=f2e138]
+              - figure [ref=f2e139]:
+                - link [ref=f2e142]:
+                  - /url: /photos/pile-of-books-_zWovlwjA8Y
+                  - img "pile of books" [ref=f2e143]
+            - generic [ref=f2e144]:
+              - figure [ref=f2e145]:
+                - link [ref=f2e148]:
+                  - /url: /photos/a-woman-sitting-at-a-table-reading-a-paper-ecHGTPfjNfA
+                  - img "a woman sitting at a table reading a paper" [ref=f2e149]
+              - figure [ref=f2e150]:
+                - link [ref=f2e153]:
+                  - /url: /photos/a-woman-sitting-at-a-table-with-lots-of-papers-ZH4FUYiaczY
+                  - img "a woman sitting at a table with lots of papers" [ref=f2e154]
+              - figure [ref=f2e155]:
+                - link [ref=f2e158]:
+                  - /url: /photos/a-person-holding-a-tablet-q4-N9h6vx8w
+                  - img "a person holding a tablet" [ref=f2e159]
+              - figure [ref=f2e160]:
+                - link [ref=f2e163]:
+                  - /url: /photos/woman-placing-tablet-into-scanner-document-feeder-CHisgnotgwk
+                  - img "Woman placing tablet into scanner document feeder" [ref=f2e164]
+              - figure [ref=f2e165]:
+                - link [ref=f2e168]:
+                  - /url: /photos/close-up-of-man-putting-stack-of-paper-in-printing-machine-at-publishing-shop-copy-space-VrtpFQxMSKA
+                  - img "Close up of man putting stack of paper in printing machine at publishing shop, copy space" [ref=f2e169]
+              - figure [ref=f2e170]:
+                - link [ref=f2e173]:
+                  - /url: /photos/hand-filling-out-a-ballot-with-a-pen--m-xjP08d_4
+                  - img "Hand filling out a ballot with a pen" [ref=f2e174]
+              - figure [ref=f2e175]:
+                - link [ref=f2e178]:
+                  - /url: /photos/a-stack-of-flyers-on-a-table-BchliBX7Hjg
+                  - img "a stack of flyers on a table" [ref=f2e179]
+            - generic [ref=f2e180]:
+              - contentinfo [ref=f2e185]:
+                - generic [ref=f2e186]: –– ––– ––– –– ––– – ––– ––– –––– – – –– ––– – – ––– –– –– –––– ––
+                - generic [ref=f2e192] [cursor=pointer]
+              - figure [ref=f2e193]:
+                - link [ref=f2e196]:
+                  - /url: /photos/a-man-standing-in-front-of-a-row-of-computer-monitors-W_9nG8O-F9U
+                  - img "A man standing in front of a row of computer monitors" [ref=f2e197]
+              - figure [ref=f2e198]:
+                - link [ref=f2e201]:
+                  - /url: /photos/a-shelf-with-books-and-magazines-on-it-l-6f9D7w7wI
+                  - img "a shelf with books and magazines on it" [ref=f2e202]
+              - figure [ref=f2e203]:
+                - link [ref=f2e206]:
+                  - /url: /photos/a-person-sitting-at-a-desk-with-a-computer-and-papers-G_0rhe8YMBs
+                  - img "a person sitting at a desk with a computer and papers" [ref=f2e207]
+              - figure [ref=f2e208]:
+                - link [ref=f2e211]:
+                  - /url: /photos/white-printer-paper-tFwJIwKEvjA
+                  - img "white printer paper" [ref=f2e212]
+              - figure [ref=f2e213]:
+                - link [ref=f2e216]:
+                  - /url: /photos/a-laptop-computer-sitting-on-top-of-a-wooden-desk-xqDFr1SiKgY
+                  - img "a laptop computer sitting on top of a wooden desk" [ref=f2e217]
+              - figure [ref=f2e218]:
+                - link [ref=f2e221]:
+                  - /url: /photos/fingerprint-record-on-a-yellow-folder-9q-iM-zvL7M
+                  - img "Fingerprint record on a yellow folder" [ref=f2e222]
+          - heading "Browse premium images on iStock | Claim your discount now" [level=2] [ref=f2e226]:
+            - text: Browse premium images on iStock
+            - generic [ref=f2e227]: "| Claim your discount now"
+          - button "Load more" [ref=f2e241] [cursor=pointer]
+          - generic [ref=f2e242]:
+            - link [ref=f2e243] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=f2e246]: Make something awesome
+    - generic:
+      - region "Notifications"

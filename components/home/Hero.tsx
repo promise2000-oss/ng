@@ -8,7 +8,7 @@ import { FaArrowRight, FaShieldAlt } from "react-icons/fa";
 
 import bg1 from "@/assets/images/services/23324.jpg";
 import bg2 from "@/assets/images/services/futurism-perspective-digital-nomads-lifestyle.jpg";
-import bg3 from "@/assets/images/services/WhatsApp Image 2026-08-27 at 7.45.40 PM.jpeg";
+import bg3 from "@/assets/images/services/0x0.webp";
 import dataCenter from "@/assets/images/services/modern-data-center.jpg";
 import serverRack from "@/assets/images/services/server-rack-equipment.jpg";
 import MagneticButton from "@/components/MagneticButton";

@@ -1,0 +1,240 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - link [ref=e315] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e11]:
+        - link [ref=e317] [cursor=pointer]:
+          - /url: /login?referrer=%2Fs%2Fphotos%2Fdiverse-people-computer-learning
+        - button [ref=e318] [cursor=pointer]
+        - button [ref=e319] [cursor=pointer]
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - navigation [ref=e23]:
+          - search [ref=e320]:
+            - button [ref=e321] [cursor=pointer]
+            - combobox [ref=e29]:
+              - searchbox [ref=e322]: diverse people computer learning
+            - button [ref=e323] [cursor=pointer]
+            - button [ref=e324] [cursor=pointer]
+        - generic [ref=e39]:
+          - generic [ref=e45]:
+            - list [ref=e46]:
+              - listitem [ref=e47]:
+                - link:
+                  - /url: /s/photos/diverse-people-computer-learning
+                  - text: Photos
+                  - generic: 6k
+              - listitem [ref=e48]:
+                - link [ref=e325] [cursor=pointer]:
+                  - /url: /s/illustrations/diverse-people-computer-learning
+                  - text: Illustrations
+                  - generic [ref=e52]: "95"
+              - listitem [ref=e53]:
+                - button [ref=e326] [cursor=pointer]: More
+            - button [ref=e327] [cursor=pointer]: Filters
+          - generic [ref=e60]:
+            - heading [level=1] [ref=e328]: Diverse people computer learning
+            - generic [ref=e64]:
+              - button [ref=e329] [cursor=pointer]
+              - generic [ref=e66]:
+                - link [ref=e330] [cursor=pointer]:
+                  - /url: /s/photos/laptop
+                  - text: laptop
+                - link [ref=e331] [cursor=pointer]:
+                  - /url: /s/photos/learning
+                  - text: learning
+                - link [ref=e332] [cursor=pointer]:
+                  - /url: /s/photos/collaboration
+                  - text: collaboration
+                - link [ref=e333] [cursor=pointer]:
+                  - /url: /s/photos/business
+                  - text: business
+                - link [ref=e334] [cursor=pointer]:
+                  - /url: /s/photos/student
+                  - text: student
+                - link [ref=e335] [cursor=pointer]:
+                  - /url: /s/photos/multiracial-group
+                  - text: multiracial group
+                - link [ref=e336] [cursor=pointer]:
+                  - /url: /s/photos/diversity
+                  - text: diversity
+                - link [ref=e337] [cursor=pointer]:
+                  - /url: /s/photos/education
+                  - text: education
+                - link [ref=e338] [cursor=pointer]:
+                  - /url: /s/photos/teamwork
+                  - text: teamwork
+                - link [ref=e339] [cursor=pointer]:
+                  - /url: /s/photos/meeting
+                  - text: meeting
+                - link [ref=e340] [cursor=pointer]:
+                  - /url: /s/photos/diverse-group
+                  - text: diverse group
+                - link [ref=e341] [cursor=pointer]:
+                  - /url: /s/photos/discussion
+                  - text: discussion
+          - generic [ref=e92]:
+            - generic [ref=e96]:
+              - generic [ref=e97]:
+                - figure [ref=e98]:
+                  - generic [ref=e100]:
+                    - link [ref=e342]:
+                      - /url: /photos/cheerful-young-businesspeople-with-laptop-working-in-office-social-inclusion-and-a-cooperation-concept-5jPKN39537Q
+                    - link [ref=e251] [cursor=pointer]:
+                      - /url: /plus?referrer=%2Fphotos%2Fcheerful-young-businesspeople-with-laptop-working-in-office-social-inclusion-and-a-cooperation-concept-5jPKN39537Q
+                - generic [ref=e254]:
+                  - heading [level=4] [ref=e344]:
+                    - generic [ref=e256]: Sponsored images
+                    - link [ref=e257] [cursor=pointer]:
+                      - /url: https://www.istockphoto.com/search/2/image?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A952c3589-10f5-402b-a91d-39cf39137d92&phrase=diverse+people+computer+learning&alloweduse=availableforalluses&excludenudity=true&sort=best&mediatype=photography
+                  - generic [ref=e260]:
+                    - link [ref=e345] [cursor=pointer]:
+                      - /url: https://www.istockphoto.com/photo/diverse-team-working-together-in-modern-co-working-space-gm2094337676-565992885?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A299e8ad1-e5f9-41be-be8b-fc3accc3786a
+                    - link [ref=e347] [cursor=pointer]:
+                      - /url: https://www.istockphoto.com/photo/two-young-colleagues-working-together-at-modern-office-gm1663279091-535173454?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Aa568b220-1200-45cd-8b33-ea57f312dddf
+                    - link [ref=e349] [cursor=pointer]:
+                      - /url: https://www.istockphoto.com/photo/collaborative-team-working-together-in-a-modern-office-setting-gm2225572934-641592834?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A224dd97c-aab9-410d-818d-ce04ebd1f6c9
+                    - link [ref=e351] [cursor=pointer]:
+                      - /url: https://www.istockphoto.com/photo/medical-students-in-the-classroom-gm1764855155-545215664?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A69f0f961-4678-49ee-a768-148e05130203
+                  - link [ref=e353] [cursor=pointer]:
+                    - /url: https://www.istockphoto.com/search/2/image?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A952c3589-10f5-402b-a91d-39cf39137d92&phrase=diverse+people+computer+learning&alloweduse=availableforalluses&excludenudity=true&sort=best&mediatype=photography
+                    - text: Get 20% off with code UNSPLASH20
+                - figure [ref=e114]:
+                  - link [ref=e354]:
+                    - /url: /photos/four-coworkers-smiling-around-laptop-at-table-Of_m3hMsoAA
+                - figure [ref=e119]:
+                  - generic [ref=e121]:
+                    - link [ref=e356]:
+                      - /url: /photos/smiling-young-black-and-arabian-women-sitting-on-chairs-in-corridor-with-other-job-candidates-and-discussing-vacancy-while-being-in-line-V9IlQCmOdBw
+                    - link [ref=e270] [cursor=pointer]:
+                      - /url: /plus?referrer=%2Fphotos%2Fsmiling-young-black-and-arabian-women-sitting-on-chairs-in-corridor-with-other-job-candidates-and-discussing-vacancy-while-being-in-line-V9IlQCmOdBw
+                - figure [ref=e124]:
+                  - generic [ref=e126]:
+                    - link [active] [ref=e358]:
+                      - /url: /photos/diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button [ref=e360] [cursor=pointer]
+                              - button [ref=e363] [cursor=pointer]
+                          - generic:
+                            - generic [ref=e367]:
+                              - link [ref=e368] [cursor=pointer]:
+                                - /url: /@silverkblack
+                              - generic [ref=e371]:
+                                - link [ref=e372] [cursor=pointer]:
+                                  - /url: /@silverkblack
+                                  - text: Vitaly Gariev
+                                - link [ref=e374] [cursor=pointer]:
+                                  - /url: /@silverkblack
+                                  - text: Available for hire
+                            - link [ref=e378] [cursor=pointer]:
+                              - /url: https://unsplash.com/photos/EA0-iajPYFE/download?force=true
+                - figure [ref=e129]:
+                  - link [ref=e381]:
+                    - /url: /photos/person-using-black-and-red-acer-laptop-computer-on-table-YgOCJz9uGMk
+                - figure [ref=e134]:
+                  - link [ref=e383]:
+                    - /url: /photos/a-man-sitting-at-a-table-using-a-laptop-computer-dwhuP25Qi0Q
+              - generic [ref=e139]:
+                - figure [ref=e140]:
+                  - link [ref=e385]:
+                    - /url: /photos/woman-and-man-sitting-in-front-of-monitor-IgUR1iX0mqM
+                - figure [ref=e145]:
+                  - link [ref=e387]:
+                    - /url: /photos/men-and-women-sitting-and-standing-while-staring-at-laptop-p74ndnYWRY4
+                - figure [ref=e150]:
+                  - link [ref=e389]:
+                    - /url: /photos/greyscale-photo-of-people-inside-room-8YJwLFscI-s
+                - figure [ref=e155]:
+                  - link [ref=e391]:
+                    - /url: /photos/two-women-and-one-man-on-computer-screen-slWBjTGhREQ
+                - figure [ref=e160]:
+                  - link [ref=e393]:
+                    - /url: /photos/woman-wearing-red-and-black-checkered-blouse-using-flat-screen-computer-RMweULmCYxM
+                - figure [ref=e165]:
+                  - link [ref=e395]:
+                    - /url: /photos/a-couple-of-kids-that-are-looking-at-a-computer-screen-gHaWLerZXBg
+                - figure [ref=e170]:
+                  - generic [ref=e172]:
+                    - link [ref=e397]:
+                      - /url: /photos/young-adult-middle-eastern-woman-wearing-hijab-working-on-computer-in-university-library-Klzcwq391zE
+                    - link [ref=e273] [cursor=pointer]:
+                      - /url: /plus?referrer=%2Fphotos%2Fyoung-adult-middle-eastern-woman-wearing-hijab-working-on-computer-in-university-library-Klzcwq391zE
+                - figure [ref=e175]:
+                  - link [ref=e399]:
+                    - /url: /photos/person-using-laptop-C-v1p2DTakA
+              - generic [ref=e180]:
+                - link [ref=e401] [cursor=pointer]:
+                  - /url: https://e-10457.adzerk.net/r?e=eyJ2IjoiMS4xNCIsImF2Ijo4MjM1NTIsImF0Ijo1LCJidCI6MCwiY20iOjk0ODU5NTcsImNoIjo0NTE2MywiY2siOnt9LCJjciI6OTI0MTYxMzMzLCJkaSI6Ijk5NmEwOGZkNGExMTQ4YWE4NDUwNTRiY2M3ZGRmYTVlIiwiZGoiOjAsImlpIjoiMmE4NmNhMzBkNWRlNGE1YThjOWJjNmNlNGI1YWJhZjkiLCJkbSI6MywiZmMiOjExMDAyOTkxMDEsImZsIjo1NTg0ODY4NCwiaXAiOiIxMDUuMTEzLjEwMC4yNDkiLCJudyI6MTA0NTcsInBjIjowLCJvcCI6MCwibXAiOjAsImVjIjowLCJnbSI6MCwiZXAiOm51bGwsInByIjoyMDgyODMsInJ0IjoxLCJycyI6NTAwLCJzYSI6Ijk2Iiwic2IiOiJpLTBhZWJiMzBiMWE2ZmI4MzMwIiwic3AiOjUwMjA5MSwic3QiOjExMjE5NTQsInVrIjoiNGMyNDUzZGMtOTRhMC00ZDM4LTg0M2MtYmYyZmNhMjc2NmQ0Iiwiem4iOjI0MTM0OCwiem0iOlsyNDEzNDhdLCJ0cyI6MTc4ODE2NTU5MjI0NSwicG4iOiJzZWFyY2gtaW4tZmVlZCIsImdyIjp0cnVlLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsInR6IjoiQW1lcmljYS9OZXdfWW9yayIsInVyIjoiaHR0cHM6Ly91bnNwbGFzaC5jb20vYWR2ZXJ0aXNlIn0&s=eEEk_E75CJiTgUHqoDg2kjgV31s
+                  - contentinfo [ref=e281]:
+                    - generic [ref=e282]: Advertise on Unsplash.
+                    - generic [ref=e289]: Learn more about Unsplash advertising
+                - figure [ref=e193]:
+                  - generic [ref=e195]:
+                    - link [ref=e402]:
+                      - /url: /photos/side-view-portrait-of-young-woman-studying-with-group-of-students-in-school-library-copy-space-qvyCNR2IuTA
+                    - link [ref=e290] [cursor=pointer]:
+                      - /url: /plus?referrer=%2Fphotos%2Fside-view-portrait-of-young-woman-studying-with-group-of-students-in-school-library-copy-space-qvyCNR2IuTA
+                - figure [ref=e198]:
+                  - link [ref=e404]:
+                    - /url: /photos/diverse-group-of-students-collaborating-around-a-laptop--X4Qx4_4iMU
+                - figure [ref=e203]:
+                  - link [ref=e406]:
+                    - /url: /photos/man-and-woman-sitting-beside-each-other-0Bc2W5_3Lcs
+                - figure [ref=e208]:
+                  - generic [ref=e210]:
+                    - link [ref=e408]:
+                      - /url: /photos/group-of-five-attractive-female-office-workers-watching-something-on-laptop-during-business-meeting-YOQ9t_IijAU
+                    - link [ref=e293] [cursor=pointer]:
+                      - /url: /plus?referrer=%2Fphotos%2Fgroup-of-five-attractive-female-office-workers-watching-something-on-laptop-during-business-meeting-YOQ9t_IijAU
+                - figure [ref=e213]:
+                  - link [ref=e410]:
+                    - /url: /photos/man-using-black-laptop-computer-kwzWjTnDPLk
+                - figure [ref=e218]:
+                  - link [ref=e412]:
+                    - /url: /photos/diverse-group-of-students-gathered-around-a-laptop-8gAbl776pc0
+            - generic [ref=e225]:
+              - heading [level=2] [ref=e414]:
+                - text: Browse premium images on iStock
+                - generic [ref=e227]: "| Claim your discount now"
+              - generic [ref=e296]:
+                - link [ref=e415] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/two-secondary-students-in-a-computer-lab-gm1340096416-420261717?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A8c006c92-7e52-4485-9101-846129b779b2
+                - link [ref=e417] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/university-happy-and-students-in-classroom-education-and-knowledge-with-project-joke-gm2230782752-646417621?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A730065ba-bd7f-40f6-8bcb-30829cb9ba05
+                - link [ref=e419] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/diverse-students-laughing-sharing-content-on-digital-tablet-gm2265540888-678235227?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Afb4d099b-5548-476c-9b26-a35b1fcff5a7
+                - link [ref=e421] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/teenage-boy-presenting-programming-code-to-classmate-gm2236082702-651391922?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Aec63962d-7d80-4838-9f3c-68a866d96339
+                - link [ref=e423] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/diverse-business-people-collaborating-on-laptop-in-office-meeting-gm2248944952-662758727?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Aea67dba7-efb9-4142-92fb-3a7b6ba8e92a
+                - link [ref=e425] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/group-discussing-ideas-in-a-bright-office-setting-around-a-table-gm2243799864-657918931?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Ace2184a7-c180-4aae-8946-f91ddd7bdb8c
+                - link [ref=e427] [cursor=pointer]:
+                  - /url: https://www.istockphoto.com/photo/smiling-students-working-together-on-a-laptop-at-a-classroom-table-gm1442225459-481665359?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A08b322c7-a52b-44ca-adcb-011e6126cbbd
+                - generic [ref=e311]:
+                  - link [ref=e429] [cursor=pointer]:
+                    - /url: https://www.istockphoto.com/photo/two-colleagues-collaborating-on-a-project-in-a-modern-office-setting-gm2222228300-638518582?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3A303e7ae4-d077-4fd8-aff6-79a40d5bde87
+                  - link [ref=e431] [cursor=pointer]:
+                    - /url: https://www.istockphoto.com/search/2/image?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fdiverse-people-computer-learning%3Fasset%3D%255B%2522Photos%2522%252C%257B%2522slug%2522%253A%2522diverse-group-of-students-gathered-around-a-laptop-EA0-iajPYFE%2522%257D%255D&utm_term=diverse+people+computer+learning%3A%3Asearch-affiliate%3Aexperiment%3Ad559ba88-ee8a-46a5-819f-392a2187af30&phrase=diverse+people+computer+learning&alloweduse=availableforalluses&excludenudity=true&sort=best&mediatype=photography
+                    - text: View more on iStock ↗
+            - button [ref=e432] [cursor=pointer]: Load more
+            - generic [ref=e242]:
+              - link [ref=e243] [cursor=pointer]:
+                - /url: /
+              - paragraph [ref=e246]: Make something awesome
+      - generic:
+        - region "Notifications"
+  - generic:
+    - dialog:
+      - button [ref=e437] [cursor=pointer]
+      - link "Previous" [ref=e440] [cursor=pointer]:
+        - /url: /photos/woman-wearing-red-and-black-checkered-blouse-using-flat-screen-computer-RMweULmCYxM
+      - link "Next" [ref=e443] [cursor=pointer]:
+        - /url: /photos/group-of-five-attractive-female-office-workers-watching-something-on-laptop-during-business-meeting-YOQ9t_IijAU
+      - generic:
+        - region "Notifications"

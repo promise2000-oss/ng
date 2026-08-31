@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Nigeria's Premier IT Consulting & Digital Solutions Firm — we design, build, and manage secure cloud systems, digital infrastructure, and technology training that power schools, businesses, and public institutions across Africa.",
   icons: {
-    icon: [{ url: "/NICEGENE%20TECHNOLOGIES%20LOGO.png", sizes: "64x64", type: "image/png" }],
+    icon: [{ url: "/NICEGENE%20TECHNOLOGIES%20LOGO.png", sizes: "512x512", type: "image/png" }],
     apple: "/NICEGENE%20TECHNOLOGIES%20LOGO.png",
   },
 };

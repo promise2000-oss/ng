@@ -79,21 +79,10 @@ function LoadingSkeleton() {
   );
 }
 
-const fallbackStaff: Staff[] = [
-  { _id: "fallback-1", name: "Eugene O. Orji", email: "", role: "Chief Executive Officer", department: "Executive", category: "executive", isActive: true },
-  { _id: "fallback-2", name: "Ikenna Okpalaeze", email: "", role: "Head of Legal", department: "Legal", category: "staff", isActive: true },
-  { _id: "fallback-3", name: "Ezeme Rita C.", email: "", role: "Finance Team", department: "Finance", category: "staff", isActive: true },
-  { _id: "fallback-4", name: "Victor James", email: "", role: "Program Coordinator", department: "Programs", category: "staff", isActive: true },
-  { _id: "fallback-5", name: "Nnaemeka E. Ezenwa-Okoro", email: "", role: "Media & Publicity Lead", department: "Media", category: "staff", isActive: true },
-  { _id: "fallback-6", name: "Marcelina Idoko", email: "", role: "Technical Team Lead", department: "Engineering", category: "staff", isActive: true },
-  { _id: "fallback-7", name: "Egwu Nnenna", email: "", role: "Marketing & Sales Lead", department: "Marketing", category: "staff", isActive: true },
-];
-
 export default function MeetOurTeam() {
   const { data: staff = [], isLoading } = useStaff();
 
-  const displayStaff = staff.length > 0 ? staff : fallbackStaff;
-  const activeStaff = displayStaff.filter((m) => m.isActive);
+  const activeStaff = staff.filter((m) => m.isActive);
   const executives = activeStaff.filter((m) => m.category === "executive");
   const members = activeStaff.filter((m) => m.category !== "executive");
 

@@ -68,7 +68,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs uppercase tracking-[0.2em] mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-[#87CEEB] text-xs uppercase tracking-[0.2em] mb-6"
           >
             <motion.span
               className="w-1.5 h-1.5 rounded-full"

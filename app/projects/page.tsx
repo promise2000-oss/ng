@@ -12,7 +12,7 @@ import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import { useProjects } from "@/lib/hooks/useProjects";
 import { imageUrl } from "@/lib/api";
-import { staticProjects, projectCategories, type ProjectCategory } from "@/lib/projects";
+import { projectCategories, type ProjectCategory } from "@/lib/projects";
 import type { Project as ApiProject } from "@/lib/types";
 
 function mapApiProject(p: ApiProject): import("@/lib/projects").Project {
@@ -57,7 +57,7 @@ export default function ProjectsPage() {
   const { data: apiProjects } = useProjects();
 
   const apiMapped = (apiProjects ?? []).map(mapApiProject);
-  const projects = apiMapped.length > 0 ? apiMapped : staticProjects;
+  const projects = apiMapped;
 
   const filtered = projects.filter((p) => {
     const matchCategory =

@@ -1,0 +1,164 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - link "Unsplash Home" [ref=e8] [cursor=pointer]:
+      - /url: /
+      - img "Unsplash Home" [ref=e9]
+    - generic [ref=e11]:
+      - link "Log in / Sign up" [ref=e12] [cursor=pointer]:
+        - /url: /login?referrer=%2Fs%2Fphotos%2Fdigitization-records-management
+      - button "Language" [ref=e15] [cursor=pointer]
+      - button "Menu" [ref=e18] [cursor=pointer]
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - navigation [ref=e23]:
+        - search "Find visuals sitewide" [ref=e25]:
+          - button "Search Unsplash" [ref=e26] [cursor=pointer]
+          - combobox [ref=e29]:
+            - searchbox "Search Unsplash" [ref=e30]: digitization records management
+            - listbox
+          - button "Clear" [ref=e31] [cursor=pointer]
+          - button "Visual search" [ref=e36] [cursor=pointer]
+      - generic [ref=e39]:
+        - generic [ref=e45]:
+          - list [ref=e46]:
+            - listitem [ref=e47]:
+              - link "Photos 4.3k":
+                - /url: /s/photos/digitization-records-management
+                - text: Photos
+                - generic: 4.3k
+            - listitem [ref=e48]:
+              - link "Illustrations 2.1k" [ref=e49] [cursor=pointer]:
+                - /url: /s/illustrations/digitization-records-management
+                - text: Illustrations
+                - generic [ref=e52]: 2.1k
+            - listitem [ref=e53]:
+              - button "More" [ref=e54] [cursor=pointer]
+          - button [ref=e56] [cursor=pointer]
+        - generic [ref=e60]:
+          - heading "Digitization records management" [level=1] [ref=e62]
+          - generic [ref=e66]:
+            - link "datum" [ref=e68] [cursor=pointer]:
+              - /url: /s/photos/datum
+            - link "technology" [ref=e70] [cursor=pointer]:
+              - /url: /s/photos/technology
+            - link "information" [ref=e72] [cursor=pointer]:
+              - /url: /s/photos/information
+            - link "business" [ref=e74] [cursor=pointer]:
+              - /url: /s/photos/business
+            - link "blue" [ref=e76] [cursor=pointer]:
+              - /url: /s/photos/blue
+            - link "digital" [ref=e78] [cursor=pointer]:
+              - /url: /s/photos/digital
+            - link "digital transformation" [ref=e80] [cursor=pointer]:
+              - /url: /s/photos/digital-transformation
+            - link "business intelligence" [ref=e82] [cursor=pointer]:
+              - /url: /s/photos/business-intelligence
+            - link "document" [ref=e84] [cursor=pointer]:
+              - /url: /s/photos/document
+            - link "financial technology" [ref=e86] [cursor=pointer]:
+              - /url: /s/photos/financial-technology
+            - link "protection" [ref=e88] [cursor=pointer]:
+              - /url: /s/photos/protection
+            - link "graph" [ref=e90] [cursor=pointer]:
+              - /url: /s/photos/graph
+        - generic [ref=e92]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - figure [ref=e98]:
+                - link [ref=e101]:
+                  - /url: /photos/person-interacting-with-digital-data-interface-nFM2jmMhh_0
+                  - img "A person in a suit interacting with a glowing blue digital data interface" [ref=e102]
+              - generic [ref=e103]:
+                - heading "Sponsored images" [level=4] [ref=e104]
+                - generic [ref=e113]: ––– – –– –– – –– –––– ––– ––––
+              - figure [ref=e114]:
+                - link [ref=e117]:
+                  - /url: /photos/person-holding-white-and-black-paper-wP8GjY1pGnk
+                  - img "person holding white and black paper" [ref=e118]
+              - figure [ref=e119]:
+                - link [ref=e122]:
+                  - /url: /photos/a-laptop-computer-with-a-fingerprint-on-it-61bNd7W2QKI
+                  - img "a laptop computer with a fingerprint on it" [ref=e123]
+              - figure [ref=e124]:
+                - link [ref=e127]:
+                  - /url: /photos/a-pile-of-newspapers-0FVVmFF00_0
+                  - img "a pile of newspapers" [ref=e128]
+              - figure [ref=e129]:
+                - link [ref=e132]:
+                  - /url: /photos/person-interacting-with-digital-data-interface-gxaXZfDDrGA
+                  - img "A person in a suit interacting with a glowing digital data interface" [ref=e133]
+              - figure [ref=e134]:
+                - link [ref=e137]:
+                  - /url: /photos/book-lot-kj0s9IzvPNM
+                  - img "book lot" [ref=e138]
+              - figure [ref=e139]:
+                - link [ref=e142]:
+                  - /url: /photos/a-person-standing-next-to-a-pile-of-records-EoGN6nlZiD0
+                  - img "a person standing next to a pile of records" [ref=e143]
+            - generic [ref=e144]:
+              - figure [ref=e145]:
+                - link [ref=e148]:
+                  - /url: /photos/classified-page-5-newspaper-selective-focus-photography-bSlHKWxxXak
+                  - img "Classified page 5 newspaper selective focus photography" [ref=e149]
+              - figure [ref=e150]:
+                - link [ref=e153]:
+                  - /url: /photos/brown-and-blue-wooden-cabinet-IEiAmhXehwE
+                  - img "brown and blue wooden cabinet" [ref=e154]
+              - figure [ref=e155]:
+                - link [ref=e158]:
+                  - /url: /photos/compact-disc-on-black-and-gray-laptop-computer-lPUr0hbEKoA
+                  - img "compact disc on black and gray laptop computer" [ref=e159]
+              - figure [ref=e160]:
+                - link [ref=e163]:
+                  - /url: /photos/a-close-up-of-a-store-shelf-4ENNx8UGtMQ
+                  - img "a close-up of a store shelf" [ref=e164]
+              - figure [ref=e165]:
+                - link [ref=e168]:
+                  - /url: /photos/closeup-photo-of-labeled-pack-displaying-on-rack-MEcxLZ8ENV8
+                  - img "closeup photo of labeled pack displaying on rack" [ref=e169]
+              - figure [ref=e170]:
+                - link [ref=e173]:
+                  - /url: /photos/a-book-shelf-filled-with-lots-of-books-oVxiRDb58rQ
+                  - img "a book shelf filled with lots of books" [ref=e174]
+              - figure [ref=e175]:
+                - link [ref=e178]:
+                  - /url: /photos/black-hardbound-books-on-shelves-SylPuraNzUM
+                  - img "black hardbound books on shelves" [ref=e179]
+              - figure [ref=e180]:
+                - link [ref=e183]:
+                  - /url: /photos/person-taking-photo-of-assorted-vinyl-album-f74kZNWhfps
+                  - img "person taking photo of assorted vinyl album" [ref=e184]
+            - generic [ref=e185]:
+              - contentinfo [ref=e190]:
+                - generic [ref=e191]: –– ––– ––– –– ––– – ––– ––– –––– – – –– ––– – – ––– –– –– –––– ––
+                - generic [ref=e197] [cursor=pointer]
+              - figure [ref=e198]:
+                - link [ref=e201]:
+                  - /url: /photos/a-group-of-folders-with-different-symbols-on-them-vSSJA3pWnc4
+                  - img "a group of folders with different symbols on them" [ref=e202]
+              - figure [ref=e203]:
+                - link [ref=e206]:
+                  - /url: /photos/brown-and-green-cardboard-boxes-0cS55hVW7Sk
+                  - img "brown and green cardboard boxes" [ref=e207]
+              - figure [ref=e208]:
+                - link [ref=e211]:
+                  - /url: /photos/person-holding-vinyl-album-MnOPyE-I1RU
+                  - img "person holding vinyl album" [ref=e212]
+              - figure [ref=e213]:
+                - link [ref=e216]:
+                  - /url: /photos/digital-folder-icon-with-circuit-board-pattern-and-mouse-cursor-mYFQNV8_OsY
+                  - img "Digital folder icon with circuit board pattern and mouse cursor" [ref=e217]
+              - figure [ref=e218]:
+                - link [ref=e221]:
+                  - /url: /photos/a-screen-with-a-bunch-of-information-on-it-cdMAU_x9mxY
+                  - img "a screen with a bunch of information on it" [ref=e222]
+          - heading "Browse premium images on iStock | Claim your discount now" [level=2] [ref=e226]:
+            - text: Browse premium images on iStock
+            - generic [ref=e227]: "| Claim your discount now"
+          - button "Load more" [ref=e241] [cursor=pointer]
+          - generic [ref=e242]:
+            - link [ref=e243] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=e246]: Make something awesome
+    - generic:
+      - region "Notifications"
