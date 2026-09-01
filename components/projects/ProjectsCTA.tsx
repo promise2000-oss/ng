@@ -12,10 +12,10 @@ export default function ProjectsCTA() {
       viewport={{ once: true }}
       className="mt-16 bg-white border border-gray-200 rounded-2xl p-8 md:p-10 text-center"
     >
-      <h2 className="text-xl md:text-2xl font-semibold">
+      <h2 className="text-xl md:text-2xl font-semibold text-[#87CEEB]">
         Want to Work With Us?
       </h2>
-      <p className="text-text-primary text-sm mt-3 max-w-lg mx-auto">
+      <p className="text-white text-sm mt-3 max-w-lg mx-auto">
         Have a project in mind? Let&apos;s discuss how we can bring your
         vision to life with our expertise and experience.
       </p>

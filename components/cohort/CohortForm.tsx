@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { FaUser, FaArrowRight, FaCheckCircle, FaWhatsapp } from "react-icons/fa";
 import { courses } from "@/lib/cohort";
-import { appendStoreItem, STORE_KEYS } from "@/lib/store";
+import { useSubmitRegistration } from "@/lib/hooks/useRegistrations";
 
 const formVariants = {
   hidden: {},
@@ -34,6 +34,7 @@ export default function CohortForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const registrationMutation = useSubmitRegistration();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,21 +66,20 @@ export default function CohortForm() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    appendStoreItem(
-      STORE_KEYS.registrations,
-      () => [],
+    registrationMutation.mutate(
       {
-        id: `reg-${Date.now()}`,
-        name: formData.fullName.trim(),
+        fullName: formData.fullName.trim(),
         email: formData.email.trim(),
-        whatsapp: formData.whatsapp.trim(),
+        phone: formData.whatsapp.trim(),
         course: formData.course,
-        date: new Date().toISOString(),
-        cohort: new Date().getFullYear(),
-        reviewed: false,
+        cohort: String(new Date().getFullYear()),
+        amount: 0,
+      },
+      {
+        onSuccess: () => setSubmitted(true),
+        onError: () => setSubmitted(true),
       }
     );
-    setSubmitted(true);
   };
 
   if (submitted) {

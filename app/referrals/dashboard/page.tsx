@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import {
@@ -18,14 +18,7 @@ import GridOverlay from "@/components/animations/GridOverlay";
 import { useReferrals } from "@/lib/hooks/useReferrals";
 import { REFERRAL_FLOW } from "@/lib/types";
 import type { Referral, ReferralStatus } from "@/lib/types";
-import {
-  verifyLogin,
-  createSession,
-  getSession,
-  clearSession,
-  demoCredentialHint,
-  type AuthSession,
-} from "@/lib/demo-auth";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 const statusStyle: Record<ReferralStatus, string> = {
   Submitted: "bg-blue-50 text-accent border-blue-100",
@@ -36,49 +29,41 @@ const statusStyle: Record<ReferralStatus, string> = {
 };
 
 export default function ReferralsDashboard() {
-  const [session, setSession] = useState<AuthSession | null>(null);
-  const [checked, setChecked] = useState(false);
+  const { profile, isAuthenticated, isLoading: authLoading, logout } = useAuth();
+  const session = profile;
 
-  useEffect(() => {
-    setSession(getSession());
-    setChecked(true);
-  }, []);
-
-  if (!checked) return null;
+  if (authLoading) return null;
 
   return (
     <main className="w-full bg-background text-text-primary min-h-screen">
-      {session ? (
-        <DashboardView session={session} onLogout={() => setSession(null)} />
+      {isAuthenticated && session ? (
+        <DashboardView session={session} onLogout={logout} />
       ) : (
-        <LoginView onLogin={(s) => setSession(s)} />
+        <LoginView />
       )}
     </main>
   );
 }
 
-function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
-  const hint = demoCredentialHint("referrer");
+function LoginView() {
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { login, isLoading: authLoading } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const account = verifyLogin(email, code);
-    if (!account) {
-      setError("Invalid credentials. Use the demo referrer account shown below.");
+    if (!email.trim() || !password.trim()) {
+      setError("Please enter your email and password.");
       return;
     }
-    createSession(account);
-    onLogin(getSession()!);
-  };
-
-  const handleDemoLogin = () => {
-    setEmail(hint.email);
-    setCode(hint.code);
-    createSession(hint);
-    onLogin(getSession()!);
+    login.mutate(
+      { email: email.trim(), password },
+      {
+        onSuccess: () => {},
+        onError: () => setError("Invalid credentials. Please check your email and password."),
+      }
+    );
   };
 
   return (
@@ -135,39 +120,26 @@ function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
                 />
               </div>
               <div>
-                <label htmlFor="ref-login-code" className="block text-xs font-semibold text-text-primary mb-1.5">
-                  Access Code
+                <label htmlFor="ref-login-password" className="block text-xs font-semibold text-text-primary mb-1.5">
+                  Password
                 </label>
                 <input
-                  id="ref-login-code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  placeholder="6-digit code"
+                  id="ref-login-password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
                   className="w-full px-4 py-3 rounded-xl bg-surface border border-gray-200 text-text-primary text-sm placeholder:text-text-secondary/60 focus:outline-none focus:border-accent transition-all"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all"
+                disabled={authLoading}
+                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all disabled:opacity-50"
               >
-                Log In
+                {authLoading ? "Logging in..." : "Log In"}
               </button>
             </form>
-
-            <div className="mt-6 bg-primary/5 border border-primary/10 rounded-2xl p-4">
-              <p className="text-[11px] uppercase tracking-wider text-secondary font-bold mb-2">
-                Demo Referrer Account
-              </p>
-              <p className="text-[13px] text-text-primary font-mono">
-                {hint.email} / {hint.code}
-              </p>
-              <button
-                onClick={handleDemoLogin}
-                className="mt-3 w-full px-4 py-2.5 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-dark transition-all"
-              >
-                One-Click Demo Login
-              </button>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -179,7 +151,7 @@ function DashboardView({
   session,
   onLogout,
 }: {
-  session: AuthSession;
+  session: AuthUser;
   onLogout: () => void;
 }) {
   const { data: allReferrals = [] } = useReferrals();
@@ -216,10 +188,7 @@ function DashboardView({
               <FaArrowLeft size={11} /> Referral Programme
             </Link>
             <button
-              onClick={() => {
-                clearSession();
-                onLogout();
-              }}
+              onClick={onLogout}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-text-primary text-[13px] font-semibold hover:border-error hover:text-error transition-all"
             >
               <FaSignOutAlt size={13} /> Log Out

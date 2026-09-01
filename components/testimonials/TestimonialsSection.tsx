@@ -19,12 +19,8 @@ import GridOverlay from "@/components/animations/GridOverlay";
 import Reveal from "@/components/Reveal";
 import Modal from "@/components/Modal";
 import TestimonialForm from "@/components/testimonials/TestimonialForm";
-import { STORE_KEYS, loadStore } from "@/lib/store";
-import {
-  seedTestimonials,
-  testimonialServices,
-  type Testimonial,
-} from "@/lib/seed-data";
+import { useApprovedTestimonials } from "@/lib/hooks/useTestimonials";
+import { seedTestimonials, testimonialServices } from "@/lib/seed-data";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
 function StarRow({ rating }: { rating: number }) {
@@ -67,11 +63,7 @@ function youtubeEmbed(url: string): string | null {
 const AUTO_ADVANCE_MS = 6000;
 
 export default function TestimonialsSection() {
-  const [testimonials] = useState<Testimonial[]>(() =>
-    loadStore(STORE_KEYS.testimonials, () => seedTestimonials).filter(
-      (t) => t.status === "approved"
-    )
-  );
+  const { data: apiTestimonials } = useApprovedTestimonials();
   const [service, setService] = useState<string>("All");
   const [showForm, setShowForm] = useState(false);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -79,6 +71,18 @@ export default function TestimonialsSection() {
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const swipeX = useRef(0);
+
+  const testimonials = useMemo(() => {
+    if (apiTestimonials && apiTestimonials.length > 0) {
+      return apiTestimonials.map((t: any) => ({
+        ...t,
+        id: t._id,
+        initials: t.initials || t.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase(),
+        date: t.createdAt || new Date().toISOString(),
+      }));
+    }
+    return seedTestimonials.filter((t) => t.status === "approved");
+  }, [apiTestimonials]);
 
   const filtered = useMemo(() => {
     const list =

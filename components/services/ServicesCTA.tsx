@@ -75,7 +75,7 @@ export default function ServicesCTA() {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.35, duration: 0.5 }}
-            className="text-white/70 mt-4 max-w-2xl mx-auto text-sm"
+            className="text-white mt-4 max-w-2xl mx-auto text-sm"
           >
             Our team of experts is ready to help you navigate your digital
             transformation journey.

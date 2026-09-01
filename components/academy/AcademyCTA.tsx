@@ -34,10 +34,10 @@ export default function AcademyCTA() {
               className="object-cover w-full h-full"
             />
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#87CEEB]">
             Ready to Start Your Journey?
           </h2>
-          <p className="text-white/70 mt-4 max-w-2xl mx-auto text-sm">
+          <p className="text-white mt-4 max-w-2xl mx-auto text-sm">
             Join over <strong className="text-white">500+ successful alumni</strong> and gain the skills you need to thrive in the digital economy.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">

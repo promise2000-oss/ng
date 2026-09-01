@@ -22,10 +22,10 @@ export default function ContactCTA() {
         ]}
       />
       <div className="relative z-10">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white">
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#87CEEB]">
           Ready to Transform Your Business?
         </h2>
-        <p className="text-white/70 mt-4 max-w-2xl mx-auto text-sm">
+        <p className="text-white mt-4 max-w-2xl mx-auto text-sm">
           Let&apos;s discuss how Nicegene Technologies can help you scale with modern digital solutions.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">

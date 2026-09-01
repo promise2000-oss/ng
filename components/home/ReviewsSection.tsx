@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import AnimatedGradient from "@/components/animations/AnimatedGradient";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import { STORE_KEYS, loadStore } from "@/lib/store";
+import { useApprovedTestimonials } from "@/lib/hooks/useTestimonials";
 import { seedTestimonials } from "@/lib/seed-data";
 
 type HomeReview = {
@@ -66,21 +66,22 @@ function StarIcon() {
 }
 
 export default function ReviewsSection() {
-  const [reviews] = useState<HomeReview[]>(() => {
-    const approved = loadStore(STORE_KEYS.testimonials, () => seedTestimonials)
-      .filter((t) => t.status === "approved")
-      .slice(0, 8)
-      .map((t) => ({
+  const { data: apiTestimonials } = useApprovedTestimonials();
+  const [expanded, setExpanded] = useState(false);
+
+  const reviews = useMemo(() => {
+    if (apiTestimonials && apiTestimonials.length > 0) {
+      return apiTestimonials.slice(0, 8).map((t: any) => ({
         tag: t.service,
         title: t.text,
-        initials: t.initials,
+        initials: t.initials || t.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase(),
         name: t.name,
         service: t.service,
         rating: t.rating,
       }));
-    return approved.length > 0 ? approved : fallbackReviews;
-  });
-  const [expanded, setExpanded] = useState(false);
+    }
+    return fallbackReviews;
+  }, [apiTestimonials]);
   const visibleReviews = expanded ? reviews : reviews.slice(0, 4);
 
   return (

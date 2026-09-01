@@ -7,12 +7,8 @@ import AnimatedGradient from "@/components/animations/AnimatedGradient";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import Reveal from "@/components/Reveal";
-import { STORE_KEYS, loadStore } from "@/lib/store";
-import {
-  seedClients,
-  clientSectors,
-  type Client,
-} from "@/lib/seed-data";
+import { useClients } from "@/lib/hooks/useClients";
+import { seedClients, clientSectors } from "@/lib/seed-data";
 
 const sectorIconMap: Record<string, string> = {
   Education: "bg-blue-50 text-accent border-blue-100",
@@ -24,20 +20,23 @@ const sectorIconMap: Record<string, string> = {
 };
 
 export default function ClientsSection() {
-  const [clients] = useState<Client[]>(() =>
-    loadStore(STORE_KEYS.clients, () => seedClients)
-  );
+  const { data: apiClients } = useClients();
   const [sector, setSector] = useState<string>("All");
   const [service, setService] = useState<string>("All");
   const [query, setQuery] = useState("");
 
+  const clients = useMemo(() => {
+    if (apiClients && apiClients.length > 0) return apiClients;
+    return seedClients;
+  }, [apiClients]);
+
   const services = useMemo(
-    () => Array.from(new Set(clients.map((c) => c.service))).sort(),
+    () => Array.from(new Set(clients.map((c: any) => c.service))).sort(),
     [clients]
   );
 
   const filtered = useMemo(() => {
-    return clients.filter((c) => {
+    return clients.filter((c: any) => {
       if (sector !== "All" && c.sector !== sector) return false;
       if (service !== "All" && c.service !== service) return false;
       if (query && !c.name.toLowerCase().includes(query.toLowerCase())) return false;

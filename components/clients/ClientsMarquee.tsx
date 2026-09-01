@@ -1,13 +1,20 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import { FaBuilding } from "react-icons/fa";
-import { STORE_KEYS, loadStore } from "@/lib/store";
+import { useClients } from "@/lib/hooks/useClients";
 import { seedClients } from "@/lib/seed-data";
 
 export default function ClientsMarquee() {
-  const clients = loadStore(STORE_KEYS.clients, () => seedClients);
-  const featured = clients.filter((c) => c.featured && c.visible);
+  const { data: apiClients } = useClients();
+
+  const clients = useMemo(() => {
+    if (apiClients && apiClients.length > 0) return apiClients;
+    return seedClients;
+  }, [apiClients]);
+
+  const featured = clients.filter((c: any) => c.featured && c.visible);
 
   if (featured.length === 0) return null;
 
@@ -30,9 +37,9 @@ export default function ClientsMarquee() {
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
         <div className="animate-marquee gap-8 px-4">
-          {row.map((client, i) => (
+          {row.map((client: any, i: number) => (
             <div
-              key={`${client.id}-${i}`}
+              key={`${client._id || client.id}-${i}`}
               className="flex items-center gap-3 shrink-0 bg-surface border border-gray-100 rounded-2xl px-5 py-3"
             >
               <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white text-xs font-bold shrink-0">

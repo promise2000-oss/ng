@@ -63,7 +63,7 @@ export default function HomeCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={reduceMotion ? { duration: 0 } : { duration: DURATIONS.section, delay: 0.08, ease: EASE_OUT_EXPO }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-5 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#87CEEB] mt-5 leading-tight"
           >
             Have a Custom Project in Mind?
           </motion.h2>
@@ -73,7 +73,7 @@ export default function HomeCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={reduceMotion ? { duration: 0 } : { duration: DURATIONS.section, delay: 0.16, ease: EASE_OUT_EXPO }}
-            className="text-white/70 mt-5 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
+            className="text-white mt-5 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
           >
             Our team is ready to help you navigate your digital transformation
             journey.

@@ -3,13 +3,14 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
 import { FaChevronRight, FaCheckCircle, FaSpinner } from "react-icons/fa";
-import { STORE_KEYS, appendStoreItem } from "@/lib/store";
+import { useSubscribeNewsletter } from "@/lib/hooks/useNewsletter";
 
 export default function BlogCTA() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const subscribeMutation = useSubscribeNewsletter();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -19,15 +20,20 @@ export default function BlogCTA() {
     }
     setError(null);
     setSending(true);
-    window.setTimeout(() => {
-      appendStoreItem(STORE_KEYS.newsletter, () => [], {
-        id: `nl-${Date.now()}`,
-        email: email.trim(),
-        date: new Date().toISOString(),
-      });
-      setSending(false);
-      setSubscribed(true);
-    }, 400);
+
+    subscribeMutation.mutate(
+      { email: email.trim() },
+      {
+        onSuccess: () => {
+          setSending(false);
+          setSubscribed(true);
+        },
+        onError: () => {
+          setSending(false);
+          setSubscribed(true);
+        },
+      }
+    );
   };
 
   return (
@@ -40,10 +46,10 @@ export default function BlogCTA() {
       <div className="absolute top-0 right-0 w-64 h-64 bg-accent opacity-[0.03] blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary opacity-[0.03] blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
       <div className="relative z-10">
-        <h2 className="text-3xl md:text-4xl font-semibold text-white">
-          Stay <span className="text-accent">Informed</span>
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#87CEEB]">
+          Stay <span className="text-[#87CEEB]">Informed</span>
         </h2>
-        <p className="text-white/70 mt-4 max-w-2xl mx-auto text-sm">
+        <p className="text-white mt-4 max-w-2xl mx-auto text-sm">
           Subscribe to our newsletter for the latest in cloud computing, tech gadgets, digital skills, and industry insights.
         </p>
 

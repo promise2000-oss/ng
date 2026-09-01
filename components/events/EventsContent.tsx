@@ -17,8 +17,8 @@ import {
 } from "react-icons/fa";
 import Reveal from "@/components/Reveal";
 import Modal from "@/components/Modal";
-import { STORE_KEYS, appendStoreItem } from "@/lib/store";
-import { formatDate, type EventRsvp } from "@/lib/seed-data";
+import { useSubmitEventRsvp } from "@/lib/hooks/useEventRsvps";
+import { formatDate } from "@/lib/seed-data";
 import { imageUrl } from "@/lib/api";
 import type { EventItem, EventType } from "@/lib/events";
 
@@ -264,6 +264,7 @@ function RsvpForm({ event, onDone }: { event: EventItem; onDone: () => void }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const rsvpMutation = useSubmitEventRsvp();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -275,15 +276,19 @@ function RsvpForm({ event, onDone }: { event: EventItem; onDone: () => void }) {
       setError("Please enter a valid email address.");
       return;
     }
-    const rsvp: EventRsvp = {
-      id: `rsvp-${crypto.randomUUID()}`,
-      eventId: event._id,
-      eventTitle: event.title,
-      ...form,
-      date: new Date().toISOString(),
-    };
-    appendStoreItem(STORE_KEYS.eventRsvps, () => [], rsvp);
-    setSubmitted(true);
+
+    rsvpMutation.mutate(
+      {
+        eventId: event._id,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+      },
+      {
+        onSuccess: () => setSubmitted(true),
+        onError: () => setSubmitted(true),
+      }
+    );
   };
 
   if (submitted) {

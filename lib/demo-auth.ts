@@ -1,69 +1,67 @@
-import { STORE_KEYS, loadStore, saveStore } from "./store";
+import { authService } from "./services/auth.service";
+import type { AuthUser } from "./types";
 
 export type DemoRole = "student" | "referrer";
 
-export type DemoAccount = {
-  id: string;
-  role: DemoRole;
-  email: string;
-  code: string;
-  name: string;
-};
-
-export const DEMO_ACCOUNTS: DemoAccount[] = [
-  {
-    id: "stu-demo-1",
-    role: "student",
-    email: "student@nicegene.com",
-    code: "123456",
-    name: "Emmanuel Okafor",
-  },
-  {
-    id: "ref-demo-1",
-    role: "referrer",
-    email: "referrer@nicegene.com",
-    code: "654321",
-    name: "Chinedu Eze",
-  },
-];
-
 export type AuthSession = {
-  accountId: string;
+  userId: string;
   role: DemoRole;
   email: string;
   name: string;
+  token: string;
   loginAt: string;
 };
 
-export function getAccountByEmail(email: string): DemoAccount | undefined {
-  return DEMO_ACCOUNTS.find((a) => a.email.toLowerCase() === email.trim().toLowerCase());
+const SESSION_KEY = "nicegene_auth_session";
+
+function canUseStorage(): boolean {
+  return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
 }
 
-export function verifyLogin(email: string, code: string): DemoAccount | null {
-  const account = getAccountByEmail(email);
-  if (!account || account.code !== code.trim()) return null;
-  return account;
+export async function loginWithApi(
+  email: string,
+  password: string
+): Promise<AuthUser | null> {
+  try {
+    const user = await authService.login({ email, password });
+    return user;
+  } catch {
+    return null;
+  }
 }
 
-export function createSession(account: DemoAccount): void {
+export function createSession(user: AuthUser, role: DemoRole = "student"): void {
   const session: AuthSession = {
-    accountId: account.id,
-    role: account.role,
-    email: account.email,
-    name: account.name,
+    userId: user._id,
+    role,
+    email: user.email,
+    name: user.name,
+    token: user.token,
     loginAt: new Date().toISOString(),
   };
-  saveStore(STORE_KEYS.authSession, session);
+  if (canUseStorage()) {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    localStorage.setItem("nicegene_auth_token", user.token);
+  }
 }
 
 export function getSession(): AuthSession | null {
-  return loadStore<AuthSession | null>(STORE_KEYS.authSession, () => null);
+  if (!canUseStorage()) return null;
+  const raw = localStorage.getItem(SESSION_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as AuthSession;
+  } catch {
+    return null;
+  }
 }
 
 export function clearSession(): void {
-  saveStore(STORE_KEYS.authSession, null);
+  if (!canUseStorage()) return;
+  localStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem("nicegene_auth_token");
 }
 
-export function demoCredentialHint(role: DemoRole): DemoAccount {
-  return DEMO_ACCOUNTS.find((a) => a.role === role) ?? DEMO_ACCOUNTS[0];
+export function isAuthenticated(): boolean {
+  return getSession() !== null;
 }

@@ -27,70 +27,56 @@ import {
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import PrintableCertificate from "@/components/verify/PrintableCertificate";
-import { useStudents } from "@/lib/hooks/useStudents";
+import { useStudents, useUpdateStudent } from "@/lib/hooks/useStudents";
 import { useCertificates } from "@/lib/hooks/useCertificates";
+import { useExams } from "@/lib/hooks/useExams";
+import { useAuth } from "@/lib/hooks/useAuth";
 import {
-  seedExams,
   formatDate,
   type Student,
   type Certificate,
   type PaymentRecord,
 } from "@/lib/seed-data";
-import {
-  verifyLogin,
-  createSession,
-  getSession,
-  clearSession,
-  demoCredentialHint,
-  type AuthSession,
-} from "@/lib/demo-auth";
+import type { AuthUser } from "@/lib/types";
 
 type Tab = "dashboard" | "profile" | "payments" | "results" | "certificate" | "notifications";
 
 export default function StudentPortal() {
-  const [session, setSession] = useState<AuthSession | null>(null);
-  const [checked, setChecked] = useState(false);
+  const { profile, isAuthenticated, isLoading: authLoading, logout } = useAuth();
+  const session = profile;
 
-  useEffect(() => {
-    setSession(getSession());
-    setChecked(true);
-  }, []);
-
-  if (!checked) return null;
+  if (authLoading) return null;
 
   return (
     <main className="w-full bg-background text-text-primary min-h-screen">
-      {session ? (
-        <PortalView session={session} onLogout={() => setSession(null)} />
+      {isAuthenticated && session ? (
+        <PortalView session={session} onLogout={logout} />
       ) : (
-        <LoginView onLogin={(s) => setSession(s)} />
+        <LoginView />
       )}
     </main>
   );
 }
 
-function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
-  const hint = demoCredentialHint("student");
+function LoginView() {
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { login, isLoading: authLoading } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const account = verifyLogin(email, code);
-    if (!account) {
-      setError("Invalid credentials. Use the demo student account shown below.");
+    if (!email.trim() || !password.trim()) {
+      setError("Please enter your email and password.");
       return;
     }
-    createSession(account);
-    onLogin(getSession()!);
-  };
-
-  const handleDemoLogin = () => {
-    setEmail(hint.email);
-    setCode(hint.code);
-    createSession(hint);
-    onLogin(getSession()!);
+    login.mutate(
+      { email: email.trim(), password },
+      {
+        onSuccess: () => {},
+        onError: () => setError("Invalid credentials. Please check your email and password."),
+      }
+    );
   };
 
   return (
@@ -148,39 +134,26 @@ function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
                 />
               </div>
               <div>
-                <label htmlFor="stu-login-code" className="block text-xs font-semibold text-text-primary mb-1.5">
-                  Access Code
+                <label htmlFor="stu-login-password" className="block text-xs font-semibold text-text-primary mb-1.5">
+                  Password
                 </label>
                 <input
-                  id="stu-login-code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  placeholder="6-digit code"
+                  id="stu-login-password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
                   className="w-full px-4 py-3 rounded-xl bg-surface border border-gray-200 text-text-primary text-sm placeholder:text-text-secondary/60 focus:outline-none focus:border-accent transition-all"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all"
+                disabled={authLoading}
+                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all disabled:opacity-50"
               >
-                Log In
+                {authLoading ? "Logging in..." : "Log In"}
               </button>
             </form>
-
-            <div className="mt-6 bg-primary/5 border border-primary/10 rounded-2xl p-4">
-              <p className="text-[11px] uppercase tracking-wider text-secondary font-bold mb-2">
-                Demo Student Account
-              </p>
-              <p className="text-[13px] text-text-primary font-mono">
-                {hint.email} / {hint.code}
-              </p>
-              <button
-                onClick={handleDemoLogin}
-                className="mt-3 w-full px-4 py-2.5 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-dark transition-all"
-              >
-                One-Click Demo Login
-              </button>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -188,9 +161,10 @@ function LoginView({ onLogin }: { onLogin: (s: AuthSession) => void }) {
   );
 }
 
-function PortalView({ session, onLogout }: { session: AuthSession; onLogout: () => void }) {
+function PortalView({ session, onLogout }: { session: AuthUser; onLogout: () => void }) {
   const { data: rawStudents = [], isLoading } = useStudents();
   const { data: rawCertificates = [] } = useCertificates({ email: session.email });
+  const { data: exams = [] } = useExams();
   const students = rawStudents as unknown as Student[];
   const certificates = rawCertificates as unknown as Certificate[];
   const student = useMemo(
@@ -227,7 +201,7 @@ function PortalView({ session, onLogout }: { session: AuthSession; onLogout: () 
   const certificate = student.certificateId
     ? certificates.find((c) => c.id === student.certificateId)
     : undefined;
-  const exam = seedExams.find((e) => e.course === student.course);
+  const exam = exams.find((e) => e.course === student.course);
 
   const tabs: { id: Tab; label: string; icon: typeof FaBookOpen; badge?: number }[] = [
     { id: "dashboard", label: "Dashboard", icon: FaBookOpen },
@@ -256,10 +230,7 @@ function PortalView({ session, onLogout }: { session: AuthSession; onLogout: () 
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => {
-                clearSession();
-                onLogout();
-              }}
+              onClick={onLogout}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-200 text-text-primary text-[13px] font-semibold hover:border-error hover:text-error transition-all"
             >
               <FaSignOutAlt size={13} /> Log Out
@@ -436,12 +407,30 @@ function ProfileTab({
     bankName: "",
   });
   const [saved, setSaved] = useState(false);
+  const updateStudent = useUpdateStudent();
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    setSaved(true);
-    onToast("Profile updated successfully");
-    setTimeout(() => setSaved(false), 3000);
+    updateStudent.mutate(
+      {
+        id: student._id,
+        data: {
+          phone: form.phone,
+          whatsapp: form.whatsapp,
+          address: form.address,
+        },
+      },
+      {
+        onSuccess: () => {
+          setSaved(true);
+          onToast("Profile updated successfully");
+          setTimeout(() => setSaved(false), 3000);
+        },
+        onError: () => {
+          onToast("Failed to update profile");
+        },
+      }
+    );
   };
 
   const inputCls =

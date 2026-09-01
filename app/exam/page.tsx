@@ -20,19 +20,11 @@ import {
 } from "react-icons/fa";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
-import { STORE_KEYS, loadStore, saveStore } from "@/lib/store";
-import { useExams, useSubmitExam } from "@/lib/hooks/useExams";
+import { useAuth } from "@/lib/hooks/useAuth";
+import { useExams, useSubmitExam, useExamSession, useCreateExamSession, useSaveExamSession } from "@/lib/hooks/useExams";
 import { useStudents } from "@/lib/hooks/useStudents";
 import { defaultSiteConfig } from "@/lib/seed-data";
-import type { ExamQuestion } from "@/lib/types";
-import {
-  verifyLogin,
-  createSession,
-  getSession,
-  clearSession,
-  demoCredentialHint,
-  type AuthSession,
-} from "@/lib/demo-auth";
+import type { ExamQuestion, AuthUser } from "@/lib/types";
 
 type ExamAnswers = Record<string, string | string[]>;
 type SessionState = {
@@ -61,51 +53,49 @@ function formatTime(ms: number): string {
 }
 
 export default function ExamPortal() {
-  const [session, setSession] = useState<AuthSession | null>(null);
-  const [checked, setChecked] = useState(false);
   const [examState, setExamState] = useState<
     "login" | "lobby" | "running" | "submitted" | "results"
   >("login");
   const [result, setResult] = useState<Result | null>(null);
   const { data: exams } = useExams();
   const exam = exams?.[0];
+  const { profile, isAuthenticated, isLoading: authLoading } = useAuth();
+  const session = profile;
+  const { data: existingSession } = useExamSession(exam?._id ?? "");
+  const createSession = useCreateExamSession();
 
   useEffect(() => {
-    const s = getSession();
-    setSession(s);
-    const active = loadStore<SessionState | null>(STORE_KEYS.examActive, () => null) as SessionState | null;
-    if (s && active) {
-      setExamState("running");
-    } else if (s) {
-      setExamState("lobby");
+    if (!authLoading && isAuthenticated && session) {
+      if (existingSession) {
+        setExamState("running");
+      } else {
+        setExamState("lobby");
+      }
+    } else if (!authLoading && !isAuthenticated) {
+      setExamState("login");
     }
-    setChecked(true);
-  }, []);
+  }, [authLoading, isAuthenticated, session, existingSession]);
 
-  const handleLogin = (s: AuthSession) => {
-    setSession(s);
+  const handleLogin = () => {
     setExamState("lobby");
   };
 
   const handleLogout = () => {
-    clearSession();
-    setSession(null);
     setExamState("login");
   };
 
   const handleStart = () => {
-    if (!exam) return;
-    const initial: SessionState = {
-      examId: exam._id,
-      startedAt: Date.now(),
-      remainingMs: exam.durationMinutes * 60 * 1000,
-      current: 0,
-      flagged: [],
-      answers: {},
-      exitAttempts: 0,
-    };
-    saveStore(STORE_KEYS.examActive, initial);
-    setExamState("running");
+    if (!exam || !session) return;
+    createSession.mutate(
+      {
+        examId: exam._id,
+        studentId: session._id,
+        remainingMs: exam.durationMinutes * 60 * 1000,
+      },
+      {
+        onSuccess: () => setExamState("running"),
+      }
+    );
   };
 
   const handleSubmitted = (r: Result) => {
@@ -118,7 +108,7 @@ export default function ExamPortal() {
     setExamState("results");
   };
 
-  if (!checked) return null;
+  if (authLoading) return null;
 
   return (
     <main className="w-full bg-background text-text-primary min-h-screen">
@@ -150,28 +140,25 @@ export default function ExamPortal() {
   );
 }
 
-function ExamLogin({ onLogin }: { onLogin: (s: AuthSession) => void }) {
-  const hint = demoCredentialHint("student");
+function ExamLogin({ onLogin }: { onLogin: () => void }) {
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { login, isLoading: authLoading } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const account = verifyLogin(email, code);
-    if (!account) {
-      setError("Invalid credentials. Use the demo student account shown below.");
+    if (!email.trim() || !password.trim()) {
+      setError("Please enter your email and password.");
       return;
     }
-    createSession(account);
-    onLogin(getSession()!);
-  };
-
-  const handleDemo = () => {
-    setEmail(hint.email);
-    setCode(hint.code);
-    createSession(hint);
-    onLogin(getSession()!);
+    login.mutate(
+      { email: email.trim(), password },
+      {
+        onSuccess: () => onLogin(),
+        onError: () => setError("Invalid credentials. Please check your email and password."),
+      }
+    );
   };
 
   return (
@@ -230,39 +217,26 @@ function ExamLogin({ onLogin }: { onLogin: (s: AuthSession) => void }) {
                 />
               </div>
               <div>
-                <label htmlFor="exam-code" className="block text-xs font-semibold text-text-primary mb-1.5">
-                  Identity Verification Code
+                <label htmlFor="exam-password" className="block text-xs font-semibold text-text-primary mb-1.5">
+                  Password
                 </label>
                 <input
-                  id="exam-code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  placeholder="6-digit code"
+                  id="exam-password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
                   className="w-full px-4 py-3 rounded-xl bg-surface border border-gray-200 text-text-primary text-sm placeholder:text-text-secondary/60 focus:outline-none focus:border-accent transition-all"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all"
+                disabled={authLoading}
+                className="w-full px-6 py-3.5 rounded-full bg-accent text-white font-semibold text-sm hover:bg-primary transition-all disabled:opacity-50"
               >
-                Verify &amp; Continue
+                {authLoading ? "Verifying..." : "Verify & Continue"}
               </button>
             </form>
-
-            <div className="mt-6 bg-primary/5 border border-primary/10 rounded-2xl p-4">
-              <p className="text-[11px] uppercase tracking-wider text-secondary font-bold mb-2">
-                Demo Student Account
-              </p>
-              <p className="text-[13px] text-text-primary font-mono">
-                {hint.email} / {hint.code}
-              </p>
-              <button
-                onClick={handleDemo}
-                className="mt-3 w-full px-4 py-2.5 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-dark transition-all"
-              >
-                One-Click Demo Login
-              </button>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -277,7 +251,7 @@ function ExamLobby({
   result,
   onViewResults,
 }: {
-  session: AuthSession;
+  session: AuthUser;
   onLogout: () => void;
   onStart: () => void;
   onSubmitted: (r: Result) => void;
@@ -410,16 +384,28 @@ function ExamRunner({
   onLogout,
   onSubmitted,
 }: {
-  session: AuthSession;
+  session: AuthUser;
   onLogout: () => void;
   onSubmitted: (r: Result) => void;
 }) {
   const { data: exams } = useExams();
   const exam = exams?.[0];
   const questions = exam?.questions ?? [];
+  const { data: apiSession } = useExamSession(exam?._id ?? "");
+  const saveSession = useSaveExamSession();
   const [state, setState] = useState<SessionState>(() => {
-    const existing = loadStore<SessionState | null>(STORE_KEYS.examActive, () => null);
-    return existing ?? {
+    if (apiSession) {
+      return {
+        examId: apiSession.examId,
+        startedAt: new Date(apiSession.startedAt).getTime(),
+        remainingMs: apiSession.remainingMs,
+        current: apiSession.currentQuestion,
+        flagged: apiSession.flagged,
+        answers: apiSession.answers,
+        exitAttempts: apiSession.exitAttempts,
+      };
+    }
+    return {
       examId: exam?._id ?? "",
       startedAt: Date.now(),
       remainingMs: (exam?.durationMinutes ?? 0) * 60 * 1000,
@@ -438,14 +424,32 @@ function ExamRunner({
   if (!exam) return null;
 
   const persist = useCallback((s: SessionState) => {
-    saveStore(STORE_KEYS.examActive, s);
-  }, []);
+    if (apiSession?._id) {
+      saveSession.mutate({
+        id: apiSession._id,
+        data: {
+          remainingMs: s.remainingMs,
+          currentQuestion: s.current,
+          answers: s.answers,
+          flagged: s.flagged,
+          exitAttempts: s.exitAttempts,
+        },
+      });
+    }
+  }, [apiSession, saveSession]);
 
   const finishExam = useCallback(
     (finalAnswers: ExamAnswers) => {
       if (submittedRef.current || !exam) return;
       submittedRef.current = true;
-      saveStore(STORE_KEYS.examActive, null);
+
+      // Mark session as submitted
+      if (apiSession?._id) {
+        saveSession.mutate({
+          id: apiSession._id,
+          data: { status: "submitted" },
+        });
+      }
 
       submitExamMutate(
         { id: exam._id, answers: finalAnswers },
@@ -470,7 +474,7 @@ function ExamRunner({
         }
       );
     },
-    [exam, submitExamMutate, onSubmitted]
+    [exam, submitExamMutate, onSubmitted, apiSession, saveSession]
   );
 
   // Countdown
@@ -833,7 +837,7 @@ function ExamResults({
   onExit,
 }: {
   result: Result;
-  session: AuthSession;
+  session: AuthUser;
   onLogout: () => void;
   onExit: () => void;
 }) {

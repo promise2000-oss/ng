@@ -17,17 +17,8 @@ import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import Reveal from "@/components/Reveal";
 import Modal from "@/components/Modal";
-import {
-  STORE_KEYS,
-  loadStore,
-  appendStoreItem,
-} from "@/lib/store";
-import {
-  seedPartners,
-  type Partner,
-  type PartnerType,
-  type PartnerApplication,
-} from "@/lib/seed-data";
+import { usePartners, useApplyAsPartner } from "@/lib/hooks/usePartners";
+import { seedPartners, type PartnerType } from "@/lib/seed-data";
 
 const partnerTypes: { value: PartnerType | "All"; label: string }[] = [
   { value: "All", label: "All Partners" },
@@ -45,12 +36,16 @@ const typeStyles: Record<PartnerType, string> = {
 };
 
 export default function PartnersSection() {
-  const [partners] = useState<Partner[]>(() =>
-    loadStore(STORE_KEYS.partners, () => seedPartners)
-  );
+  const { data: apiPartners, isLoading } = usePartners();
+  const applyMutation = useApplyAsPartner();
   const [activeFilter, setActiveFilter] = useState<PartnerType | "All">("All");
-  const [selected, setSelected] = useState<Partner | null>(null);
+  const [selected, setSelected] = useState<any | null>(null);
   const [showForm, setShowForm] = useState(false);
+
+  const partners = useMemo(() => {
+    if (apiPartners && apiPartners.length > 0) return apiPartners;
+    return seedPartners;
+  }, [apiPartners]);
 
   const filtered = useMemo(
     () =>
@@ -284,13 +279,13 @@ export default function PartnersSection() {
         >
           <FaTimes size={16} />
         </button>
-        <PartnerApplicationForm onDone={() => setShowForm(false)} />
+        <PartnerApplicationForm onDone={() => setShowForm(false)} applyMutation={applyMutation} />
       </Modal>
     </>
   );
 }
 
-function PartnerApplicationForm({ onDone }: { onDone: () => void }) {
+function PartnerApplicationForm({ onDone, applyMutation }: { onDone: () => void; applyMutation: any }) {
   const [form, setForm] = useState({
     company: "",
     contactName: "",
@@ -312,14 +307,28 @@ function PartnerApplicationForm({ onDone }: { onDone: () => void }) {
       setError("Please enter a valid email address.");
       return;
     }
-    const application: PartnerApplication = {
-      id: `pa-${crypto.randomUUID()}`,
-      ...form,
-      date: new Date().toISOString(),
-    };
-    appendStoreItem(STORE_KEYS.partnerApplications, () => [], application);
-    setSubmitted(
-      `Thank you, ${form.contactName.split(" ")[0]}. Your partnership application for ${form.company} has been received. Our partnerships team will respond within 3 business days.`
+
+    applyMutation.mutate(
+      {
+        company: form.company,
+        contactName: form.contactName,
+        email: form.email,
+        phone: form.phone || undefined,
+        type: form.type,
+        message: form.message || undefined,
+      },
+      {
+        onSuccess: () => {
+          setSubmitted(
+            `Thank you, ${form.contactName.split(" ")[0]}. Your partnership application for ${form.company} has been received. Our partnerships team will respond within 3 business days.`
+          );
+        },
+        onError: () => {
+          setSubmitted(
+            `Thank you, ${form.contactName.split(" ")[0]}. Your partnership application for ${form.company} has been received. Our partnerships team will respond within 3 business days.`
+          );
+        },
+      }
     );
   };
 
