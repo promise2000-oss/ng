@@ -413,7 +413,7 @@ function ProfileTab({
     e.preventDefault();
     updateStudent.mutate(
       {
-        id: student._id,
+        id: student.id,
         data: {
           phone: form.phone,
           whatsapp: form.whatsapp,
