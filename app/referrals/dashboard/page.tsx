@@ -30,7 +30,7 @@ const statusStyle: Record<ReferralStatus, string> = {
 
 export default function ReferralsDashboard() {
   const { profile, isAuthenticated, isLoading: authLoading, logout } = useAuth();
-  const session = profile;
+  const session = profile.data;
 
   if (authLoading) return null;
 

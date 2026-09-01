@@ -43,7 +43,7 @@ type Tab = "dashboard" | "profile" | "payments" | "results" | "certificate" | "n
 
 export default function StudentPortal() {
   const { profile, isAuthenticated, isLoading: authLoading, logout } = useAuth();
-  const session = profile;
+  const session = profile.data;
 
   if (authLoading) return null;
 

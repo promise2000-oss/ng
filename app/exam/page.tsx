@@ -60,7 +60,7 @@ export default function ExamPortal() {
   const { data: exams } = useExams();
   const exam = exams?.[0];
   const { profile, isAuthenticated, isLoading: authLoading } = useAuth();
-  const session = profile;
+  const session = profile.data;
   const { data: existingSession } = useExamSession(exam?._id ?? "");
   const createSession = useCreateExamSession();
 
