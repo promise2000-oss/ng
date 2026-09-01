@@ -45,5 +45,13 @@ export function useAuth() {
     queryClient.clear();
   };
 
-  return { profile, login, register, updateProfile, logout };
+  return {
+    profile,
+    login,
+    register,
+    updateProfile,
+    logout,
+    isAuthenticated: profile.isSuccess && !!profile.data,
+    isLoading: profile.isLoading,
+  };
 }
