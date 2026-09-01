@@ -4,9 +4,11 @@ export type PartnerType = "Technology" | "Academic" | "Business" | "Community";
 
 export type Partner = {
   _id: string;
+  id: string;
   name: string;
   type: PartnerType;
-  logo?: string;
+  logo?: string | null;
+  initials: string;
   website: string;
   description: string;
   oneLiner: string;

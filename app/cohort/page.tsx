@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import CohortHero from "@/components/cohort/CohortHero";
 import CohortForm from "@/components/cohort/CohortForm";
-import PaymentDetails from "@/components/cohort/PaymentDetails";
 import WhyJoinAcademy from "@/components/cohort/WhyJoinAcademy";
 
 const sectionVariants = {
@@ -40,7 +39,6 @@ export default function CohortPage() {
             transition={{ delay: 0.3 }}
             className="space-y-6"
           >
-            <PaymentDetails />
             <WhyJoinAcademy />
           </motion.div>
         </div>

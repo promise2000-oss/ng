@@ -261,7 +261,7 @@ function ExamLobby({
   const { data: exams } = useExams();
   const exam = exams?.[0];
   const { data: students } = useStudents();
-  const student = students?.find((s) => s._id === session.accountId) ?? students?.[0];
+  const student = students?.find((s) => s._id === session._id) ?? students?.[0];
 
   if (!exam) return null;
 

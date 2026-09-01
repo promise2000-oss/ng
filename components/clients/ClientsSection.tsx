@@ -8,7 +8,7 @@ import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
 import Reveal from "@/components/Reveal";
 import { useClients } from "@/lib/hooks/useClients";
-import { seedClients, clientSectors } from "@/lib/seed-data";
+import { seedClients, clientSectors, type Client } from "@/lib/seed-data";
 
 const sectorIconMap: Record<string, string> = {
   Education: "bg-blue-50 text-accent border-blue-100",
@@ -25,18 +25,18 @@ export default function ClientsSection() {
   const [service, setService] = useState<string>("All");
   const [query, setQuery] = useState("");
 
-  const clients = useMemo(() => {
-    if (apiClients && apiClients.length > 0) return apiClients;
+  const clients = useMemo<Client[]>(() => {
+    if (apiClients && apiClients.length > 0) return apiClients as unknown as Client[];
     return seedClients;
   }, [apiClients]);
 
   const services = useMemo(
-    () => Array.from(new Set(clients.map((c: any) => c.service))).sort(),
+    () => Array.from(new Set(clients.map((c) => c.service))).sort(),
     [clients]
   );
 
   const filtered = useMemo(() => {
-    return clients.filter((c: any) => {
+    return clients.filter((c) => {
       if (sector !== "All" && c.sector !== sector) return false;
       if (service !== "All" && c.service !== service) return false;
       if (query && !c.name.toLowerCase().includes(query.toLowerCase())) return false;

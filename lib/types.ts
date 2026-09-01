@@ -22,7 +22,6 @@ export type RegisterPayload = {
 // ─── Students ────────────────────────────────────────────────────────────────
 
 export type StudentStatus = "active" | "completed" | "dropped";
-export type PaymentStatus = "pending" | "paid" | "partial";
 
 export type Student = {
   _id: string;
@@ -32,7 +31,6 @@ export type Student = {
   course: string;
   cohort?: string;
   status: StudentStatus;
-  paymentStatus: PaymentStatus;
   grades?: string;
   dateOfBirth?: string;
   gender?: string;
@@ -50,7 +48,10 @@ export type Student = {
 };
 
 export type UpdateStudentPayload = Partial<
-  Pick<Student, "fullName" | "phone" | "course" | "status" | "paymentStatus" | "grades">
+  Pick<Student, "fullName" | "phone" | "course" | "status" | "grades"> & {
+    whatsapp?: string;
+    address?: string;
+  }
 >;
 
 // ─── Staff ───────────────────────────────────────────────────────────────────
@@ -191,17 +192,6 @@ export type ProjectPayload = {
   status?: string;
   client?: string;
   year?: string;
-};
-
-// ─── Payments ────────────────────────────────────────────────────────────────
-
-export type Payment = {
-  reference: string;
-  amount: number;
-  status: string;
-  channel?: string;
-  metadata?: Record<string, unknown>;
-  createdAt?: string;
 };
 
 // ─── Graduates ───────────────────────────────────────────────────────────────

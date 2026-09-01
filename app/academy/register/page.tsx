@@ -14,9 +14,7 @@ import {
   FaExclamationCircle,
   FaChevronLeft,
   FaChevronRight,
-  FaMoneyCheckAlt,
   FaPaperclip,
-  FaWhatsapp,
 } from "react-icons/fa";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
@@ -232,8 +230,7 @@ export default function RegistrationPortal() {
           </h1>
           <p className="text-white/70 mt-4 max-w-2xl mx-auto text-sm md:text-base">
             Complete your application online in under 5 minutes — no manual intervention needed.
-            You will receive a confirmation email with payment instructions and your unique
-            Application ID.
+            You will receive a confirmation email with your unique Application ID.
           </p>
         </div>
       </section>
@@ -536,9 +533,8 @@ export default function RegistrationPortal() {
                   </div>
 
                   <p className="text-[12px] text-text-secondary">
-                    Upon submission you will receive an automated confirmation email with payment
-                    instructions and your unique Application ID. Your enrolment is confirmed after
-                    payment is received and verified.
+                    Upon submission you will receive an automated confirmation email with your
+                    unique Application ID. Your enrolment will be confirmed shortly.
                   </p>
                 </div>
               )}
@@ -619,41 +615,8 @@ function SubmissionConfirmation({
             </div>
 
             <p className="text-sm text-text-secondary leading-relaxed text-center">
-              A confirmation email with payment instructions has been sent to your email address.
-              Your enrolment is confirmed once payment is received and verified.
+              A confirmation email has been sent to your email address with your Application ID.
             </p>
-
-            <div className="bg-surface border border-gray-100 rounded-2xl p-6">
-              <h3 className="font-semibold text-text-primary mb-4 flex items-center gap-2">
-                <FaMoneyCheckAlt size={16} className="text-accent" />
-                Payment Instructions
-              </h3>
-              <div className="space-y-3">
-                {[
-                  ["Account Name", "NICEGENE TECHNOLOGY SOLUTIONS LTD"],
-                  ["Account Number", "1309125177"],
-                  ["Bank Name", "Providus Bank"],
-                ].map(([k, v]) => (
-                  <div key={k} className="flex items-center justify-between bg-white border border-gray-100 rounded-xl px-4 py-3">
-                    <span className="text-[12px] text-text-secondary">{k}</span>
-                    <span className={`text-sm font-semibold ${k === "Account Number" ? "text-accent tracking-wider" : "text-text-primary"}`}>
-                      {v}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[12px] text-text-secondary mt-4">
-                Course: <span className="font-semibold text-text-primary">{data.course}</span>
-              </p>
-              <a
-                href="https://wa.me/2348060704412"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-green-500/10 text-green-700 font-semibold text-sm hover:bg-green-500 hover:text-white transition-all border border-green-500/20"
-              >
-                <FaWhatsapp size={14} /> Send Payment Proof on WhatsApp
-              </a>
-            </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link

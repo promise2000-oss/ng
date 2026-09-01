@@ -2,13 +2,16 @@ import api from "@/lib/api";
 
 export type Client = {
   _id: string;
+  id: string;
   name: string;
   initials: string;
   sector: string;
   service: string;
+  year: string;
+  caseStudy?: string;
   featured: boolean;
   visible: boolean;
-  logo?: string;
+  logo?: string | null;
 };
 
 export const clientsService = {

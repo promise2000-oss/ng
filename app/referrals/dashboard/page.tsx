@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import {
@@ -19,6 +19,7 @@ import { useReferrals } from "@/lib/hooks/useReferrals";
 import { REFERRAL_FLOW } from "@/lib/types";
 import type { Referral, ReferralStatus } from "@/lib/types";
 import { useAuth } from "@/lib/hooks/useAuth";
+import type { AuthUser } from "@/lib/types";
 
 const statusStyle: Record<ReferralStatus, string> = {
   Submitted: "bg-blue-50 text-accent border-blue-100",

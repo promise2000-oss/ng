@@ -1103,15 +1103,6 @@ export const seedCertificates: Certificate[] = [
 // Students & registrations (PRD 4.1)
 // ---------------------------------------------------------------------------
 
-export type PaymentRecord = {
-  id: string;
-  amount: string;
-  method: string;
-  date: string;
-  status: "confirmed" | "pending";
-  receiptNo: string;
-};
-
 export type StudentNotification = {
   id: string;
   title: string;
@@ -1130,8 +1121,7 @@ export type Student = {
   course: string;
   cohort: string;
   mode: LearningMode;
-  status: "active" | "inactive" | "pending-payment";
-  payments: PaymentRecord[];
+  status: "active" | "inactive";
   assignments: { title: string; due: string; score?: string }[];
   examSchedule: string;
   examDone: boolean;
@@ -1166,16 +1156,6 @@ export const seedStudents: Student[] = [
     cohort: currentCohortName,
     mode: "Hybrid",
     status: "active",
-    payments: [
-      {
-        id: "pay-1",
-        amount: "₦215,000",
-        method: "Bank transfer — Providus Bank",
-        date: "2026-07-15",
-        status: "confirmed",
-        receiptNo: "RCPT-2026-331",
-      },
-    ],
     assignments: [
       { title: "AWS IAM & Security Best Practices", due: "2026-09-12", score: "88%" },
       { title: "VPC Design Exercise", due: "2026-09-26", score: "92%" },

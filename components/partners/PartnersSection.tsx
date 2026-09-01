@@ -20,6 +20,19 @@ import Modal from "@/components/Modal";
 import { usePartners, useApplyAsPartner } from "@/lib/hooks/usePartners";
 import { seedPartners, type PartnerType } from "@/lib/seed-data";
 
+type PartnerItem = {
+  id: string;
+  name: string;
+  logo?: string | null;
+  initials: string;
+  type: PartnerType;
+  website: string;
+  description: string;
+  oneLiner: string;
+  dateJoined: string;
+  featured: boolean;
+};
+
 const partnerTypes: { value: PartnerType | "All"; label: string }[] = [
   { value: "All", label: "All Partners" },
   { value: "Technology", label: "Technology Partners" },
@@ -39,12 +52,12 @@ export default function PartnersSection() {
   const { data: apiPartners, isLoading } = usePartners();
   const applyMutation = useApplyAsPartner();
   const [activeFilter, setActiveFilter] = useState<PartnerType | "All">("All");
-  const [selected, setSelected] = useState<any | null>(null);
+  const [selected, setSelected] = useState<PartnerItem | null>(null);
   const [showForm, setShowForm] = useState(false);
 
-  const partners = useMemo(() => {
-    if (apiPartners && apiPartners.length > 0) return apiPartners;
-    return seedPartners;
+  const partners = useMemo<PartnerItem[]>(() => {
+    if (apiPartners && apiPartners.length > 0) return apiPartners as unknown as PartnerItem[];
+    return seedPartners as unknown as PartnerItem[];
   }, [apiPartners]);
 
   const filtered = useMemo(

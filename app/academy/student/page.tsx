@@ -12,17 +12,14 @@ import {
   FaGraduationCap,
   FaBookOpen,
   FaCalendarAlt,
-  FaFileInvoiceDollar,
   FaAward,
   FaBell,
   FaUserCog,
   FaFileDownload,
-  FaReceipt,
   FaEdit,
   FaSave,
   FaShieldAlt,
   FaCheckDouble,
-  FaExclamationTriangle,
 } from "react-icons/fa";
 import FloatingOrbs from "@/components/animations/FloatingOrbs";
 import GridOverlay from "@/components/animations/GridOverlay";
@@ -35,11 +32,10 @@ import {
   formatDate,
   type Student,
   type Certificate,
-  type PaymentRecord,
 } from "@/lib/seed-data";
 import type { AuthUser } from "@/lib/types";
 
-type Tab = "dashboard" | "profile" | "payments" | "results" | "certificate" | "notifications";
+type Tab = "dashboard" | "profile" | "results" | "certificate" | "notifications";
 
 export default function StudentPortal() {
   const { profile, isAuthenticated, isLoading: authLoading, logout } = useAuth();
@@ -206,7 +202,6 @@ function PortalView({ session, onLogout }: { session: AuthUser; onLogout: () => 
   const tabs: { id: Tab; label: string; icon: typeof FaBookOpen; badge?: number }[] = [
     { id: "dashboard", label: "Dashboard", icon: FaBookOpen },
     { id: "profile", label: "Profile", icon: FaUserCog },
-    { id: "payments", label: "Payments", icon: FaFileInvoiceDollar },
     { id: "results", label: "Results & Grades", icon: FaAward },
     { id: "certificate", label: "Certificate", icon: FaFileDownload },
     { id: "notifications", label: "Notifications", icon: FaBell, badge: unreadCount },
@@ -278,7 +273,6 @@ function PortalView({ session, onLogout }: { session: AuthUser; onLogout: () => 
         {tab === "profile" && (
           <ProfileTab student={student} onToast={setToast} />
         )}
-        {tab === "payments" && <PaymentsTab student={student} />}
         {tab === "results" && <ResultsTab student={student} onToast={setToast} />}
         {tab === "certificate" && (
           <CertificateTab
@@ -325,12 +319,6 @@ function DashboardTab({ student, exam }: { student: Student; exam?: string }) {
               </div>
             ))}
           </div>
-          {student.status === "pending-payment" && (
-            <div className="mt-4 flex items-start gap-2 bg-amber-50 border border-amber-200 text-amber-700 text-[12px] rounded-xl px-4 py-3">
-              <FaExclamationTriangle size={14} className="mt-0.5 shrink-0" />
-              Your enrolment is awaiting payment confirmation. See the Payments tab for details.
-            </div>
-          )}
         </div>
 
         {/* Modules & exam dates */}
@@ -534,73 +522,6 @@ function ProfileTab({
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function PaymentsTab({ student }: { student: Student }) {
-  const [receipt, setReceipt] = useState<PaymentRecord | null>(null);
-  void receipt;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="space-y-6"
-    >
-      <div className="bg-white border border-gray-200 rounded-3xl p-7">
-        <h3 className="font-bold text-text-primary mb-5 flex items-center gap-2">
-          <FaFileInvoiceDollar size={16} className="text-accent" /> Payment History
-        </h3>
-        {student.payments.length === 0 ? (
-          <p className="text-[13px] text-text-secondary">
-            No payments recorded yet. {student.status === "pending-payment" ? "Complete your payment to activate your enrolment." : ""}
-          </p>
-        ) : (
-          <div className="space-y-3">
-            {student.payments.map((p) => (
-              <div key={p.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-surface border border-gray-100 rounded-2xl px-5 py-4">
-                <div>
-                  <p className="font-bold text-text-primary">{p.amount}</p>
-                  <p className="text-[12px] text-text-secondary mt-0.5">{p.method} · {formatDate(p.date)}</p>
-                  <p className="text-[11px] text-text-secondary">Receipt: {p.receiptNo}</p>
-                </div>
-                <div className="flex items-center gap-3 mt-3 sm:mt-0">
-                  <span
-                    className={`text-[11px] font-bold px-3 py-1 rounded-full ${
-                      p.status === "confirmed"
-                        ? "bg-success/10 text-success border border-success/20"
-                        : "bg-amber-50 text-amber-600 border border-amber-200"
-                    }`}
-                  >
-                    {p.status === "confirmed" ? "Confirmed" : "Pending"}
-                  </span>
-                  <button
-                    onClick={() => setReceipt(p)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-gray-200 text-[12px] font-semibold text-text-primary hover:border-accent hover:text-accent transition-all"
-                  >
-                    <FaReceipt size={12} /> View Receipt
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-      <div className="bg-white border border-gray-200 rounded-3xl p-7">
-        <h3 className="font-bold text-text-primary mb-4">Make a Payment</h3>
-        <div className="space-y-3">
-          {[
-            ["Account Name", "NICEGENE TECHNOLOGY SOLUTIONS LTD"],
-            ["Account Number", "1309125177"],
-            ["Bank Name", "Providus Bank"],
-          ].map(([k, v]) => (
-            <div key={k} className="flex items-center justify-between bg-surface border border-gray-100 rounded-xl px-4 py-3">
-              <span className="text-[12px] text-text-secondary">{k}</span>
-              <span className={`text-sm font-semibold ${k === "Account Number" ? "text-accent tracking-wider" : "text-text-primary"}`}>{v}</span>
-            </div>
-          ))}
         </div>
       </div>
     </motion.div>
